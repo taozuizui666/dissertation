@@ -1,0 +1,51 @@
+#include <SoftwareSerial.h>
+#include "control.h"
+#include "BT_control.h"
+#define LEFT_MOTO   14
+#define RIGHT_MOTO  15
+
+SoftwareSerial bluetooth(0,1);  // bluetooth's pin RX,TX
+
+
+void setup() {
+  pinMode(LEFT_MOTO,OUTPUT);
+  pinMode(RIGHT_MOTO,OUTPUT);
+  pinMode(13, OUTPUT);
+  digitalWrite(13, HIGH);
+  bluetooth.begin(115200);
+  // Serial.begin(115200);  // test bluetooth and serial ports
+  // Serial.println("haha");
+}
+
+void loop() {
+  if(bluetooth.available())
+  {
+    int receive_bt = bluetooth.read();
+    // switch (receive_bt) {
+    // case 1:
+    //   left_ahead(LEFT_MOTO,RIGHT_MOTO);
+    //   break;
+    // case 2:
+    //   ahead(LEFT_MOTO,RIGHT_MOTO);
+    //   break;
+    // case 3:
+    //   right_ahead(LEFT_MOTO,RIGHT_MOTO);
+    //   break;
+    // case 4:
+    //   left(LEFT_MOTO,RIGHT_MOTO);
+    //   break;
+    // case 5:
+    //   right(LEFT_MOTO,RIGHT_MOTO);
+    //   break;
+    // case 0:
+    //   stop(LEFT_MOTO,RIGHT_MOTO);
+    //   digitalWrite(13, LOW);
+    //   break;
+    // default:
+    //   break;
+    // }
+    bluetooth_control(receive_bt,LEFT_MOTO,RIGHT_MOTO);
+
+  }
+
+}
