@@ -551,7 +551,7 @@ def main(argv=None):
             print(f"已同步模型：{args.firmware_header}")
         return 0
     except ImportError as error:
-        print(f"缺少训练依赖：{error}。请执行 python3 -m pip install -r software/MLcode/requirements.txt", file=sys.stderr)
+        print(f"缺少训练依赖：{error}。请执行 python -m pip install --user -r software/MLcode/requirements.txt", file=sys.stderr)
         return 1
     except (ValueError, OSError, AssertionError, subprocess.TimeoutExpired) as error:
         print(f"流程失败：{error}", file=sys.stderr)

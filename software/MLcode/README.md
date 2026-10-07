@@ -1,27 +1,60 @@
 # 操作数据训练与部署
 
-唯一运行入口是 `train_model.py`，数据清理、K 特征选择、训练、导出及固件同步均由它完成。
+正式训练入口是 `train_model.py`，数据清理、K 特征选择、训练、导出及固件同步均由它完成。
 全部常用配置集中在文件顶部，用大写常量和中文注释分组。
 
-本机的 `.venv` 和训练依赖已准备好。在 dissertation 根目录直接执行：
+本机已将 `~/bin/python` 链接到 `/usr/bin/python3`，训练及 Notebook 依赖已安装到
+用户级 Python 3 环境。在 dissertation 根目录直接执行：
 
 ```bash
-.venv/bin/python3 software/MLcode/train_model.py
+python software/MLcode/train_model.py
 ```
 
-在其他环境首次安装依赖时：
+当前终端刷新配置、检查版本及依赖：
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python3 -m pip install -r software/MLcode/requirements.txt
-python3 software/MLcode/train_model.py
+source ~/.bashrc
+hash -r
+python --version
+python -m pip check
 ```
 
-需要 Python 3.9 或更新版本、训练依赖和 `g++`。Windows 可使用 `python`、
-`.venv\Scripts\activate`，并在 `CXX` 配置可用的 GNU C++ 编译器路径。
+## 依赖补装
+
+依赖已经安装，正常运行直接使用 `python`。requirements 文件保留用于补装和记录版本范围。
+`python -m pip` 使用当前 Python 对应的安装工具。
+
+只补装训练依赖：
+
+```bash
+python -m pip install --user -r software/MLcode/requirements.txt
+```
+
+训练和 Notebook 的全部依赖：
+
+```bash
+python -m pip install --user -r software/MLcode/requirements-notebook.txt
+```
+
+`requirements-notebook.txt` 包含 `requirements.txt`，无需分别安装两遍。
+需要 Python 3.9 或更新版本、训练依赖和 `g++`。Windows 使用已安装的 Python 3，
+并在 `CXX` 配置可用的 GNU C++ 编译器路径。
 无编译器时可以显式关闭 `VERIFY_CPP_EXPORT`，报告会标记未执行该检查。
 脚本不自动安装依赖，也不自动烧录开发板。
+
+## 逐步学习 Notebook
+
+打开 [training_walkthrough.ipynb](training_walkthrough.ipynb)，在 VS Code 中选择
+`/usr/bin/python3` 内核，再从上到下运行单元格。本机已安装 Notebook 依赖，
+如需补装，使用上面的 `requirements-notebook.txt` 安装命令。
+
+Notebook 分步展示原始格式、清理统计、X/y、文件分组、ANOVA F 特征评分、K 维输入、
+训练与验证、混淆矩阵、最终重训、类别映射、头文件生成和 C++ 预测核对。
+它导入正式脚本的函数，并核对展开的训练步骤与正式 `train()` 的结果一致。
+
+默认 `USE_DEMO_DATA=True`，即使 dataset 为空也能运行，并有意加入损坏行展示清理原因。
+将其改为 `False` 后读取真实 dataset。两种模式的学习输出均保存在临时目录，不覆盖
+正式输出和固件模型。模拟数据的成绩不代表小车效果；正式生成与同步仍使用 `train_model.py`。
 
 ## 顶部配置
 
@@ -56,9 +89,9 @@ python3 software/MLcode/train_model.py
 ## 运行和输出
 
 ```bash
-python3 software/MLcode/train_model.py --k 12
-python3 software/MLcode/train_model.py --clean-only
-python3 software/MLcode/train_model.py --no-sync
+python software/MLcode/train_model.py --k 12
+python software/MLcode/train_model.py --clean-only
+python software/MLcode/train_model.py --no-sync
 ```
 
 还可临时指定 `--input-dir`、`--output-dir`、`--firmware-header`。相对路径以
@@ -86,9 +119,3 @@ dissertation 为基准，不依赖当前工作目录。输出目录不能放在�
 根目录 dataset 为空时，不训练或替换模型。`randomForest.h` 和训练输出均为生成产物，
 由脚本生成、备份和同步，不手动修改或提交到 Git。`ML_model/` 仅提交目录说明。
 首次获取工程时，先准备数据并运行训练脚本，生成完整模型头文件后再编译固件。
-
-验证代码：
-
-```bash
-python3 -m unittest discover -s software/MLcode -p 'test_*.py' -v
-```
