@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+.venv/
+# 训练产物：只提交目录说明，模型和评估输出均由脚本生成。
+/software/ML_model/*
+!/software/ML_model/README.md
+/software/C_code/selfdrive/main/randomForest.h
+
+Gazebo_simulation/

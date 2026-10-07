@@ -22,15 +22,11 @@ constexpr uint32_t USB_BAUD = 115200;
 constexpr uint32_t CONTROL_INTERVAL_MS = 150;
 constexpr uint32_t FEATURE_TIMEOUT_MS = 500;
 constexpr uint32_t POINT_TIMEOUT_MS = 5;
-constexpr uint16_t LIDAR_RESOLUTION = 200;
-constexpr uint16_t MAX_DISTANCE_MM = 10000;
-
-// Keep this order together with the copied 8-feature randomForest.h.
-// Do not substitute the separate 12-feature anticlockwise model here.
-constexpr uint8_t FEATURE_COUNT = 8;
-constexpr uint16_t FEATURE_INDICES[FEATURE_COUNT] = {
-    22, 23, 24, 25, 26, 27, 28, 29
-};
+// Training inputs and class commands travel together with the model header.
+constexpr uint16_t LIDAR_RESOLUTION = ModelConfig::LIDAR_RESOLUTION;
+constexpr uint16_t MAX_DISTANCE_MM = ModelConfig::MAX_DISTANCE_MM;
+constexpr uint16_t FEATURE_COUNT = ModelConfig::FEATURE_COUNT;
+constexpr auto &FEATURE_INDICES = ModelConfig::FEATURE_INDICES;
 
 Lidar lidar;
 Eloquent::ML::Port::RandomForest classifier;
@@ -42,7 +38,7 @@ uint32_t lastControlAt = 0;
 uint32_t lastDebugAt = 0;
 
 bool featuresAreFresh(uint32_t now) {
-    for (uint8_t i = 0; i < FEATURE_COUNT; ++i) {
+    for (uint16_t i = 0; i < FEATURE_COUNT; ++i) {
         if (!featureSeen[i] ||
             static_cast<uint32_t>(now - featureUpdatedAt[i]) >= FEATURE_TIMEOUT_MS) {
             return false;
@@ -92,10 +88,9 @@ void loop() {
             const uint16_t angle = static_cast<uint16_t>(point.angle);
             const uint16_t index = static_cast<uint16_t>(
                 (angle / 360.0f) * LIDAR_RESOLUTION);
-            if (index < LIDAR_RESOLUTION &&
-                (index < LIDAR_RESOLUTION / 4 || index > 3 * LIDAR_RESOLUTION / 4)) {
+            if (ModelConfig::isActiveIndex(index)) {
                 distances[index] = static_cast<uint16_t>(point.distance);
-                for (uint8_t i = 0; i < FEATURE_COUNT; ++i) {
+                for (uint16_t i = 0; i < FEATURE_COUNT; ++i) {
                     if (FEATURE_INDICES[i] == index) {
                         featureUpdatedAt[i] = millis();
                         featureSeen[i] = true;
@@ -120,10 +115,10 @@ void loop() {
     lastControlAt = now;
 
     float selectedData[FEATURE_COUNT];
-    for (uint8_t i = 0; i < FEATURE_COUNT; ++i) {
+    for (uint16_t i = 0; i < FEATURE_COUNT; ++i) {
         selectedData[i] = distances[FEATURE_INDICES[i]];
     }
-    const int command = classifier.predict(selectedData);
+    const int command = ModelConfig::commandForClass(classifier.predict(selectedData));
     slide_control(command, CAR_SPEED, LEFT_MOTOR_PIN, RIGHT_MOTOR_PIN,
                   STEERING_SENSITIVITY);
 
