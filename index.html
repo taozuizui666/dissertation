@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>PPO Training Progress</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  body { background:#111; color:#eee; font-family:monospace; text-align:center; margin:0; padding:12px; }
+  img { max-width:100%; background:#fff; border-radius:6px; }
+  #status { font-size:12px; color:#888; margin-top:8px; }
+</style>
+</head>
+<body>
+<h3>仿真小车 RL 训练进度</h3>
+<img id="chart" src="training_progress.png">
+<div id="status">每 60 秒自动拉取最新图片</div>
+<script>
+function load() {
+  var img = document.getElementById('chart');
+  img.src = 'training_progress.png?t=' + Date.now();
+  document.getElementById('status').textContent = '最近拉取: ' + new Date().toLocaleString();
+}
+setInterval(load, 60000);
+window.onload = load;
+</script>
+</body>
+</html>
