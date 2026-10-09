@@ -1,0 +1,9 @@
+{
+  "mode": "github",
+  "data_url": "https://raw.githubusercontent.com/taozuizui666/dissertation/rl-progress-data/data.json",
+  "asset_base": "https://raw.githubusercontent.com/taozuizui666/dissertation/rl-progress-data/",
+  "fallback_url": "data.json",
+  "poll_seconds": 15.0,
+  "publish_seconds": 60.0,
+  "pages_url": "https://taozuizui666.github.io/dissertation/"
+}
