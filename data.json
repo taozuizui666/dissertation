@@ -33,17 +33,17 @@
       },
       "status": "training",
       "is_running": true,
-      "updated_at": "2026-10-10T17:46:46.088277+00:00",
-      "phase": "periodic_evaluation",
-      "steps": 192588,
+      "updated_at": "2026-10-10T17:47:44.254041+00:00",
+      "phase": "collecting",
+      "steps": 197292,
       "start_steps": 42588,
       "target_steps": 10042588,
-      "elapsed_wall_sec": 1198.3044088579995,
+      "elapsed_wall_sec": 1340.723624353,
       "time_budget_sec": 21600.0,
-      "remaining_wall_sec": 20401.695591142,
+      "remaining_wall_sec": 20259.276375647,
       "training_deadline": "2026-10-11T07:25:23.530397+08:00",
-      "samples_per_sec": 125.1768739989466,
-      "total_episodes": 200,
+      "samples_per_sec": 115.38843441701589,
+      "total_episodes": 204,
       "episode_limit_sec": 150.0,
       "num_envs": 4,
       "world": "train_world3.sdf",
@@ -162,10 +162,58 @@
         "longest_observed_sec": 150.00000000000003,
         "longest_completed_sec": 150.00000000000003,
         "total_sim_sec": 15000.000000000002,
-        "total_distance_m": 2999.4063873715804,
-        "mean_speed_mps": 0.19999937713584517
+        "total_distance_m": 2999.4068270189605,
+        "mean_speed_mps": 0.1999993757587785
       },
       "episodes": [
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 150.00000000000003,
+          "distance_m": 29.984832811725052,
+          "mean_speed_mps": 0.1999366515077961,
+          "speed_compliance": 1.0,
+          "reward": 249.60411,
+          "scenario": null,
+          "number": 51,
+          "worker": "worker_2",
+          "ended_at": "2026-10-10T17:47:33.286568+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 150.00000000000003,
+          "distance_m": 29.98482155265808,
+          "mean_speed_mps": 0.19993667589268851,
+          "speed_compliance": 1.0,
+          "reward": 250.261704,
+          "scenario": null,
+          "number": 51,
+          "worker": "worker_0",
+          "ended_at": "2026-10-10T17:47:33.283509+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 150.00000000000003,
+          "distance_m": 30.003446578982174,
+          "mean_speed_mps": 0.20006183756942758,
+          "speed_compliance": 1.0,
+          "reward": 250.283632,
+          "scenario": null,
+          "number": 51,
+          "worker": "worker_3",
+          "ended_at": "2026-10-10T17:47:33.283246+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 150.00000000000003,
+          "distance_m": 30.00335908001321,
+          "mean_speed_mps": 0.20006177939192507,
+          "speed_compliance": 1.0,
+          "reward": 249.595423,
+          "scenario": null,
+          "number": 51,
+          "worker": "worker_1",
+          "ended_at": "2026-10-10T17:47:33.280513+00:00"
+        },
         {
           "reason": "time_limit",
           "sim_duration_sec": 150.00000000000003,
@@ -1317,119 +1365,71 @@
           "number": 27,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:36:00.539721+00:00"
-        },
-        {
-          "reason": "time_limit",
-          "sim_duration_sec": 150.00000000000003,
-          "distance_m": 29.984714544842312,
-          "mean_speed_mps": 0.1999365272130212,
-          "speed_compliance": 1.0,
-          "reward": 248.975456,
-          "scenario": null,
-          "number": 26,
-          "worker": "worker_2",
-          "ended_at": "2026-10-10T17:35:41.009739+00:00"
-        },
-        {
-          "reason": "time_limit",
-          "sim_duration_sec": 150.00000000000003,
-          "distance_m": 29.984627422642127,
-          "mean_speed_mps": 0.1999366908642846,
-          "speed_compliance": 1.0,
-          "reward": 249.415303,
-          "scenario": null,
-          "number": 26,
-          "worker": "worker_0",
-          "ended_at": "2026-10-10T17:35:41.005256+00:00"
-        },
-        {
-          "reason": "time_limit",
-          "sim_duration_sec": 150.00000000000003,
-          "distance_m": 30.003267607289974,
-          "mean_speed_mps": 0.2000619671414943,
-          "speed_compliance": 1.0,
-          "reward": 248.963976,
-          "scenario": null,
-          "number": 26,
-          "worker": "worker_1",
-          "ended_at": "2026-10-10T17:35:41.003797+00:00"
-        },
-        {
-          "reason": "time_limit",
-          "sim_duration_sec": 150.00000000000003,
-          "distance_m": 30.00341080122334,
-          "mean_speed_mps": 0.20006189684970418,
-          "speed_compliance": 1.0,
-          "reward": 249.628458,
-          "scenario": null,
-          "number": 26,
-          "worker": "worker_3",
-          "ended_at": "2026-10-10T17:35:41.002902+00:00"
         }
       ],
       "workers": [
         {
           "worker": "worker_0",
-          "updated_at": "2026-10-10T17:45:21.821731+00:00",
-          "phase": "ready",
-          "episode_number": 51,
+          "updated_at": "2026-10-10T17:47:43.439562+00:00",
+          "phase": "driving",
+          "episode_number": 52,
           "max_episode_sim_sec": 150.0,
-          "sim_duration_sec": 0.0,
-          "distance_m": 0.0,
-          "speed_mps": 0.0,
-          "action": null,
-          "step": 0,
+          "sim_duration_sec": 78.80000000000058,
+          "distance_m": 15.75004477127083,
+          "speed_mps": 0.1999990207259907,
+          "action": 7,
+          "step": 394,
           "reason": "",
           "speed_compliance": 1.0
         },
         {
           "worker": "worker_1",
-          "updated_at": "2026-10-10T17:45:21.816481+00:00",
-          "phase": "ready",
-          "episode_number": 51,
+          "updated_at": "2026-10-10T17:47:43.438500+00:00",
+          "phase": "driving",
+          "episode_number": 52,
           "max_episode_sim_sec": 150.0,
-          "sim_duration_sec": 0.0,
-          "distance_m": 0.0,
-          "speed_mps": 0.0,
-          "action": null,
-          "step": 0,
+          "sim_duration_sec": 78.80000000000058,
+          "distance_m": 15.760251225499426,
+          "speed_mps": 0.1999990741071795,
+          "action": 7,
+          "step": 394,
           "reason": "",
           "speed_compliance": 1.0
         },
         {
           "worker": "worker_2",
-          "updated_at": "2026-10-10T17:45:21.832730+00:00",
-          "phase": "ready",
-          "episode_number": 51,
+          "updated_at": "2026-10-10T17:47:43.470183+00:00",
+          "phase": "driving",
+          "episode_number": 52,
           "max_episode_sim_sec": 150.0,
-          "sim_duration_sec": 0.0,
-          "distance_m": 0.0,
-          "speed_mps": 0.0,
-          "action": null,
-          "step": 0,
+          "sim_duration_sec": 79.00000000000058,
+          "distance_m": 15.790200438769302,
+          "speed_mps": 0.19999887896881097,
+          "action": 7,
+          "step": 395,
           "reason": "",
           "speed_compliance": 1.0
         },
         {
           "worker": "worker_3",
-          "updated_at": "2026-10-10T17:45:21.821741+00:00",
-          "phase": "ready",
-          "episode_number": 51,
+          "updated_at": "2026-10-10T17:47:43.467336+00:00",
+          "phase": "driving",
+          "episode_number": 52,
           "max_episode_sim_sec": 150.0,
-          "sim_duration_sec": 0.0,
-          "distance_m": 0.0,
-          "speed_mps": 0.0,
-          "action": null,
-          "step": 0,
+          "sim_duration_sec": 79.00000000000058,
+          "distance_m": 15.800300744377925,
+          "speed_mps": 0.1999990146436747,
+          "action": 7,
+          "step": 395,
           "reason": "",
           "speed_compliance": 1.0
         }
       ],
       "periodic_evaluation": {
         "worker": "定期评估",
-        "updated_at": "2026-10-10T17:46:46.088277+00:00",
+        "updated_at": "2026-10-10T17:47:14.083484+00:00",
         "phase": "ready",
-        "episode_number": 25,
+        "episode_number": 27,
         "max_episode_sim_sec": 150.0,
         "sim_duration_sec": 0.0,
         "distance_m": 0.0,
@@ -1732,6 +1732,14 @@
           [
             192092,
             249.52041625976562
+          ],
+          [
+            194140,
+            249.55140686035156
+          ],
+          [
+            196188,
+            249.5790252685547
           ]
         ],
         "completion": [
@@ -2021,6 +2029,14 @@
           ],
           [
             192092,
+            1.0
+          ],
+          [
+            194140,
+            1.0
+          ],
+          [
+            196188,
             1.0
           ]
         ],
@@ -2312,6 +2328,14 @@
           [
             192092,
             0.0
+          ],
+          [
+            194140,
+            0.0
+          ],
+          [
+            196188,
+            0.0
           ]
         ],
         "stuck": [
@@ -2601,6 +2625,14 @@
           ],
           [
             192092,
+            0.0
+          ],
+          [
+            194140,
+            0.0
+          ],
+          [
+            196188,
             0.0
           ]
         ],
@@ -2892,6 +2924,14 @@
           [
             192092,
             0.0
+          ],
+          [
+            194140,
+            0.0
+          ],
+          [
+            196188,
+            0.0
           ]
         ],
         "speed": [
@@ -3182,6 +3222,14 @@
           [
             192092,
             0.1999993920326233
+          ],
+          [
+            194140,
+            0.1999993771314621
+          ],
+          [
+            196188,
+            0.1999993771314621
           ]
         ],
         "duration": [
@@ -3471,6 +3519,14 @@
           ],
           [
             192092,
+            150.0
+          ],
+          [
+            194140,
+            150.0
+          ],
+          [
+            196188,
             150.0
           ]
         ],
@@ -3762,6 +3818,14 @@
           [
             192092,
             4.57874484709464e-05
+          ],
+          [
+            192588,
+            4.129513763473369e-05
+          ],
+          [
+            196188,
+            9.061589662451297e-05
           ]
         ],
         "kl": [
@@ -4052,6 +4116,14 @@
           [
             192092,
             0.007268914487212896
+          ],
+          [
+            192588,
+            0.003963564522564411
+          ],
+          [
+            196188,
+            0.008851125836372375
           ]
         ],
         "entropy": [
@@ -4342,6 +4414,14 @@
           [
             192092,
             -0.3026886582374573
+          ],
+          [
+            192588,
+            -0.27317506074905396
+          ],
+          [
+            196188,
+            -0.28057950735092163
           ]
         ],
         "explained_variance": [
@@ -4632,6 +4712,14 @@
           [
             192092,
             0.9385315775871277
+          ],
+          [
+            192588,
+            0.9423366785049438
+          ],
+          [
+            196188,
+            0.9467821717262268
           ]
         ]
       }
@@ -21124,6 +21212,6 @@
     "media/validation.png": "8f0c89477676b9dc",
     "media/learning.png": "e1e893af22515cd6"
   },
-  "snapshot_id": "8a1552b18c2cd5705cbd07827998d316b5f69818b142e7e3197eb30c695106d7",
-  "generated_at": "2026-10-10T17:46:46.994878+00:00"
+  "snapshot_id": "942f27fdd7154c66cdf6729dde87b7727df0504c415193c1ac453920d37be8cc",
+  "generated_at": "2026-10-10T17:47:47.343905+00:00"
 }
