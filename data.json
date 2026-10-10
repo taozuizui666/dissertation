@@ -8698,7 +8698,7 @@
       "id": "evaluation_20261010_085655_da4d13",
       "status": "running",
       "is_running": true,
-      "updated_at": "2026-10-10T00:58:03.678531+00:00",
+      "updated_at": "2026-10-10T00:59:04.832875+00:00",
       "model_name": "model.zip",
       "model_sha256": "d72907a1218e6de2b9881747dd3f28562afc32f480a2840e2be6130c971928a1",
       "model_run": "validated_257276_20261010_022505",
@@ -8756,15 +8756,15 @@
       },
       "live": {
         "worker": "独立评估",
-        "updated_at": "2026-10-10T00:58:03.678531+00:00",
+        "updated_at": "2026-10-10T00:59:04.832875+00:00",
         "phase": "driving",
         "episode_number": 1,
         "max_episode_sim_sec": 150.0,
-        "sim_duration_sec": 61.80000000000034,
-        "distance_m": 6.1762599105452285,
-        "speed_mps": 0.1000002402275362,
-        "action": 7,
-        "step": 309,
+        "sim_duration_sec": 119.40000000000116,
+        "distance_m": 11.934346706561117,
+        "speed_mps": 0.09991277301046028,
+        "action": 8,
+        "step": 597,
         "reason": "",
         "speed_compliance": 1.0
       },
@@ -8778,6 +8778,6 @@
     "media/validation.png": "03503ad9f693eb73",
     "media/learning.png": "3fb0afa3c1748b4b"
   },
-  "snapshot_id": "f5aa296f9dfea33271e9a495b48f56a5e31b7de6fa9a4e3c16e0c5680b183b8d",
-  "generated_at": "2026-10-10T00:58:06.648223+00:00"
+  "snapshot_id": "fd8b4f65f4ef61b2108fad7ef94878bebeb988db434cf5d770170313b258acd5",
+  "generated_at": "2026-10-10T00:59:06.769769+00:00"
 }
