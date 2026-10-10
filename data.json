@@ -35312,25 +35312,103 @@
   },
   "evaluations": [
     {
-      "id": "evaluation_20261011_072525_dec758",
+      "id": "evaluation_20261011_073307_5a7d4c",
       "status": "running",
       "observation_mode": "privileged",
       "is_running": true,
-      "updated_at": "2026-10-10T23:32:28.893822+00:00",
-      "model_name": "best_model.zip",
-      "model_sha256": "7171b17cb1e492ec0434887bbb0128e0246ae0ce0d15875f1854a14d246b3365",
+      "updated_at": "2026-10-10T23:33:28.717598+00:00",
+      "model_name": "rl_policy_final.zip",
+      "model_sha256": "668c638ff17b63b4ac30a8d57db1a50a0ac25ba3b545794f9cf71abfa7e9f3d3",
       "model_run": "PPO_privileged_20261011_012519_9587cf",
-      "completed_episodes": 7,
+      "completed_episodes": 0,
       "total_episodes": 8,
       "stats": {
-        "count": 7,
+        "count": 0,
         "counts": {
           "collision": 0,
           "stuck": 0,
           "looping": 0,
           "slow": 0,
           "out_of_bounds": 0,
-          "time_limit": 7
+          "time_limit": 0
+        },
+        "failure_count": 0,
+        "failures": {
+          "collision": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "stuck": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "looping": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "slow": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "out_of_bounds": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          }
+        },
+        "completion_rate": null,
+        "longest_observed_sec": null,
+        "longest_completed_sec": null,
+        "total_sim_sec": 0,
+        "total_distance_m": 0,
+        "mean_speed_mps": null
+      },
+      "live": {
+        "worker": "独立评估",
+        "updated_at": "2026-10-10T23:33:28.717598+00:00",
+        "phase": "driving",
+        "episode_number": 1,
+        "max_episode_sim_sec": 600.0,
+        "sim_duration_sec": 215.19999999999632,
+        "distance_m": 43.019230128874106,
+        "speed_mps": 0.19999896426102307,
+        "action": 7,
+        "step": 1076,
+        "reason": "",
+        "speed_compliance": 1.0
+      },
+      "passed": null,
+      "error_type": null
+    },
+    {
+      "id": "evaluation_20261011_072525_dec758",
+      "status": "complete",
+      "observation_mode": "privileged",
+      "is_running": false,
+      "updated_at": "2026-10-10T23:33:07.305226+00:00",
+      "model_name": "best_model.zip",
+      "model_sha256": "7171b17cb1e492ec0434887bbb0128e0246ae0ce0d15875f1854a14d246b3365",
+      "model_run": "PPO_privileged_20261011_012519_9587cf",
+      "completed_episodes": 8,
+      "total_episodes": 8,
+      "stats": {
+        "count": 8,
+        "counts": {
+          "collision": 0,
+          "stuck": 0,
+          "looping": 0,
+          "slow": 0,
+          "out_of_bounds": 0,
+          "time_limit": 8
         },
         "failure_count": 0,
         "failures": {
@@ -35368,25 +35446,25 @@
         "completion_rate": 1.0,
         "longest_observed_sec": 599.9999999999994,
         "longest_completed_sec": 599.9999999999994,
-        "total_sim_sec": 4199.999999999996,
-        "total_distance_m": 839.8762127197605,
-        "mean_speed_mps": 0.19999020813618482
+        "total_sim_sec": 4799.999999999995,
+        "total_distance_m": 959.9015734864905,
+        "mean_speed_mps": 0.19999914657240658
       },
       "live": {
         "worker": "独立评估",
-        "updated_at": "2026-10-10T23:32:28.893822+00:00",
-        "phase": "driving",
+        "updated_at": "2026-10-10T23:33:06.885775+00:00",
+        "phase": "closed",
         "episode_number": 8,
         "max_episode_sim_sec": 600.0,
-        "sim_duration_sec": 208.3999999999967,
-        "distance_m": 41.68646132019487,
-        "speed_mps": 0.20000023024647334,
+        "sim_duration_sec": 599.9999999999994,
+        "distance_m": 120.02536076673002,
+        "speed_mps": 0.19999946169123,
         "action": 7,
-        "step": 1042,
-        "reason": "",
+        "step": 3000,
+        "reason": "time_limit",
         "speed_compliance": 1.0
       },
-      "passed": null,
+      "passed": true,
       "error_type": null
     },
     {
@@ -35630,6 +35708,6 @@
     "media/validation.png": "8f0c89477676b9dc",
     "media/learning.png": "e1e893af22515cd6"
   },
-  "snapshot_id": "4099718b053e055c3a514be1ef63ba69ae74345508f45cd901d408ccf1e2f51a",
-  "generated_at": "2026-10-10T23:32:29.151752+00:00"
+  "snapshot_id": "500c01f75c7e1822a53cee2e8f5c664f1c510bc6ce1aa25b30edc3cf2c92e241",
+  "generated_at": "2026-10-10T23:33:29.547948+00:00"
 }
