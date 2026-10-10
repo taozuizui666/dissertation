@@ -8693,13 +8693,91 @@
       "total_action_samples": 80000
     }
   },
-  "evaluations": [],
+  "evaluations": [
+    {
+      "id": "evaluation_20261010_085655_da4d13",
+      "status": "running",
+      "is_running": true,
+      "updated_at": "2026-10-10T00:57:02.507196+00:00",
+      "model_name": "model.zip",
+      "model_sha256": "d72907a1218e6de2b9881747dd3f28562afc32f480a2840e2be6130c971928a1",
+      "model_run": "validated_257276_20261010_022505",
+      "completed_episodes": 0,
+      "total_episodes": 1,
+      "stats": {
+        "count": 0,
+        "counts": {
+          "collision": 0,
+          "stuck": 0,
+          "looping": 0,
+          "slow": 0,
+          "out_of_bounds": 0,
+          "time_limit": 0
+        },
+        "failure_count": 0,
+        "failures": {
+          "collision": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "stuck": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "looping": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "slow": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "out_of_bounds": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          }
+        },
+        "completion_rate": null,
+        "longest_observed_sec": null,
+        "longest_completed_sec": null,
+        "total_sim_sec": 0,
+        "total_distance_m": 0,
+        "mean_speed_mps": null
+      },
+      "live": {
+        "worker": "独立评估",
+        "updated_at": "2026-10-10T00:57:02.507196+00:00",
+        "phase": "driving",
+        "episode_number": 1,
+        "max_episode_sim_sec": 150.0,
+        "sim_duration_sec": 4.600000000000001,
+        "distance_m": 0.4583059336306651,
+        "speed_mps": 0.09992270517235054,
+        "action": 8,
+        "step": 23,
+        "reason": "",
+        "speed_compliance": 1.0
+      },
+      "passed": null,
+      "error_type": null
+    }
+  ],
   "recent_window": 100,
   "stale_after_sec": 180.0,
   "media": {
     "media/validation.png": "03503ad9f693eb73",
     "media/learning.png": "3fb0afa3c1748b4b"
   },
-  "snapshot_id": "8306512bc3f4cad84a2c13073bf5e0c8183d5fdea9a0c874431f61c5468e9819",
-  "generated_at": "2026-10-09T18:48:56.024960+00:00"
+  "snapshot_id": "200a149852ff96a27ec8ad9bb227943c511a05ae9ffb0a2b7b8f8427e3f6f23e",
+  "generated_at": "2026-10-10T00:57:06.516056+00:00"
 }
