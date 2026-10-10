@@ -73,10 +73,14 @@ function renderOverview(r) {
     subtitle='训练探索回合的记录；更多驾驶结论请查看独立验收。';status=statusNames[r?.status] || '尚无训练记录';
   }
   const start=r?.start_steps || 0, goal=r?.target_steps;
-  const progress=valid(goal)&&goal>start ? Math.min(100,Math.max(0,100*((r?.steps||0)-start)/(goal-start))) : 0;
+  const stepProgress=valid(goal)&&goal>start ? 100*((r?.steps||0)-start)/(goal-start) : 0;
+  const budget=r?.time_budget_sec, timed=valid(budget)&&budget>0;
+  const progress=Math.min(100,Math.max(0,stepProgress,timed ? 100*(r?.elapsed_wall_sec||0)/budget : 0));
+  const progressLabel=timed ? `时间预算 ${duration(budget)} · 已用 ${duration(r?.elapsed_wall_sec)}` : `${n(r?.steps)} / ${n(goal)} 步`;
+  const budgetNote=r?.is_running && valid(r?.remaining_wall_sec) ? `剩余约 ${duration(r.remaining_wall_sec)} · 含定期评估` : '电脑时间，含定期评估';
   $('hero').className='hero';
-  $('hero').innerHTML=`<p class="eyebrow">${h(title)}</p><div class="hero-value">${h(value)}</div><p>${h(subtitle)}</p><div class="hero-status">${badge(status)}<span class="caption" style="color:#c1d2d9">${n(r?.steps)} / ${n(goal)} 步</span></div><div class="progress-track" aria-label="本轮训练采样进度"><i style="width:${progress}%"></i></div>`;
-  $('headline-metrics').innerHTML=metric('累计训练采样',n(r?.steps),'包含续训前的步数')+metric('本轮实际耗时',duration(r?.elapsed_wall_sec),'电脑时间，含定期评估')+metric('近期完成率',pct(s?.completion_rate),`${s?.count || 0} 个已结束训练回合`)+metric('平均前进速度',n(s?.mean_speed_mps,4),'m/s · 目标 '+n(r?.vehicle?.forward_speed_mps,2));
+  $('hero').innerHTML=`<p class="eyebrow">${h(title)}</p><div class="hero-value">${h(value)}</div><p>${h(subtitle)}</p><div class="hero-status">${badge(status)}<span class="caption" style="color:#c1d2d9">${h(progressLabel)}</span></div><div class="progress-track" aria-label="本轮训练时间或采样预算进度"><i style="width:${progress}%"></i></div>`;
+  $('headline-metrics').innerHTML=metric('累计训练采样',n(r?.steps),'包含续训前的步数')+metric('本轮实际耗时',duration(r?.elapsed_wall_sec),budgetNote)+metric('近期完成率',pct(s?.completion_rate),`${s?.count || 0} 个已结束训练回合`)+metric('平均前进速度',n(s?.mean_speed_mps,4),'m/s · 目标 '+n(r?.vehicle?.forward_speed_mps,2));
   $('window-label').textContent=`最近 ${s?.count || 0} 个训练回合`;
   $('failure-cards').innerHTML=['collision','stuck'].map(key=>{
     const f=s?.failures?.[key], count=f?.count || 0;
@@ -148,6 +152,7 @@ function renderModel(r){
   $('run-details').innerHTML=r ? detailList([
     ['批次',r.id],['观测模式',modeName(r.observation_mode)],['输入维度',r.observation_spec?.dimension || r.vehicle?.lidar_point_count],['状态',statusNames[r.status]||r.status],['地图',r.world],['并行训练车',r.num_envs],
     ['开始 / 结束',date(r.started_at)+' / '+date(r.ended_at)],['仿真控制步长',n(env?.step_sim_sec,3)+' 秒'],
+    ['训练时间预算',duration(r.time_budget_sec)],['预计结束训练',date(r.training_deadline,true)],
     ['单回合时限',duration(r.episode_limit_sec)],['卡住窗口',duration(env?.stuck_window_sec)],
     ['卡住位移阈值',n(env?.stuck_min_travel_m,3)+' m'],['速度合规范围','目标 ±'+n((env?.speed_tolerance_ratio || 0)*100)+'%'],
     ['学习率',rp?.LEARNING_RATE],['折扣因子 γ',rp?.GAMMA],['熵系数',rp?.ENTROPY_COEFF],
