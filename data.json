@@ -35316,21 +35316,21 @@
       "status": "running",
       "observation_mode": "privileged",
       "is_running": true,
-      "updated_at": "2026-10-10T23:38:30.185075+00:00",
+      "updated_at": "2026-10-10T23:39:28.852729+00:00",
       "model_name": "rl_policy_final.zip",
       "model_sha256": "668c638ff17b63b4ac30a8d57db1a50a0ac25ba3b545794f9cf71abfa7e9f3d3",
       "model_run": "PPO_privileged_20261011_012519_9587cf",
-      "completed_episodes": 5,
+      "completed_episodes": 6,
       "total_episodes": 8,
       "stats": {
-        "count": 5,
+        "count": 6,
         "counts": {
           "collision": 0,
           "stuck": 0,
           "looping": 0,
           "slow": 0,
           "out_of_bounds": 0,
-          "time_limit": 5
+          "time_limit": 6
         },
         "failure_count": 0,
         "failures": {
@@ -35368,21 +35368,21 @@
         "completion_rate": 1.0,
         "longest_observed_sec": 599.9999999999994,
         "longest_completed_sec": 599.9999999999994,
-        "total_sim_sec": 2999.9999999999973,
-        "total_distance_m": 599.9002151584507,
-        "mean_speed_mps": 0.19998656026608647
+        "total_sim_sec": 3599.999999999997,
+        "total_distance_m": 719.8501624691881,
+        "mean_speed_mps": 0.19997822272589813
       },
       "live": {
         "worker": "独立评估",
-        "updated_at": "2026-10-10T23:38:30.185075+00:00",
+        "updated_at": "2026-10-10T23:39:28.852729+00:00",
         "phase": "driving",
-        "episode_number": 6,
+        "episode_number": 7,
         "max_episode_sim_sec": 600.0,
-        "sim_duration_sec": 362.199999999988,
-        "distance_m": 72.40833549762245,
-        "speed_mps": 0.19984910719899762,
-        "action": 8,
-        "step": 1811,
+        "sim_duration_sec": 363.9999999999879,
+        "distance_m": 72.813890022305,
+        "speed_mps": 0.20018947524064715,
+        "action": 6,
+        "step": 1820,
         "reason": "",
         "speed_compliance": 1.0
       },
@@ -35708,6 +35708,6 @@
     "media/validation.png": "8f0c89477676b9dc",
     "media/learning.png": "e1e893af22515cd6"
   },
-  "snapshot_id": "87603e11310924d48765b841c3090bd30880677482d31aa79d869dab30dc7d48",
-  "generated_at": "2026-10-10T23:38:31.815941+00:00"
+  "snapshot_id": "d632904e2c8b9e9881c0d72dad6f522a88de917ca9051c501509e139347cb623",
+  "generated_at": "2026-10-10T23:39:32.254011+00:00"
 }
