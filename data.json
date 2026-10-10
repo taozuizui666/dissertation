@@ -35316,21 +35316,21 @@
       "status": "running",
       "observation_mode": "privileged",
       "is_running": true,
-      "updated_at": "2026-10-10T23:33:28.717598+00:00",
+      "updated_at": "2026-10-10T23:34:25.486050+00:00",
       "model_name": "rl_policy_final.zip",
       "model_sha256": "668c638ff17b63b4ac30a8d57db1a50a0ac25ba3b545794f9cf71abfa7e9f3d3",
       "model_run": "PPO_privileged_20261011_012519_9587cf",
-      "completed_episodes": 0,
+      "completed_episodes": 1,
       "total_episodes": 8,
       "stats": {
-        "count": 0,
+        "count": 1,
         "counts": {
           "collision": 0,
           "stuck": 0,
           "looping": 0,
           "slow": 0,
           "out_of_bounds": 0,
-          "time_limit": 0
+          "time_limit": 1
         },
         "failure_count": 0,
         "failures": {
@@ -35365,24 +35365,24 @@
             "last": null
           }
         },
-        "completion_rate": null,
-        "longest_observed_sec": null,
-        "longest_completed_sec": null,
-        "total_sim_sec": 0,
-        "total_distance_m": 0,
-        "mean_speed_mps": null
+        "completion_rate": 1.0,
+        "longest_observed_sec": 599.9999999999994,
+        "longest_completed_sec": 599.9999999999994,
+        "total_sim_sec": 599.9999999999994,
+        "total_distance_m": 119.94950601792513,
+        "mean_speed_mps": 0.19993604509591678
       },
       "live": {
         "worker": "独立评估",
-        "updated_at": "2026-10-10T23:33:28.717598+00:00",
+        "updated_at": "2026-10-10T23:34:25.486050+00:00",
         "phase": "driving",
-        "episode_number": 1,
+        "episode_number": 2,
         "max_episode_sim_sec": 600.0,
-        "sim_duration_sec": 215.19999999999632,
-        "distance_m": 43.019230128874106,
-        "speed_mps": 0.19999896426102307,
-        "action": 7,
-        "step": 1076,
+        "sim_duration_sec": 205.99999999999685,
+        "distance_m": 41.1800963281849,
+        "speed_mps": 0.1998499663156988,
+        "action": 8,
+        "step": 1030,
         "reason": "",
         "speed_compliance": 1.0
       },
@@ -35708,6 +35708,6 @@
     "media/validation.png": "8f0c89477676b9dc",
     "media/learning.png": "e1e893af22515cd6"
   },
-  "snapshot_id": "500c01f75c7e1822a53cee2e8f5c664f1c510bc6ce1aa25b30edc3cf2c92e241",
-  "generated_at": "2026-10-10T23:33:29.547948+00:00"
+  "snapshot_id": "fd9812f2820d7c1c156559edd899770f4942e5391dc9ac356742e9bc34aa4d18",
+  "generated_at": "2026-10-10T23:34:29.977385+00:00"
 }
