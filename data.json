@@ -33,7 +33,7 @@
       },
       "status": "training",
       "is_running": true,
-      "updated_at": "2026-10-10T18:37:09.458618+00:00",
+      "updated_at": "2026-10-10T18:38:10.720580+00:00",
       "phase": "periodic_evaluation",
       "steps": 542588,
       "start_steps": 42588,
@@ -1427,15 +1427,15 @@
       ],
       "periodic_evaluation": {
         "worker": "定期评估",
-        "updated_at": "2026-10-10T18:37:09.458618+00:00",
-        "phase": "ready",
-        "episode_number": 85,
+        "updated_at": "2026-10-10T18:38:10.720580+00:00",
+        "phase": "driving",
+        "episode_number": 89,
         "max_episode_sim_sec": 150.0,
-        "sim_duration_sec": 0.0,
-        "distance_m": 0.0,
-        "speed_mps": 0.0,
-        "action": null,
-        "step": 0,
+        "sim_duration_sec": 53.40000000000022,
+        "distance_m": 10.679015454837206,
+        "speed_mps": 0.19999936650613212,
+        "action": 7,
+        "step": 267,
         "reason": "",
         "speed_compliance": 1.0
       },
@@ -28648,6 +28648,6 @@
     "media/validation.png": "8f0c89477676b9dc",
     "media/learning.png": "e1e893af22515cd6"
   },
-  "snapshot_id": "4460f7bffbd65711554afd12cf14f49390000cfcafc16fede0847563df53a3b6",
-  "generated_at": "2026-10-10T18:37:12.402943+00:00"
+  "snapshot_id": "e2e5879522c8224d7ba04a5b7fe063f320359096fdb2d0f24f1ec35268245d43",
+  "generated_at": "2026-10-10T18:38:12.756818+00:00"
 }
