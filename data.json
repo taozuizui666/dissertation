@@ -16003,23 +16003,46 @@
   ],
   "default_run_id": "PPO_privileged_20261011_010119_ccce63",
   "validated_model": {
-    "id": "validated_257276_20261010_022505",
+    "id": "validated_privileged_42588_20261011_011849",
     "verified": true,
-    "sha256": "d72907a1218e6de2b9881747dd3f28562afc32f480a2840e2be6130c971928a1",
-    "observation_mode": "lidar",
-    "observation_spec": null,
-    "training_run": "PPO_cruise_20261010_010927_55502e",
-    "steps": 257276,
-    "updated_at": "2026-10-09T18:25:05.734738+00:00",
+    "sha256": "e7ca63ac56eaa71e8ccbedfb383ab2f6994761889c6622c7f2d6e9a24a731c16",
+    "observation_mode": "privileged",
+    "observation_spec": {
+      "kind": "ground_truth_local_distance_field_v1",
+      "dimension": 292,
+      "settings": {
+        "grid_rows": 17,
+        "grid_cols": 17,
+        "grid_back_m": 0.4,
+        "grid_front_m": 1.4,
+        "grid_half_width_m": 0.9,
+        "distance_clip_m": 0.5,
+        "body_clearance_radius_m": 0.085,
+        "forward_check_m": 1.5,
+        "forward_check_samples": 61,
+        "obstacle_z_min_m": 0.02,
+        "obstacle_z_max_m": 0.22
+      },
+      "state_features": [
+        "forward_speed",
+        "yaw_rate",
+        "previous_action"
+      ],
+      "lidar_required": false,
+      "pose_source": "gazebo_physics_step_ack"
+    },
+    "training_run": "PPO_privileged_20261011_010119_ccce63",
+    "steps": 42588,
+    "updated_at": "2026-10-10T17:18:49.954974+00:00",
     "stats": {
-      "count": 16,
+      "count": 8,
       "counts": {
         "collision": 0,
         "stuck": 0,
         "looping": 0,
         "slow": 0,
         "out_of_bounds": 0,
-        "time_limit": 16
+        "time_limit": 8
       },
       "failure_count": 0,
       "failures": {
@@ -16055,206 +16078,118 @@
         }
       },
       "completion_rate": 1.0,
-      "longest_observed_sec": 1000.0000000000904,
-      "longest_completed_sec": 1000.0000000000904,
-      "total_sim_sec": 16000.00000000145,
-      "total_distance_m": 1599.9460766801576,
-      "mean_speed_mps": 0.09999960298546401
+      "longest_observed_sec": 599.9999999999994,
+      "longest_completed_sec": 599.9999999999994,
+      "total_sim_sec": 4799.999999999995,
+      "total_distance_m": 959.8358105424273,
+      "mean_speed_mps": 0.19999905789427186
     },
     "episodes": [
       {
         "reason": "time_limit",
-        "sim_duration_sec": 1000.0000000000904,
-        "distance_m": 99.96540301703038,
-        "mean_speed_mps": 0.09996839361069583,
+        "sim_duration_sec": 599.9999999999994,
+        "distance_m": 119.94008314001637,
+        "mean_speed_mps": 0.1999336993347721,
         "speed_compliance": 1.0,
-        "reward": 799.8935397910313,
+        "reward": 978.3958237629656,
         "scenario": 0,
         "number": 1,
         "worker": "独立验收"
       },
       {
         "reason": "time_limit",
-        "sim_duration_sec": 1000.0000000000904,
-        "distance_m": 99.96495261999262,
-        "mean_speed_mps": 0.09996796424867553,
+        "sim_duration_sec": 599.9999999999994,
+        "distance_m": 119.94072676148437,
+        "mean_speed_mps": 0.19993421353153737,
         "speed_compliance": 1.0,
-        "reward": 799.5721514763045,
+        "reward": 979.1900413527496,
         "scenario": 1,
         "number": 2,
         "worker": "独立验收"
       },
       {
         "reason": "time_limit",
-        "sim_duration_sec": 1000.0000000000904,
-        "distance_m": 99.96536958456711,
-        "mean_speed_mps": 0.09996837521139983,
+        "sim_duration_sec": 599.9999999999994,
+        "distance_m": 119.94122095774769,
+        "mean_speed_mps": 0.19993450217841463,
         "speed_compliance": 1.0,
-        "reward": 799.3739933471388,
+        "reward": 978.7393330990312,
         "scenario": 2,
         "number": 3,
         "worker": "独立验收"
       },
       {
         "reason": "time_limit",
-        "sim_duration_sec": 1000.0000000000904,
-        "distance_m": 100.02782331023855,
-        "mean_speed_mps": 0.10003074655322167,
+        "sim_duration_sec": 599.9999999999994,
+        "distance_m": 120.01815184685599,
+        "mean_speed_mps": 0.20006409102117573,
         "speed_compliance": 1.0,
-        "reward": 797.8473963990991,
+        "reward": 976.1114424782374,
         "scenario": 3,
         "number": 4,
         "worker": "独立验收"
       },
       {
         "reason": "time_limit",
-        "sim_duration_sec": 1000.0000000000904,
-        "distance_m": 100.02773974951957,
-        "mean_speed_mps": 0.10003064392514822,
+        "sim_duration_sec": 599.9999999999994,
+        "distance_m": 120.01809409460608,
+        "mean_speed_mps": 0.2000639303657317,
         "speed_compliance": 1.0,
-        "reward": 797.144056211732,
+        "reward": 974.9400734966015,
         "scenario": 4,
         "number": 5,
         "worker": "独立验收"
       },
       {
         "reason": "time_limit",
-        "sim_duration_sec": 1000.0000000000904,
-        "distance_m": 99.9655020370854,
-        "mean_speed_mps": 0.09996847952929538,
+        "sim_duration_sec": 599.9999999999994,
+        "distance_m": 119.94141285923502,
+        "mean_speed_mps": 0.1999344824735743,
         "speed_compliance": 1.0,
-        "reward": 800.8122979763871,
+        "reward": 978.8185329888113,
         "scenario": 5,
         "number": 6,
         "worker": "独立验收"
       },
       {
         "reason": "time_limit",
-        "sim_duration_sec": 1000.0000000000904,
-        "distance_m": 100.02829475829749,
-        "mean_speed_mps": 0.10003124686939335,
+        "sim_duration_sec": 599.9999999999994,
+        "distance_m": 120.01815923016561,
+        "mean_speed_mps": 0.20006373667934965,
         "speed_compliance": 1.0,
-        "reward": 796.684707818052,
+        "reward": 976.0997079229136,
         "scenario": 6,
         "number": 7,
         "worker": "独立验收"
       },
       {
         "reason": "time_limit",
-        "sim_duration_sec": 1000.0000000000904,
-        "distance_m": 100.02807052103437,
-        "mean_speed_mps": 0.10003102992466019,
+        "sim_duration_sec": 599.9999999999994,
+        "distance_m": 120.01796165231617,
+        "mean_speed_mps": 0.2000638075696195,
         "speed_compliance": 1.0,
-        "reward": 797.252109105158,
+        "reward": 975.9825261910158,
         "scenario": 7,
         "number": 8,
-        "worker": "独立验收"
-      },
-      {
-        "reason": "time_limit",
-        "sim_duration_sec": 1000.0000000000904,
-        "distance_m": 99.96536647637781,
-        "mean_speed_mps": 0.09996837089586894,
-        "speed_compliance": 1.0,
-        "reward": 800.5232438917226,
-        "scenario": 0,
-        "number": 9,
-        "worker": "独立验收"
-      },
-      {
-        "reason": "time_limit",
-        "sim_duration_sec": 1000.0000000000904,
-        "distance_m": 99.96490327199386,
-        "mean_speed_mps": 0.09996790139833109,
-        "speed_compliance": 1.0,
-        "reward": 801.6491464338607,
-        "scenario": 1,
-        "number": 10,
-        "worker": "独立验收"
-      },
-      {
-        "reason": "time_limit",
-        "sim_duration_sec": 1000.0000000000904,
-        "distance_m": 99.96529396171229,
-        "mean_speed_mps": 0.09996832189956291,
-        "speed_compliance": 1.0,
-        "reward": 799.2079038243995,
-        "scenario": 2,
-        "number": 11,
-        "worker": "独立验收"
-      },
-      {
-        "reason": "time_limit",
-        "sim_duration_sec": 1000.0000000000904,
-        "distance_m": 100.02769682521743,
-        "mean_speed_mps": 0.10003061836531743,
-        "speed_compliance": 1.0,
-        "reward": 797.8171419788506,
-        "scenario": 3,
-        "number": 12,
-        "worker": "独立验收"
-      },
-      {
-        "reason": "time_limit",
-        "sim_duration_sec": 1000.0000000000904,
-        "distance_m": 100.0276455811368,
-        "mean_speed_mps": 0.10003059919597178,
-        "speed_compliance": 1.0,
-        "reward": 797.328453176278,
-        "scenario": 4,
-        "number": 13,
-        "worker": "独立验收"
-      },
-      {
-        "reason": "time_limit",
-        "sim_duration_sec": 1000.0000000000904,
-        "distance_m": 99.96545784549295,
-        "mean_speed_mps": 0.09996845097275535,
-        "speed_compliance": 1.0,
-        "reward": 801.2215523253914,
-        "scenario": 5,
-        "number": 14,
-        "worker": "独立验收"
-      },
-      {
-        "reason": "time_limit",
-        "sim_duration_sec": 1000.0000000000904,
-        "distance_m": 100.0284449198214,
-        "mean_speed_mps": 0.10003139957329839,
-        "speed_compliance": 1.0,
-        "reward": 796.6602436938364,
-        "scenario": 6,
-        "number": 15,
-        "worker": "独立验收"
-      },
-      {
-        "reason": "time_limit",
-        "sim_duration_sec": 1000.0000000000904,
-        "distance_m": 100.02811220063961,
-        "mean_speed_mps": 0.10003110559382816,
-        "speed_compliance": 1.0,
-        "reward": 797.7540340233206,
-        "scenario": 7,
-        "number": 16,
         "worker": "独立验收"
       }
     ],
     "reports": [
       {
         "world": "train_world3.sdf",
-        "seed": 20261011,
+        "seed": 20261012,
         "pose_jitter_m": 0.06,
         "pose_jitter_deg": 15.0,
         "passed": true
       }
     ],
-    "min_completed_sec": 1000.0000000000904,
+    "min_completed_sec": 599.9999999999994,
     "min_speed_compliance": 1.0,
-    "min_mean_speed_mps": 0.09996790139833109,
-    "max_mean_speed_mps": 0.10003139957329839,
+    "min_mean_speed_mps": 0.1999336993347721,
+    "max_mean_speed_mps": 0.20006409102117573,
     "vehicle": {
       "label_count": 15,
-      "forward_speed_mps": 0.1,
+      "forward_speed_mps": 0.2,
       "max_wheel_speed_ratio": 0.6,
       "wheel_radius_m": 0.0325,
       "wheel_separation_m": 0.11,
@@ -16293,17 +16228,7 @@
         128
       ]
     },
-    "trajectory_metrics": {
-      "min_measured_speed_mps": 0.09972308419997261,
-      "max_measured_speed_mps": 0.10020124510708313,
-      "min_track_laps_per_episode": 9.3155845085496,
-      "max_track_laps_per_episode": 9.410623066501483,
-      "track_center_for_winding_m": [
-        -1.21,
-        -3.12
-      ],
-      "total_action_samples": 80000
-    }
+    "trajectory_metrics": {}
   },
   "evaluations": [
     {
@@ -16544,9 +16469,9 @@
   "recent_window": 100,
   "stale_after_sec": 180.0,
   "media": {
-    "media/validation.png": "03503ad9f693eb73",
-    "media/learning.png": "3fb0afa3c1748b4b"
+    "media/validation.png": "8f0c89477676b9dc",
+    "media/learning.png": "e1e893af22515cd6"
   },
-  "snapshot_id": "10eb0bb277d22a9a6ec744ee139f71f3c879ca59d20408f929412b41123ede85",
-  "generated_at": "2026-10-10T17:18:12.406649+00:00"
+  "snapshot_id": "fdcc4b638c6db47905fdb2f95f3b2a33242e0fcdc0cd0f5d6b1e007b14ac6180",
+  "generated_at": "2026-10-10T17:18:52.475761+00:00"
 }
