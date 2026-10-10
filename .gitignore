@@ -7,3 +7,5 @@ __pycache__/
 /software/C_code/selfdrive/main/randomForest.h
 
 Gazebo_simulation/
+
+.vscode
