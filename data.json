@@ -35083,9 +35083,9 @@
   ],
   "default_run_id": "PPO_privileged_20261011_012519_9587cf",
   "validated_model": {
-    "id": "validated_privileged_42588_20261011_011849",
+    "id": "validated_privileged_2392588_20261011_074049",
     "verified": true,
-    "sha256": "e7ca63ac56eaa71e8ccbedfb383ab2f6994761889c6622c7f2d6e9a24a731c16",
+    "sha256": "7171b17cb1e492ec0434887bbb0128e0246ae0ce0d15875f1854a14d246b3365",
     "observation_mode": "privileged",
     "observation_spec": {
       "kind": "ground_truth_local_distance_field_v1",
@@ -35111,9 +35111,9 @@
       "lidar_required": false,
       "pose_source": "gazebo_physics_step_ack"
     },
-    "training_run": "PPO_privileged_20261011_010119_ccce63",
-    "steps": 42588,
-    "updated_at": "2026-10-10T17:18:49.954974+00:00",
+    "training_run": "PPO_privileged_20261011_012519_9587cf",
+    "steps": 2392588,
+    "updated_at": "2026-10-10T23:40:49.664254+00:00",
     "stats": {
       "count": 8,
       "counts": {
@@ -35161,17 +35161,17 @@
       "longest_observed_sec": 599.9999999999994,
       "longest_completed_sec": 599.9999999999994,
       "total_sim_sec": 4799.999999999995,
-      "total_distance_m": 959.8358105424273,
-      "mean_speed_mps": 0.19999905789427186
+      "total_distance_m": 959.9015734864905,
+      "mean_speed_mps": 0.19999914657240658
     },
     "episodes": [
       {
         "reason": "time_limit",
         "sim_duration_sec": 599.9999999999994,
-        "distance_m": 119.94008314001637,
-        "mean_speed_mps": 0.1999336993347721,
+        "distance_m": 119.94972804282837,
+        "mean_speed_mps": 0.1999361591006755,
         "speed_compliance": 1.0,
-        "reward": 978.3958237629656,
+        "reward": 1003.6911830329599,
         "scenario": 0,
         "number": 1,
         "worker": "独立验收"
@@ -35179,10 +35179,10 @@
       {
         "reason": "time_limit",
         "sim_duration_sec": 599.9999999999994,
-        "distance_m": 119.94072676148437,
-        "mean_speed_mps": 0.19993421353153737,
+        "distance_m": 119.95004338940817,
+        "mean_speed_mps": 0.19993650241589847,
         "speed_compliance": 1.0,
-        "reward": 979.1900413527496,
+        "reward": 1003.9013379027289,
         "scenario": 1,
         "number": 2,
         "worker": "独立验收"
@@ -35190,10 +35190,10 @@
       {
         "reason": "time_limit",
         "sim_duration_sec": 599.9999999999994,
-        "distance_m": 119.94122095774769,
-        "mean_speed_mps": 0.19993450217841463,
+        "distance_m": 119.95033455039405,
+        "mean_speed_mps": 0.19993681072960573,
         "speed_compliance": 1.0,
-        "reward": 978.7393330990312,
+        "reward": 1004.1020602762228,
         "scenario": 2,
         "number": 3,
         "worker": "独立验收"
@@ -35201,10 +35201,10 @@
       {
         "reason": "time_limit",
         "sim_duration_sec": 599.9999999999994,
-        "distance_m": 120.01815184685599,
-        "mean_speed_mps": 0.20006409102117573,
+        "distance_m": 120.02534926519722,
+        "mean_speed_mps": 0.20006189715020437,
         "speed_compliance": 1.0,
-        "reward": 976.1114424782374,
+        "reward": 1005.091390154239,
         "scenario": 3,
         "number": 4,
         "worker": "独立验收"
@@ -35212,10 +35212,10 @@
       {
         "reason": "time_limit",
         "sim_duration_sec": 599.9999999999994,
-        "distance_m": 120.01809409460608,
-        "mean_speed_mps": 0.2000639303657317,
+        "distance_m": 120.02522531160251,
+        "mean_speed_mps": 0.20006166029078334,
         "speed_compliance": 1.0,
-        "reward": 974.9400734966015,
+        "reward": 1005.1382149217503,
         "scenario": 4,
         "number": 5,
         "worker": "独立验收"
@@ -35223,10 +35223,10 @@
       {
         "reason": "time_limit",
         "sim_duration_sec": 599.9999999999994,
-        "distance_m": 119.94141285923502,
-        "mean_speed_mps": 0.1999344824735743,
+        "distance_m": 119.95022193577087,
+        "mean_speed_mps": 0.1999367165375398,
         "speed_compliance": 1.0,
-        "reward": 978.8185329888113,
+        "reward": 1003.7018980486677,
         "scenario": 5,
         "number": 6,
         "worker": "独立验收"
@@ -35234,10 +35234,10 @@
       {
         "reason": "time_limit",
         "sim_duration_sec": 599.9999999999994,
-        "distance_m": 120.01815923016561,
-        "mean_speed_mps": 0.20006373667934965,
+        "distance_m": 120.02531022455932,
+        "mean_speed_mps": 0.20006171072858642,
         "speed_compliance": 1.0,
-        "reward": 976.0997079229136,
+        "reward": 1005.0212590274053,
         "scenario": 6,
         "number": 7,
         "worker": "独立验收"
@@ -35245,10 +35245,10 @@
       {
         "reason": "time_limit",
         "sim_duration_sec": 599.9999999999994,
-        "distance_m": 120.01796165231617,
-        "mean_speed_mps": 0.2000638075696195,
+        "distance_m": 120.02536076673002,
+        "mean_speed_mps": 0.20006171562595892,
         "speed_compliance": 1.0,
-        "reward": 975.9825261910158,
+        "reward": 1005.2378862898782,
         "scenario": 7,
         "number": 8,
         "worker": "独立验收"
@@ -35265,8 +35265,8 @@
     ],
     "min_completed_sec": 599.9999999999994,
     "min_speed_compliance": 1.0,
-    "min_mean_speed_mps": 0.1999336993347721,
-    "max_mean_speed_mps": 0.20006409102117573,
+    "min_mean_speed_mps": 0.1999361591006755,
+    "max_mean_speed_mps": 0.20006189715020437,
     "vehicle": {
       "label_count": 15,
       "forward_speed_mps": 0.2,
@@ -35313,24 +35313,24 @@
   "evaluations": [
     {
       "id": "evaluation_20261011_073307_5a7d4c",
-      "status": "running",
+      "status": "complete",
       "observation_mode": "privileged",
-      "is_running": true,
-      "updated_at": "2026-10-10T23:40:31.591676+00:00",
+      "is_running": false,
+      "updated_at": "2026-10-10T23:40:49.089714+00:00",
       "model_name": "rl_policy_final.zip",
       "model_sha256": "668c638ff17b63b4ac30a8d57db1a50a0ac25ba3b545794f9cf71abfa7e9f3d3",
       "model_run": "PPO_privileged_20261011_012519_9587cf",
-      "completed_episodes": 7,
+      "completed_episodes": 8,
       "total_episodes": 8,
       "stats": {
-        "count": 7,
+        "count": 8,
         "counts": {
           "collision": 0,
           "stuck": 0,
           "looping": 0,
           "slow": 0,
           "out_of_bounds": 0,
-          "time_limit": 7
+          "time_limit": 8
         },
         "failure_count": 0,
         "failures": {
@@ -35368,25 +35368,25 @@
         "completion_rate": 1.0,
         "longest_observed_sec": 599.9999999999994,
         "longest_completed_sec": 599.9999999999994,
-        "total_sim_sec": 4199.999999999996,
-        "total_distance_m": 839.8752607537708,
-        "mean_speed_mps": 0.19999015742507847
+        "total_sim_sec": 4799.999999999995,
+        "total_distance_m": 959.9004607921881,
+        "mean_speed_mps": 0.1999991108984486
       },
       "live": {
         "worker": "独立评估",
-        "updated_at": "2026-10-10T23:40:31.591676+00:00",
-        "phase": "driving",
+        "updated_at": "2026-10-10T23:40:48.763902+00:00",
+        "phase": "closed",
         "episode_number": 8,
         "max_episode_sim_sec": 600.0,
-        "sim_duration_sec": 421.7999999999846,
-        "distance_m": 84.37665521753834,
-        "speed_mps": 0.1999993195320536,
+        "sim_duration_sec": 599.9999999999994,
+        "distance_m": 120.0252000384173,
+        "speed_mps": 0.1999995679680519,
         "action": 7,
-        "step": 2109,
-        "reason": "",
+        "step": 3000,
+        "reason": "time_limit",
         "speed_compliance": 1.0
       },
-      "passed": null,
+      "passed": true,
       "error_type": null
     },
     {
@@ -35705,9 +35705,9 @@
   "recent_window": 100,
   "stale_after_sec": 180.0,
   "media": {
-    "media/validation.png": "8f0c89477676b9dc",
-    "media/learning.png": "e1e893af22515cd6"
+    "media/validation.png": "98a713b0515f53fc",
+    "media/learning.png": "0b5b1b39b0201a9b"
   },
-  "snapshot_id": "b68bbd7d0e9b26b5daf274b470565ea08b9c5715319ded9a3894ce2a8ac72b80",
-  "generated_at": "2026-10-10T23:40:32.663441+00:00"
+  "snapshot_id": "fb950cad919fbfa11f849b28408c289eb8621df9961c3278b478e2cef20440a1",
+  "generated_at": "2026-10-10T23:40:52.806701+00:00"
 }
