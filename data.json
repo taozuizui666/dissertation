@@ -35849,7 +35849,7 @@
       "status": "running",
       "observation_mode": "privileged",
       "is_running": true,
-      "updated_at": "2026-10-11T03:00:11.913405+00:00",
+      "updated_at": "2026-10-11T03:01:12.387739+00:00",
       "model_name": "model.zip",
       "model_sha256": "7171b17cb1e492ec0434887bbb0128e0246ae0ce0d15875f1854a14d246b3365",
       "model_run": "validated_privileged_2392588_20261011_074049",
@@ -35907,15 +35907,15 @@
       },
       "live": {
         "worker": "独立评估",
-        "updated_at": "2026-10-11T03:00:11.913405+00:00",
+        "updated_at": "2026-10-11T03:01:12.387739+00:00",
         "phase": "driving",
         "episode_number": 1,
         "max_episode_sim_sec": 180.0,
-        "sim_duration_sec": 14.39999999999998,
-        "distance_m": 2.8753405643056107,
-        "speed_mps": 0.19999948085453956,
-        "action": 7,
-        "step": 72,
+        "sim_duration_sec": 72.00000000000048,
+        "distance_m": 14.39098910264458,
+        "speed_mps": 0.19981607378837918,
+        "action": 8,
+        "step": 360,
         "reason": "",
         "speed_compliance": 1.0
       },
@@ -36544,6 +36544,6 @@
     "media/validation.png": "98a713b0515f53fc",
     "media/learning.png": "0b5b1b39b0201a9b"
   },
-  "snapshot_id": "96baa63124dbfdb1583f0802d318411bb5b0c9b83f0fc3d60f3ed9b916a20bac",
-  "generated_at": "2026-10-11T03:00:13.481775+00:00"
+  "snapshot_id": "bf0b0031d1a268473275058eb7e6f9edea0a7aa0b2ec2c67c214da83d0753991",
+  "generated_at": "2026-10-11T03:01:13.922320+00:00"
 }
