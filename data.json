@@ -33,17 +33,17 @@
       },
       "status": "training",
       "is_running": true,
-      "updated_at": "2026-10-11T14:04:34.221157+00:00",
+      "updated_at": "2026-10-11T14:05:36.586761+00:00",
       "phase": "collecting",
-      "steps": 2475058,
+      "steps": 2484670,
       "start_steps": 2392588,
       "target_steps": 12392588,
-      "elapsed_wall_sec": 2174.913669476,
+      "elapsed_wall_sec": 2235.1253440130004,
       "time_budget_sec": 2400.0,
-      "remaining_wall_sec": 225.086330524,
+      "remaining_wall_sec": 164.87465598699964,
       "training_deadline": "2026-10-11T22:08:19.278311+08:00",
-      "samples_per_sec": 37.918746457586714,
-      "total_episodes": 78,
+      "samples_per_sec": 41.197689537479654,
+      "total_episodes": 90,
       "episode_limit_sec": 200.0,
       "num_envs": 6,
       "world": "train_world3.sdf",
@@ -234,14 +234,14 @@
       "rollout_steps": 512,
       "error_type": null,
       "recent": {
-        "count": 78,
+        "count": 90,
         "counts": {
           "collision": 0,
           "stuck": 0,
           "looping": 0,
           "slow": 0,
           "out_of_bounds": 0,
-          "time_limit": 78
+          "time_limit": 90
         },
         "failure_count": 0,
         "failures": {
@@ -279,11 +279,179 @@
         "completion_rate": 1.0,
         "longest_observed_sec": 199.9999999999972,
         "longest_completed_sec": 199.9999999999972,
-        "total_sim_sec": 15599.999999999753,
-        "total_distance_m": 3119.451146323747,
-        "mean_speed_mps": 0.20000684070566968
+        "total_sim_sec": 17999.99999999971,
+        "total_distance_m": 3599.414265579163,
+        "mean_speed_mps": 0.20000854180104918
       },
       "episodes": [
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 39.98139195548177,
+          "mean_speed_mps": 0.19993926411240723,
+          "speed_compliance": 1.0,
+          "reward": 331.283938,
+          "scenario": null,
+          "world": "rounded_rectangle_001.sdf",
+          "spawn_index": 1.0,
+          "number": 15,
+          "worker": "worker_5",
+          "ended_at": "2026-10-11T14:05:21.329585+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 40.00636555722854,
+          "mean_speed_mps": 0.2000625943906411,
+          "speed_compliance": 1.0,
+          "reward": 340.544225,
+          "scenario": null,
+          "world": "ellipse_002.sdf",
+          "spawn_index": 2.0,
+          "number": 15,
+          "worker": "worker_2",
+          "ended_at": "2026-10-11T14:05:21.329562+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 40.007819022531756,
+          "mean_speed_mps": 0.2000713414796112,
+          "speed_compliance": 1.0,
+          "reward": 337.939298,
+          "scenario": null,
+          "world": "ellipse_004.sdf",
+          "spawn_index": 2.0,
+          "number": 15,
+          "worker": "worker_3",
+          "ended_at": "2026-10-11T14:05:21.327343+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 40.00466190635154,
+          "mean_speed_mps": 0.20005912939134216,
+          "speed_compliance": 1.0,
+          "reward": 330.468834,
+          "scenario": null,
+          "world": "rounded_rectangle_001.sdf",
+          "spawn_index": 2.0,
+          "number": 15,
+          "worker": "worker_0",
+          "ended_at": "2026-10-11T14:05:21.324324+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 40.005626437514245,
+          "mean_speed_mps": 0.20006211905425691,
+          "speed_compliance": 1.0,
+          "reward": 334.257261,
+          "scenario": null,
+          "world": "train_world3.sdf",
+          "spawn_index": 3.0,
+          "number": 15,
+          "worker": "worker_4",
+          "ended_at": "2026-10-11T14:05:21.324257+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 39.98047414368836,
+          "mean_speed_mps": 0.19993685536582703,
+          "speed_compliance": 1.0,
+          "reward": 330.233757,
+          "scenario": null,
+          "world": "rounded_rectangle_003.sdf",
+          "spawn_index": 1.0,
+          "number": 15,
+          "worker": "worker_1",
+          "ended_at": "2026-10-11T14:05:21.320455+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 39.97887603892466,
+          "mean_speed_mps": 0.1999356220828077,
+          "speed_compliance": 1.0,
+          "reward": 337.91781,
+          "scenario": null,
+          "world": "ellipse_002.sdf",
+          "spawn_index": 3.0,
+          "number": 14,
+          "worker": "worker_2",
+          "ended_at": "2026-10-11T14:04:43.893396+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 39.978394682645416,
+          "mean_speed_mps": 0.19992579989552686,
+          "speed_compliance": 1.0,
+          "reward": 336.052437,
+          "scenario": null,
+          "world": "ellipse_004.sdf",
+          "spawn_index": 1.0,
+          "number": 14,
+          "worker": "worker_3",
+          "ended_at": "2026-10-11T14:04:43.893112+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 40.004686105628345,
+          "mean_speed_mps": 0.20005922220637737,
+          "speed_compliance": 1.0,
+          "reward": 330.795082,
+          "scenario": null,
+          "world": "rounded_rectangle_001.sdf",
+          "spawn_index": 2.0,
+          "number": 14,
+          "worker": "worker_0",
+          "ended_at": "2026-10-11T14:04:43.889611+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 40.004141323738516,
+          "mean_speed_mps": 0.20005969070001184,
+          "speed_compliance": 1.0,
+          "reward": 330.180897,
+          "scenario": null,
+          "world": "rounded_rectangle_001.sdf",
+          "spawn_index": 0.0,
+          "number": 14,
+          "worker": "worker_5",
+          "ended_at": "2026-10-11T14:04:43.887923+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 40.00484517959318,
+          "mean_speed_mps": 0.20006048090929326,
+          "speed_compliance": 1.0,
+          "reward": 330.504667,
+          "scenario": null,
+          "world": "rounded_rectangle_003.sdf",
+          "spawn_index": 2.0,
+          "number": 14,
+          "worker": "worker_1",
+          "ended_at": "2026-10-11T14:04:43.886427+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 40.00583690208919,
+          "mean_speed_mps": 0.2000630674640882,
+          "speed_compliance": 1.0,
+          "reward": 333.320271,
+          "scenario": null,
+          "world": "train_world3.sdf",
+          "spawn_index": 1.0,
+          "number": 14,
+          "worker": "worker_4",
+          "ended_at": "2026-10-11T14:04:43.881779+00:00"
+        },
         {
           "reason": "time_limit",
           "sim_duration_sec": 199.9999999999972,
@@ -1380,134 +1548,134 @@
       "workers": [
         {
           "worker": "worker_0",
-          "updated_at": "2026-10-11T14:04:34.220993+00:00",
+          "updated_at": "2026-10-11T14:05:36.554164+00:00",
           "phase": "driving",
-          "episode_number": 14,
+          "episode_number": 16,
           "max_episode_sim_sec": 200.0,
-          "sim_duration_sec": 149.20000000000007,
-          "distance_m": 29.842479212709687,
-          "speed_mps": 0.20016635433912594,
+          "sim_duration_sec": 79.20000000000059,
+          "distance_m": 15.83954870554924,
+          "speed_mps": 0.20018984809771728,
           "action": 6,
-          "step": 746,
-          "reason": "",
-          "speed_compliance": 1.0,
-          "world": "rounded_rectangle_001.sdf",
-          "spawn_index": 2,
-          "spawn_pose": [
-            -1.3985793367955548,
-            -0.012700313764185352,
-            0.0,
-            -1.5070933785059022
-          ]
-        },
-        {
-          "worker": "worker_1",
-          "updated_at": "2026-10-11T14:04:34.185886+00:00",
-          "phase": "driving",
-          "episode_number": 14,
-          "max_episode_sim_sec": 200.0,
-          "sim_duration_sec": 149.00000000000009,
-          "distance_m": 29.802987223302463,
-          "speed_mps": 0.20019315333365528,
-          "action": 6,
-          "step": 745,
-          "reason": "",
-          "speed_compliance": 1.0,
-          "world": "rounded_rectangle_003.sdf",
-          "spawn_index": 2,
-          "spawn_pose": [
-            -1.3242291168462623,
-            0.021046138975749418,
-            0.0,
-            -1.64452033979664
-          ]
-        },
-        {
-          "worker": "worker_2",
-          "updated_at": "2026-10-11T14:04:34.221157+00:00",
-          "phase": "driving",
-          "episode_number": 14,
-          "max_episode_sim_sec": 200.0,
-          "sim_duration_sec": 149.20000000000007,
-          "distance_m": 29.822825380691455,
-          "speed_mps": 0.1999991534117287,
-          "action": 7,
-          "step": 746,
-          "reason": "",
-          "speed_compliance": 1.0,
-          "world": "ellipse_002.sdf",
-          "spawn_index": 3,
-          "spawn_pose": [
-            0.023651873643979818,
-            -1.966712223987006,
-            0.0,
-            3.2198930684143408
-          ]
-        },
-        {
-          "worker": "worker_3",
-          "updated_at": "2026-10-11T14:04:34.187601+00:00",
-          "phase": "driving",
-          "episode_number": 14,
-          "max_episode_sim_sec": 200.0,
-          "sim_duration_sec": 149.00000000000009,
-          "distance_m": 29.782838532818236,
-          "speed_mps": 0.1999978700012625,
-          "action": 7,
-          "step": 745,
-          "reason": "",
-          "speed_compliance": 1.0,
-          "world": "ellipse_004.sdf",
-          "spawn_index": 1,
-          "spawn_pose": [
-            0.028485663799526814,
-            1.7929340640740012,
-            0.0,
-            0.07231001183013355
-          ]
-        },
-        {
-          "worker": "worker_4",
-          "updated_at": "2026-10-11T14:04:34.182151+00:00",
-          "phase": "driving",
-          "episode_number": 14,
-          "max_episode_sim_sec": 200.0,
-          "sim_duration_sec": 149.00000000000009,
-          "distance_m": 29.803363346729615,
-          "speed_mps": 0.19999937348332258,
-          "action": 7,
-          "step": 745,
-          "reason": "",
-          "speed_compliance": 1.0,
-          "world": "train_world3.sdf",
-          "spawn_index": 1,
-          "spawn_pose": [
-            0.05065469484922078,
-            -3.0030367825974147,
-            0.0,
-            1.5652343340798698
-          ]
-        },
-        {
-          "worker": "worker_5",
-          "updated_at": "2026-10-11T14:04:34.148104+00:00",
-          "phase": "driving",
-          "episode_number": 14,
-          "max_episode_sim_sec": 200.0,
-          "sim_duration_sec": 148.8000000000001,
-          "distance_m": 29.761894071005564,
-          "speed_mps": 0.2001746292097049,
-          "action": 6,
-          "step": 744,
+          "step": 396,
           "reason": "",
           "speed_compliance": 1.0,
           "world": "rounded_rectangle_001.sdf",
           "spawn_index": 0,
           "spawn_pose": [
-            1.3648752987941204,
-            0.019700222869661867,
+            1.4017190909328872,
+            0.012309922717580107,
             0.0,
-            1.5453731197186606
+            1.6687892447402295
+          ]
+        },
+        {
+          "worker": "worker_1",
+          "updated_at": "2026-10-11T14:05:36.554914+00:00",
+          "phase": "driving",
+          "episode_number": 16,
+          "max_episode_sim_sec": 200.0,
+          "sim_duration_sec": 79.20000000000059,
+          "distance_m": 15.839293092485653,
+          "speed_mps": 0.200192889621323,
+          "action": 6,
+          "step": 396,
+          "reason": "",
+          "speed_compliance": 1.0,
+          "world": "rounded_rectangle_003.sdf",
+          "spawn_index": 0,
+          "spawn_pose": [
+            1.305668455729562,
+            -0.029762318176582866,
+            0.0,
+            1.6905546462880348
+          ]
+        },
+        {
+          "worker": "worker_2",
+          "updated_at": "2026-10-11T14:05:36.554484+00:00",
+          "phase": "driving",
+          "episode_number": 16,
+          "max_episode_sim_sec": 200.0,
+          "sim_duration_sec": 79.20000000000059,
+          "distance_m": 15.83034284508683,
+          "speed_mps": 0.19999884810983978,
+          "action": 7,
+          "step": 396,
+          "reason": "",
+          "speed_compliance": 1.0,
+          "world": "ellipse_002.sdf",
+          "spawn_index": 1,
+          "spawn_pose": [
+            0.011812308091998805,
+            1.9636674648218675,
+            0.0,
+            0.07138916495385861
+          ]
+        },
+        {
+          "worker": "worker_3",
+          "updated_at": "2026-10-11T14:05:36.556672+00:00",
+          "phase": "driving",
+          "episode_number": 16,
+          "max_episode_sim_sec": 200.0,
+          "sim_duration_sec": 79.20000000000059,
+          "distance_m": 15.829515850357177,
+          "speed_mps": 0.19999853782934293,
+          "action": 7,
+          "step": 396,
+          "reason": "",
+          "speed_compliance": 1.0,
+          "world": "ellipse_004.sdf",
+          "spawn_index": 3,
+          "spawn_pose": [
+            0.022457337227110935,
+            -1.7905758390360316,
+            0.0,
+            3.0859359221198077
+          ]
+        },
+        {
+          "worker": "worker_4",
+          "updated_at": "2026-10-11T14:05:36.547518+00:00",
+          "phase": "driving",
+          "episode_number": 16,
+          "max_episode_sim_sec": 200.0,
+          "sim_duration_sec": 79.20000000000059,
+          "distance_m": 15.829926935828,
+          "speed_mps": 0.19999895871805165,
+          "action": 7,
+          "step": 396,
+          "reason": "",
+          "speed_compliance": 1.0,
+          "world": "train_world3.sdf",
+          "spawn_index": 0,
+          "spawn_pose": [
+            -0.9315598085319037,
+            -1.3275953872307922,
+            0.0,
+            0.06202487325987621
+          ]
+        },
+        {
+          "worker": "worker_5",
+          "updated_at": "2026-10-11T14:05:36.586761+00:00",
+          "phase": "driving",
+          "episode_number": 16,
+          "max_episode_sim_sec": 200.0,
+          "sim_duration_sec": 79.40000000000059,
+          "distance_m": 15.879779382961994,
+          "speed_mps": 0.20019005113151384,
+          "action": 6,
+          "step": 397,
+          "reason": "",
+          "speed_compliance": 1.0,
+          "world": "rounded_rectangle_001.sdf",
+          "spawn_index": 0,
+          "spawn_pose": [
+            1.3955110424284678,
+            0.0026837601249648027,
+            0.0,
+            1.5933340254233639
           ]
         }
       ],
@@ -1637,6 +1805,22 @@
           [
             2472460,
             313.827880859375
+          ],
+          [
+            2475532,
+            313.827880859375
+          ],
+          [
+            2478604,
+            318.76629638671875
+          ],
+          [
+            2481676,
+            318.76629638671875
+          ],
+          [
+            2484748,
+            323.7728271484375
           ]
         ],
         "completion": [
@@ -1738,6 +1922,22 @@
           ],
           [
             2472460,
+            1.0
+          ],
+          [
+            2475532,
+            1.0
+          ],
+          [
+            2478604,
+            1.0
+          ],
+          [
+            2481676,
+            1.0
+          ],
+          [
+            2484748,
             1.0
           ]
         ],
@@ -1841,6 +2041,22 @@
           [
             2472460,
             0.0
+          ],
+          [
+            2475532,
+            0.0
+          ],
+          [
+            2478604,
+            0.0
+          ],
+          [
+            2481676,
+            0.0
+          ],
+          [
+            2484748,
+            0.0
           ]
         ],
         "stuck": [
@@ -1942,6 +2158,22 @@
           ],
           [
             2472460,
+            0.0
+          ],
+          [
+            2475532,
+            0.0
+          ],
+          [
+            2478604,
+            0.0
+          ],
+          [
+            2481676,
+            0.0
+          ],
+          [
+            2484748,
             0.0
           ]
         ],
@@ -2045,6 +2277,22 @@
           [
             2472460,
             0.0
+          ],
+          [
+            2475532,
+            0.0
+          ],
+          [
+            2478604,
+            0.0
+          ],
+          [
+            2481676,
+            0.0
+          ],
+          [
+            2484748,
+            0.0
           ]
         ],
         "speed": [
@@ -2147,6 +2395,22 @@
           [
             2472460,
             0.20000684261322021
+          ],
+          [
+            2475532,
+            0.20000684261322021
+          ],
+          [
+            2478604,
+            0.2000075876712799
+          ],
+          [
+            2481676,
+            0.2000075876712799
+          ],
+          [
+            2484748,
+            0.2000085413455963
           ]
         ],
         "duration": [
@@ -2248,6 +2512,22 @@
           ],
           [
             2472460,
+            200.0
+          ],
+          [
+            2475532,
+            200.0
+          ],
+          [
+            2478604,
+            200.0
+          ],
+          [
+            2481676,
+            200.0
+          ],
+          [
+            2484748,
             200.0
           ]
         ],
@@ -2355,6 +2635,18 @@
           [
             2472580,
             6.861767906229943e-05
+          ],
+          [
+            2478604,
+            0.00010655211372068152
+          ],
+          [
+            2481676,
+            7.88741308497265e-05
+          ],
+          [
+            2484748,
+            7.095343607943505e-05
           ]
         ],
         "kl": [
@@ -2461,6 +2753,18 @@
           [
             2472580,
             0.01629326306283474
+          ],
+          [
+            2478604,
+            0.014865491539239883
+          ],
+          [
+            2481676,
+            0.012932874262332916
+          ],
+          [
+            2484748,
+            0.01333893183618784
           ]
         ],
         "entropy": [
@@ -2567,6 +2871,18 @@
           [
             2472580,
             -0.27329927682876587
+          ],
+          [
+            2478604,
+            -0.28283166885375977
+          ],
+          [
+            2481676,
+            -0.26692965626716614
+          ],
+          [
+            2484748,
+            -0.2638697922229767
           ]
         ],
         "explained_variance": [
@@ -2673,6 +2989,18 @@
           [
             2472580,
             0.9665330648422241
+          ],
+          [
+            2478604,
+            0.9476756453514099
+          ],
+          [
+            2481676,
+            0.9625760912895203
+          ],
+          [
+            2484748,
+            0.9734240770339966
           ]
         ]
       }
@@ -40675,6 +41003,6 @@
     "media/validation.png": "98a713b0515f53fc",
     "media/learning.png": "0b5b1b39b0201a9b"
   },
-  "snapshot_id": "3e45faa6d1dab0fd6ac50cbdaf49654e0936f99d6bb7ed62ff7ca31408651286",
-  "generated_at": "2026-10-11T14:04:36.783828+00:00"
+  "snapshot_id": "628543a9ad2cdf4529347a030d2572259480462d8ec932b22c50b7aa5761cd1c",
+  "generated_at": "2026-10-11T14:05:37.448909+00:00"
 }
