@@ -33,17 +33,17 @@
       },
       "status": "training",
       "is_running": true,
-      "updated_at": "2026-10-11T14:54:04.603184+00:00",
-      "phase": "collecting",
-      "steps": 2532052,
+      "updated_at": "2026-10-11T14:55:03.488746+00:00",
+      "phase": "periodic_evaluation",
+      "steps": 2532580,
       "start_steps": 2492584,
       "target_steps": 12492584,
-      "elapsed_wall_sec": 781.2080314630002,
+      "elapsed_wall_sec": 786.43649516,
       "time_budget_sec": 2400.0,
-      "remaining_wall_sec": 1618.7919685369998,
+      "remaining_wall_sec": 1613.56350484,
       "training_deadline": "2026-10-11T23:20:59.445619+08:00",
-      "samples_per_sec": 50.52175401485141,
-      "total_episodes": 1085,
+      "samples_per_sec": 50.8572532507699,
+      "total_episodes": 1087,
       "episode_limit_sec": 200.0,
       "num_envs": 6,
       "world": "dead_end_001.sdf",
@@ -243,21 +243,21 @@
         "failures": {
           "collision": {
             "count": 100,
-            "mean_sec": 7.541999999999998,
+            "mean_sec": 7.645999999999997,
             "min_sec": 1.5999999999999999,
             "last": {
               "reason": "collision",
-              "sim_duration_sec": 1.7999999999999998,
-              "distance_m": 0.33217153274358846,
-              "mean_speed_mps": 0.17779543612696572,
-              "speed_compliance": 0.8888888888888888,
-              "reward": -19.775494,
+              "sim_duration_sec": 10.199999999999996,
+              "distance_m": 2.004213516319659,
+              "mean_speed_mps": 0.19606483354001247,
+              "speed_compliance": 0.9803921568627451,
+              "reward": -5.879936,
               "scenario": null,
               "world": "dead_end_001.sdf",
-              "spawn_index": 0.0,
-              "number": 188,
-              "worker": "worker_1",
-              "ended_at": "2026-10-11T14:54:04.454097+00:00"
+              "spawn_index": 3.0,
+              "number": 176,
+              "worker": "worker_2",
+              "ended_at": "2026-10-11T14:54:05.659398+00:00"
             }
           },
           "stuck": {
@@ -288,11 +288,39 @@
         "completion_rate": 0.0,
         "longest_observed_sec": 11.79999999999999,
         "longest_completed_sec": null,
-        "total_sim_sec": 754.1999999999998,
-        "total_distance_m": 148.87742248383054,
-        "mean_speed_mps": 0.1929027980112516
+        "total_sim_sec": 764.5999999999999,
+        "total_distance_m": 150.9039139856861,
+        "mean_speed_mps": 0.19308273484280794
       },
       "episodes": [
+        {
+          "reason": "collision",
+          "sim_duration_sec": 10.199999999999996,
+          "distance_m": 2.004213516319659,
+          "mean_speed_mps": 0.19606483354001247,
+          "speed_compliance": 0.9803921568627451,
+          "reward": -5.879936,
+          "scenario": null,
+          "world": "dead_end_001.sdf",
+          "spawn_index": 3.0,
+          "number": 176,
+          "worker": "worker_2",
+          "ended_at": "2026-10-11T14:54:05.659398+00:00"
+        },
+        {
+          "reason": "collision",
+          "sim_duration_sec": 11.79999999999999,
+          "distance_m": 2.3285079559896067,
+          "mean_speed_mps": 0.1965660935907817,
+          "speed_compliance": 0.9830508474576272,
+          "reward": -3.337375,
+          "scenario": null,
+          "world": "dead_end_001.sdf",
+          "spawn_index": 2.0,
+          "number": 175,
+          "worker": "worker_3",
+          "ended_at": "2026-10-11T14:54:05.397953+00:00"
+        },
         {
           "reason": "collision",
           "sim_duration_sec": 1.7999999999999998,
@@ -1664,34 +1692,6 @@
           "number": 164,
           "worker": "worker_5",
           "ended_at": "2026-10-11T14:53:29.346714+00:00"
-        },
-        {
-          "reason": "collision",
-          "sim_duration_sec": 9.999999999999996,
-          "distance_m": 1.9931233405711077,
-          "mean_speed_mps": 0.19611336261062867,
-          "speed_compliance": 0.98,
-          "reward": -5.728073,
-          "scenario": null,
-          "world": "dead_end_001.sdf",
-          "spawn_index": 3.0,
-          "number": 157,
-          "worker": "worker_0",
-          "ended_at": "2026-10-11T14:53:29.140676+00:00"
-        },
-        {
-          "reason": "collision",
-          "sim_duration_sec": 1.5999999999999999,
-          "distance_m": 0.3131066298825735,
-          "mean_speed_mps": 0.17852388136453154,
-          "speed_compliance": 0.875,
-          "reward": -19.758121,
-          "scenario": null,
-          "world": "dead_end_001.sdf",
-          "spawn_index": 0.0,
-          "number": 172,
-          "worker": "worker_1",
-          "ended_at": "2026-10-11T14:53:28.408708+00:00"
         }
       ],
       "workers": [
@@ -1741,7 +1741,29 @@
         },
         {
           "worker": "worker_2",
-          "updated_at": "2026-10-11T14:54:02.723159+00:00",
+          "updated_at": "2026-10-11T14:54:05.816084+00:00",
+          "phase": "ready",
+          "episode_number": 177,
+          "max_episode_sim_sec": 200.0,
+          "sim_duration_sec": 0.0,
+          "distance_m": 0.0,
+          "speed_mps": 0.0,
+          "action": null,
+          "step": 0,
+          "reason": "",
+          "speed_compliance": 0.9803921568627451,
+          "world": "dead_end_001.sdf",
+          "spawn_index": 0,
+          "spawn_pose": [
+            -0.022447385514385066,
+            -1.4244139871366983,
+            0.0,
+            -1.7335326398297874
+          ]
+        },
+        {
+          "worker": "worker_3",
+          "updated_at": "2026-10-11T14:54:05.559485+00:00",
           "phase": "ready",
           "episode_number": 176,
           "max_episode_sim_sec": 200.0,
@@ -1751,36 +1773,14 @@
           "action": null,
           "step": 0,
           "reason": "",
-          "speed_compliance": 0.98,
-          "world": "dead_end_001.sdf",
-          "spawn_index": 3,
-          "spawn_pose": [
-            -0.7257443740022385,
-            1.8134320420686958,
-            0.0,
-            0.10440527970214838
-          ]
-        },
-        {
-          "worker": "worker_3",
-          "updated_at": "2026-10-11T14:54:02.200165+00:00",
-          "phase": "ready",
-          "episode_number": 175,
-          "max_episode_sim_sec": 200.0,
-          "sim_duration_sec": 0.0,
-          "distance_m": 0.0,
-          "speed_mps": 0.0,
-          "action": null,
-          "step": 0,
-          "reason": "",
-          "speed_compliance": 0.9795918367346939,
+          "speed_compliance": 0.9830508474576272,
           "world": "dead_end_001.sdf",
           "spawn_index": 2,
           "spawn_pose": [
-            -0.009777561734233019,
-            0.5581399365717513,
+            0.014156616060131022,
+            0.5104307046594494,
             0.0,
-            -1.5448393869033081
+            -1.4529057469802242
           ]
         },
         {
@@ -1830,23 +1830,24 @@
       ],
       "periodic_evaluation": {
         "worker": "定期评估",
-        "updated_at": "2026-10-11T14:50:53.673067+00:00",
-        "phase": "ready",
-        "episode_number": 17,
+        "updated_at": "2026-10-11T14:55:03.488746+00:00",
+        "phase": "driving",
+        "episode_number": 3,
         "max_episode_sim_sec": 200.0,
-        "sim_duration_sec": 0.0,
-        "distance_m": 0.0,
-        "speed_mps": 0.0,
-        "action": null,
-        "step": 0,
+        "sim_duration_sec": 136.00000000000082,
+        "distance_m": 27.20178395423256,
+        "speed_mps": 0.19999941377729905,
+        "action": 7,
+        "step": 680,
         "reason": "",
+        "speed_compliance": 1.0,
         "world": "rounded_rectangle_005.sdf",
-        "spawn_index": 0,
+        "spawn_index": 2,
         "spawn_pose": [
-          1.2529624971103608,
-          -0.009027527981023471,
+          -1.2640458459315018,
+          0.0061495301139974645,
           0.0,
-          1.7281278682653691
+          -1.6531187395140694
         ]
       },
       "curves": {
@@ -43775,6 +43776,6 @@
     "media/validation.png": "98a713b0515f53fc",
     "media/learning.png": "0b5b1b39b0201a9b"
   },
-  "snapshot_id": "7570df81f0371714227e2f90732e4ab793b17b262f0d0514e72dfee38ef8d6ab",
-  "generated_at": "2026-10-11T14:54:05.403197+00:00"
+  "snapshot_id": "ead92225268ea331110e326bb8a38f61091425a66e3ff269e8b8c01cc63a860c",
+  "generated_at": "2026-10-11T14:55:05.955741+00:00"
 }
