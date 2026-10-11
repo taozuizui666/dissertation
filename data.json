@@ -35313,24 +35313,24 @@
   "evaluations": [
     {
       "id": "evaluation_20261011_102558_0b8f27",
-      "status": "running",
+      "status": "complete",
       "observation_mode": "privileged",
-      "is_running": true,
-      "updated_at": "2026-10-11T02:28:50.465982+00:00",
+      "is_running": false,
+      "updated_at": "2026-10-11T02:29:12.529438+00:00",
       "model_name": "model.zip",
       "model_sha256": "7171b17cb1e492ec0434887bbb0128e0246ae0ce0d15875f1854a14d246b3365",
       "model_run": "validated_privileged_2392588_20261011_074049",
-      "completed_episodes": 0,
+      "completed_episodes": 1,
       "total_episodes": 1,
       "stats": {
-        "count": 0,
+        "count": 1,
         "counts": {
           "collision": 0,
           "stuck": 0,
           "looping": 0,
           "slow": 0,
           "out_of_bounds": 0,
-          "time_limit": 0
+          "time_limit": 1
         },
         "failure_count": 0,
         "failures": {
@@ -35365,28 +35365,28 @@
             "last": null
           }
         },
-        "completion_rate": null,
-        "longest_observed_sec": null,
-        "longest_completed_sec": null,
-        "total_sim_sec": 0,
-        "total_distance_m": 0,
-        "mean_speed_mps": null
+        "completion_rate": 1.0,
+        "longest_observed_sec": 179.99999999999832,
+        "longest_completed_sec": 179.99999999999832,
+        "total_sim_sec": 179.99999999999832,
+        "total_distance_m": 35.98272723465421,
+        "mean_speed_mps": 0.1999377214806471
       },
       "live": {
         "worker": "独立评估",
-        "updated_at": "2026-10-11T02:28:50.465982+00:00",
-        "phase": "driving",
+        "updated_at": "2026-10-11T02:29:12.239383+00:00",
+        "phase": "closed",
         "episode_number": 1,
         "max_episode_sim_sec": 180.0,
-        "sim_duration_sec": 159.79999999999947,
-        "distance_m": 31.94381712538139,
-        "speed_mps": 0.19980679904777318,
-        "action": 8,
-        "step": 799,
-        "reason": "",
+        "sim_duration_sec": 179.99999999999832,
+        "distance_m": 35.98272723465421,
+        "speed_mps": 0.19999945581603606,
+        "action": 7,
+        "step": 900,
+        "reason": "time_limit",
         "speed_compliance": 1.0
       },
-      "passed": null,
+      "passed": true,
       "error_type": null
     },
     {
@@ -35929,6 +35929,6 @@
     "media/validation.png": "98a713b0515f53fc",
     "media/learning.png": "0b5b1b39b0201a9b"
   },
-  "snapshot_id": "65c63ed4bbb1cb0513d9db44db298ab72fe8452b6dd431f61c2284c4ff2638f4",
-  "generated_at": "2026-10-11T02:28:53.453020+00:00"
+  "snapshot_id": "b4420afbd408499cd74f3fa8529f4ac0bb795e27ee29adee623cc99ec56c1eea",
+  "generated_at": "2026-10-11T02:29:13.604924+00:00"
 }
