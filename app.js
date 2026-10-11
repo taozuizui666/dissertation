@@ -19,13 +19,16 @@ function date(value, full=false) {
 const modeName = m => m==='privileged' ? '特权教师 · 无雷达' : '雷达策略';
 const reasonNames = {collision:'碰撞',stuck:'卡住',looping:'局部绕圈',slow:'持续低速',out_of_bounds:'越界',time_limit:'正常达到时限'};
 const statusNames = {training:'训练中',starting:'启动中',stopped:'已主动停止',complete:'已完成',time_budget_reached:'时间预算已用完',interrupted:'已中断',failed:'异常退出',stale:'数据中断，状态待确认'};
-const state = {data:null,config:null,runId:'latest',tab:'overview',chart:'duration',episodeSource:'training',reason:'all',limit:20,busy:false,error:null,fallback:false,chartPoints:[]};
+const state = {data:null,config:null,mode:'privileged',runId:'latest',tab:'overview',chart:'duration',episodeSource:'training',reason:'all',limit:20,busy:false,error:null,fallback:false,chartPoints:[]};
 const chartSpecs = {
   duration:['巡航时长','回合平均持续时间','秒',1], reward:['回合奖励','原始回合奖励','',1],
   completion:['完成率','正常达到时限的比例','%',100],collision:['碰撞率','训练碰撞率','%',100],
   stuck:['卡住率','训练卡住率','%',100],speed:['实际速度','回合平均前进速度','m/s',1],
 };
-const run = () => (state.data?.runs || []).find(r=>r.id === (state.runId==='latest' ? state.data.default_run_id : state.runId));
+const runs = () => (state.data?.runs || []).filter(r=>r.observation_mode===state.mode);
+const run = () => state.runId==='latest' ? runs()[0] : runs().find(r=>r.id===state.runId);
+const evaluations = () => (state.data?.evaluations || []).filter(e=>e.observation_mode===state.mode);
+const validatedModel = () => state.data?.validated_models?.[state.mode] || (state.data?.validated_model?.observation_mode===state.mode ? state.data.validated_model : null);
 const fresh = stamp => stamp && Date.now()-new Date(stamp).getTime() <= (state.data?.stale_after_sec || 180)*1000;
 const workerName = name => /^worker_\d+$/.test(name || '') ? '训练车 '+(Number(name.split('_')[1])+1) : (name || '独立验收');
 const badge = (text, style='') => `<span class="badge ${style}">${h(text)}</span>`;
@@ -34,9 +37,9 @@ const detailList = rows => `<dl class="detail-list">${rows.map(([k,v])=>`<div><d
 
 function renderFreshness() {
   if (!state.data) return;
-  const r=run(), evaluations=state.data.evaluations || [];
-  const active = [r?.is_running ? r : null,...evaluations.filter(e=>e.is_running)].filter(Boolean);
-  const stale = active.some(item=>!fresh(item.updated_at)) || r?.status==='stale' || evaluations.some(e=>e.status==='stale');
+  const r=run(), selectedEvaluations=evaluations();
+  const active = [r?.is_running ? r : null,...selectedEvaluations.filter(e=>e.is_running)].filter(Boolean);
+  const stale = active.some(item=>!fresh(item.updated_at)) || r?.status==='stale' || selectedEvaluations.some(e=>e.status==='stale');
   const b=$('connection-badge');
   b.className='badge'+(state.error || state.fallback || stale ? ' warn' : '');
   b.textContent=state.error ? '连接中断' : state.fallback ? '备用快照' : stale ? '数据已过期' : active.length ? '数据同步中' : '历史结果';
@@ -50,9 +53,9 @@ function renderFreshness() {
 }
 
 function renderOverview(r) {
-  const model=state.data.validated_model, s=r?.recent;
+  const model=validatedModel(), s=r?.recent;
   const matched=model?.verified && model.training_run===r?.id;
-  const evaluating=(state.data.evaluations || []).find(e=>e.is_running);
+  const evaluating=evaluations().find(e=>e.is_running);
   let title, value, subtitle, status;
   if(r?.is_running || r?.status==='stale') {
     const workers=(r.workers || []).filter(w=>w.phase==='driving'||w.phase==='ready');
@@ -91,9 +94,9 @@ function renderOverview(r) {
   if(r?.phase==='periodic_evaluation' && r.periodic_evaluation) liveWorkers.push(r.periodic_evaluation);
   $('live-section').hidden=!liveWorkers.length;
   $('live-cards').innerHTML=liveWorkers.map(liveCard).join('');
-  const evaluations=[...(state.data.evaluations || [])].sort((a,b)=>Number(b.is_running)-Number(a.is_running)).slice(0,2);
-  $('evaluation-section').hidden=!evaluations.length;
-  $('evaluation-cards').innerHTML=evaluations.map(e=>`<div class="card"><div class="live-head"><h3>${e.is_running ? '固定权重独立评估中' : '评估：'+h(statusNames[e.status] || e.status)}</h3>${badge(`${e.completed_episodes}/${e.total_episodes} 段`,e.is_running || e.passed?'':'warn')}</div><p class="caption">模型 ${h((e.model_sha256 || '').slice(0,12))} · ${e.stats.failure_count} 次失败 · 正常完成 ${e.stats.counts.time_limit} 段</p>${e.live ? `<div class="live-duration">${h(duration(e.live.sim_duration_sec))}</div><p class="caption">${e.is_running?'当前这一段':'最后一段记录'} · ${n(e.live.distance_m,2)} m · ${n(e.live.speed_mps,4)} m/s</p>` : '<p class="caption">尚无逐步记录</p>'}<p class="caption">${['collision','stuck'].map(k=>h(reasonNames[k])+': '+(e.stats.failures[k].count ? n(e.stats.failures[k].count)+' 次，平均 '+h(duration(e.stats.failures[k].mean_sec))+' 时发生' : '尚未观察到')).join('<br>')}</p></div>`).join('');
+  const selectedEvaluations=[...evaluations()].sort((a,b)=>Number(b.is_running)-Number(a.is_running)).slice(0,2);
+  $('evaluation-section').hidden=!selectedEvaluations.length;
+  $('evaluation-cards').innerHTML=selectedEvaluations.map(e=>`<div class="card"><div class="live-head"><h3>${e.is_running ? '固定权重独立评估中' : '评估：'+h(statusNames[e.status] || e.status)}</h3>${badge(`${e.completed_episodes}/${e.total_episodes} 段`,e.is_running || e.passed?'':'warn')}</div><p class="caption">模型 ${h((e.model_sha256 || '').slice(0,12))} · ${e.stats.failure_count} 次失败 · 正常完成 ${e.stats.counts.time_limit} 段</p>${e.live ? `<div class="live-duration">${h(duration(e.live.sim_duration_sec))}</div><p class="caption">${e.is_running?'当前这一段':'最后一段记录'} · ${n(e.live.distance_m,2)} m · ${n(e.live.speed_mps,4)} m/s</p>` : '<p class="caption">尚无逐步记录</p>'}<p class="caption">${['collision','stuck'].map(k=>h(reasonNames[k])+': '+(e.stats.failures[k].count ? n(e.stats.failures[k].count)+' 次，平均 '+h(duration(e.stats.failures[k].mean_sec))+' 时发生' : '尚未观察到')).join('<br>')}</p></div>`).join('');
   $('validation-card').innerHTML=model ? `<div class="validation-head"><h3>${h(modeName(model.observation_mode))} · ${n(model.steps)} 步</h3>${badge(model.verified?'散列与报告匹配':'权重或报告不匹配',model.verified?'':'danger')}</div><div class="validation-value">${n(model.stats.failure_count)} 次失败<span>/ ${model.stats.count} 段独立验收</span></div><p class="caption">最短单段 ${h(duration(model.min_completed_sec))} · 平均速度 ${n(model.min_mean_speed_mps,5)}～${n(model.max_mean_speed_mps,5)} m/s</p><div class="validation-foot"><span>累计 ${n(model.stats.total_distance_m,1)} m</span><span>累计仿真 ${h(duration(model.stats.total_sim_sec))}</span><span>最低速度合规率 ${pct(model.min_speed_compliance)}</span></div><p class="caption">独立验收与上面的随机探索训练分开统计；累计时间是多段之和。</p>` : '<div class="empty">还没有已冻结的验证模型。训练检查点不会自动当作通过验收。</div>';
 }
 
@@ -131,7 +134,7 @@ function renderTrends(r){
 }
 
 function renderEpisodes(r){
-  const entries=state.episodeSource==='validated' ? [...(state.data.validated_model?.episodes || [])].reverse() : (r?.episodes || []);
+  const entries=state.episodeSource==='validated' ? [...(validatedModel()?.episodes || [])].reverse() : (r?.episodes || []);
   const filtered=entries.filter(e=>state.reason==='all' || (state.reason==='failure' ? e.reason!=='time_limit' : e.reason===state.reason));
   $('episode-summary').textContent=`${state.episodeSource==='validated'?'已验证模型的独立验收':'选中训练批次的近期探索回合'} · 符合筛选 ${filtered.length} 段`;
   $('episode-list').innerHTML=filtered.slice(0,state.limit).map(e=>`<article class="episode"><header>${badge(reasonNames[e.reason],e.reason==='time_limit'?'':e.reason==='collision'?'danger':'warn')}<span class="caption">${h(workerName(e.worker))} · #${n(e.number)}</span></header><div class="episode-time">${e.reason==='time_limit'?'≥ ':''}${h(duration(e.sim_duration_sec))}</div><p>${e.reason==='time_limit'?'达到测试时限，尚未发生失败':'该失败发生在本回合上述时间'} · ${n(e.distance_m,2)} m</p><p>均速 ${n(e.mean_speed_mps,4)} m/s · 速度合规 ${pct(e.speed_compliance)}${e.ended_at?' · '+h(date(e.ended_at)):''}</p></article>`).join('') || '<div class="card empty">没有符合条件的记录。</div>';
@@ -139,7 +142,7 @@ function renderEpisodes(r){
 }
 
 function renderModel(r){
-  const m=state.data.validated_model,v=m?.vehicle,p=m?.ppo;
+  const m=validatedModel(),v=m?.vehicle,p=m?.ppo;
   $('model-badge').className='badge'+(m?.verified?'':' muted'); $('model-badge').textContent=m?.verified?'已独立验收':'尚未验证';
   $('model-details').innerHTML=m ? detailList([
     ['算法 / 网络','PPO / '+(p?.POLICY_NET_ARCH||[]).join(' → ')],['训练采样',n(m.steps)+' 步'],
@@ -158,20 +161,21 @@ function renderModel(r){
     ['学习率',rp?.LEARNING_RATE],['折扣因子 γ',rp?.GAMMA],['熵系数',rp?.ENTROPY_COEFF],
     ['Rollout / 批次',`${r.rollout_steps || '—'} / ${rp?.BATCH_SIZE || '—'}`],['计算设备 / 种子',`${r.device} / ${r.seed}`],
   ]) : '<div class="empty">尚无训练批次。</div>';
-  for(const [id,name] of [['validation-image','media/validation.png'],['learning-image','media/learning.png']]){
+  for(const [id,name] of [['validation-image',`media/${state.mode}_validation.png`],['learning-image',`media/${state.mode}_learning.png`]]){
     const version=state.data.media?.[name];
     const url=(state.fallback?'':state.config.asset_base)+name+'?v='+encodeURIComponent(version || '');
     const container=$(id);
-    if(container.dataset.version===version && container.dataset.fallback===String(state.fallback)) continue;
-    container.dataset.version=version || '';container.dataset.fallback=String(state.fallback);
+    if(container.dataset.name===name && container.dataset.version===version && container.dataset.fallback===String(state.fallback)) continue;
+    container.dataset.name=name;container.dataset.version=version || '';container.dataset.fallback=String(state.fallback);
     container.innerHTML=version ? `<a class="image-link" href="${h(url)}" target="_blank" rel="noopener">打开原图，可双指缩放 ↗</a><img class="report-image" src="${h(url)}" loading="lazy" alt="${id==='validation-image'?'独立验收轨迹与实测速度':'模型训练曲线'}">` : '<p class="caption">暂无对应图像。</p>';
   }
 }
 
 function render(){
   const select=$('run-select'), selection=state.runId;
-  select.innerHTML='<option value="latest">跟随最新训练批次</option>'+(state.data.runs || []).map(r=>`<option value="${h(r.id)}">${h(date(r.started_at))} · ${h(modeName(r.observation_mode))} · ${n(r.steps)} 步 · ${h(statusNames[r.status]||r.status)}</option>`).join('');
-  if(selection!=='latest' && !state.data.runs.some(r=>r.id===selection)) state.runId='latest';
+  select.innerHTML='<option value="latest">跟随本类最新训练批次</option>'+runs().map(r=>`<option value="${h(r.id)}">${h(date(r.started_at))} · ${n(r.steps)} 步 · ${h(statusNames[r.status]||r.status)}</option>`).join('');
+  if(selection!=='latest' && !runs().some(r=>r.id===selection)) state.runId='latest';
+  $('mode-select').value=state.mode;
   select.value=state.runId;
   const r=run();
   renderFreshness(); renderOverview(r); renderTrends(r); renderEpisodes(r); renderModel(r);
@@ -209,6 +213,7 @@ async function refresh(){
 }
 
 $('refresh').addEventListener('click',refresh);
+$('mode-select').addEventListener('change',e=>{state.mode=e.target.value;state.runId='latest';state.limit=20;if(state.data) render();});
 $('run-select').addEventListener('change',e=>{state.runId=e.target.value;state.limit=20;render();});
 document.querySelectorAll('[data-tab]').forEach(button=>button.addEventListener('click',()=>{
   state.tab=button.dataset.tab;
