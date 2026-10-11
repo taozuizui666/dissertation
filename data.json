@@ -5,7 +5,7 @@
     {
       "id": "PPO_privileged_20261011_224058_b8eff3",
       "started_at": "2026-10-11T22:40:58.259138+08:00",
-      "ended_at": null,
+      "ended_at": "2026-10-11T22:57:14.793103+08:00",
       "observation_mode": "privileged",
       "observation_spec": {
         "kind": "ground_truth_local_distance_field_v1",
@@ -31,18 +31,18 @@
         "lidar_required": false,
         "pose_source": "gazebo_physics_step_ack"
       },
-      "status": "training",
-      "is_running": true,
-      "updated_at": "2026-10-11T14:56:57.752906+00:00",
-      "phase": "periodic_evaluation",
+      "status": "interrupted",
+      "is_running": false,
+      "updated_at": "2026-10-11T22:57:14.793103+08:00",
+      "phase": "finished",
       "steps": 2532580,
       "start_steps": 2492584,
       "target_steps": 12492584,
-      "elapsed_wall_sec": 786.43649516,
+      "elapsed_wall_sec": 976.5339648723602,
       "time_budget_sec": 2400.0,
-      "remaining_wall_sec": 1613.56350484,
+      "remaining_wall_sec": null,
       "training_deadline": "2026-10-11T23:20:59.445619+08:00",
-      "samples_per_sec": 50.8572532507699,
+      "samples_per_sec": 41.00690641306794,
       "total_episodes": 1087,
       "episode_limit_sec": 200.0,
       "num_envs": 6,
@@ -1830,25 +1830,10 @@
       ],
       "periodic_evaluation": {
         "worker": "定期评估",
-        "updated_at": "2026-10-11T14:56:57.752906+00:00",
-        "phase": "episode_finished",
-        "episode_number": 8,
-        "max_episode_sim_sec": 200.0,
-        "sim_duration_sec": 199.9999999999972,
-        "distance_m": 39.98235148355384,
-        "speed_mps": 0.19999953676945886,
-        "action": 7,
-        "step": 1000,
-        "reason": "time_limit",
-        "speed_compliance": 1.0,
-        "world": "rounded_rectangle_005.sdf",
-        "spawn_index": 7,
-        "spawn_pose": [
-          -0.019926670772350816,
-          -1.9540675062712032,
-          0.0,
-          3.1465994439573812
-        ]
+        "updated_at": "2026-10-11T14:57:07.931005+00:00",
+        "phase": "starting",
+        "episode_number": 0,
+        "max_episode_sim_sec": 200.0
       },
       "curves": {
         "reward": [
@@ -43776,6 +43761,6 @@
     "media/validation.png": "98a713b0515f53fc",
     "media/learning.png": "0b5b1b39b0201a9b"
   },
-  "snapshot_id": "db7816e46656891e6fd32c70ca33f472cf023236855ad86b4ae054559fd3a32f",
-  "generated_at": "2026-10-11T14:57:02.093374+00:00"
+  "snapshot_id": "9fe57f613a965f6b0eb1ddf5327e5c23ad2289d26d794be1dc9e7e4d27b104c0",
+  "generated_at": "2026-10-11T14:57:15.326925+00:00"
 }
