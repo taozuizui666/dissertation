@@ -5,7 +5,7 @@
     {
       "id": "PPO_privileged_20261011_212817_3a2a9e",
       "started_at": "2026-10-11T21:28:17.971360+08:00",
-      "ended_at": null,
+      "ended_at": "2026-10-11T22:13:11.489999+08:00",
       "observation_mode": "privileged",
       "observation_spec": {
         "kind": "ground_truth_local_distance_field_v1",
@@ -31,18 +31,18 @@
         "lidar_required": false,
         "pose_source": "gazebo_physics_step_ack"
       },
-      "status": "training",
-      "is_running": true,
-      "updated_at": "2026-10-11T14:12:37.926613+00:00",
-      "phase": "periodic_evaluation",
-      "steps": 2492578,
+      "status": "time_budget_reached",
+      "is_running": false,
+      "updated_at": "2026-10-11T22:13:11.489999+08:00",
+      "phase": "finished",
+      "steps": 2492584,
       "start_steps": 2392588,
       "target_steps": 12392588,
-      "elapsed_wall_sec": 2285.0571268680014,
+      "elapsed_wall_sec": 2693.518639087677,
       "time_budget_sec": 2400.0,
-      "remaining_wall_sec": 114.94287313199857,
+      "remaining_wall_sec": null,
       "training_deadline": "2026-10-11T22:08:19.278311+08:00",
-      "samples_per_sec": 43.75820579026426,
+      "samples_per_sec": 37.14269019867451,
       "total_episodes": 96,
       "episode_limit_sec": 200.0,
       "num_envs": 6,
@@ -61,8 +61,8 @@
       "map_evaluation": [
         {
           "world": "rounded_rectangle_005.sdf",
-          "training_steps": 2472580,
-          "updated_at": "2026-10-11T22:04:19.085964+08:00",
+          "training_steps": 2492578,
+          "updated_at": "2026-10-11T22:13:11.426824+08:00",
           "stats": {
             "count": 8,
             "counts": {
@@ -110,14 +110,14 @@
             "longest_observed_sec": 199.9999999999972,
             "longest_completed_sec": 199.9999999999972,
             "total_sim_sec": 1599.9999999999777,
-            "total_distance_m": 319.94621171802316,
-            "mean_speed_mps": 0.19999941562113324
+            "total_distance_m": 319.9459744660289,
+            "mean_speed_mps": 0.1999992383732995
           }
         },
         {
           "world": "ellipse_006.sdf",
-          "training_steps": 2472580,
-          "updated_at": "2026-10-11T22:04:19.085964+08:00",
+          "training_steps": 2492578,
+          "updated_at": "2026-10-11T22:13:11.426824+08:00",
           "stats": {
             "count": 8,
             "counts": {
@@ -165,8 +165,8 @@
             "longest_observed_sec": 199.9999999999972,
             "longest_completed_sec": 199.9999999999972,
             "total_sim_sec": 1599.9999999999777,
-            "total_distance_m": 319.95070371538776,
-            "mean_speed_mps": 0.19999938298086628
+            "total_distance_m": 319.9504908954694,
+            "mean_speed_mps": 0.19999933062855554
           }
         }
       ],
@@ -1632,15 +1632,15 @@
       "workers": [
         {
           "worker": "worker_0",
-          "updated_at": "2026-10-11T14:06:24.326829+00:00",
-          "phase": "driving",
+          "updated_at": "2026-10-11T14:13:21.660604+00:00",
+          "phase": "closed",
           "episode_number": 17,
           "max_episode_sim_sec": 200.0,
-          "sim_duration_sec": 133.000000000001,
-          "distance_m": 26.601937738210538,
-          "speed_mps": 0.2001753151519098,
+          "sim_duration_sec": 133.20000000000098,
+          "distance_m": 26.64196580445267,
+          "speed_mps": 0.20017120913667683,
           "action": 6,
-          "step": 665,
+          "step": 666,
           "reason": "",
           "speed_compliance": 1.0,
           "world": "rounded_rectangle_001.sdf",
@@ -1654,15 +1654,15 @@
         },
         {
           "worker": "worker_1",
-          "updated_at": "2026-10-11T14:06:19.338883+00:00",
-          "phase": "driving",
+          "updated_at": "2026-10-11T14:13:21.656199+00:00",
+          "phase": "closed",
           "episode_number": 17,
           "max_episode_sim_sec": 200.0,
-          "sim_duration_sec": 106.60000000000097,
-          "distance_m": 21.308028770511683,
-          "speed_mps": 0.1998191440812536,
-          "action": 8,
-          "step": 533,
+          "sim_duration_sec": 133.20000000000098,
+          "distance_m": 26.62607409935278,
+          "speed_mps": 0.19968843650745227,
+          "action": 9,
+          "step": 666,
           "reason": "",
           "speed_compliance": 1.0,
           "world": "rounded_rectangle_003.sdf",
@@ -1676,15 +1676,15 @@
         },
         {
           "worker": "worker_2",
-          "updated_at": "2026-10-11T14:06:19.404244+00:00",
-          "phase": "driving",
+          "updated_at": "2026-10-11T14:13:21.667025+00:00",
+          "phase": "closed",
           "episode_number": 17,
           "max_episode_sim_sec": 200.0,
-          "sim_duration_sec": 107.00000000000098,
-          "distance_m": 21.401724139661866,
-          "speed_mps": 0.2001895838537871,
+          "sim_duration_sec": 133.20000000000098,
+          "distance_m": 26.64306981417948,
+          "speed_mps": 0.20018619698526735,
           "action": 6,
-          "step": 535,
+          "step": 666,
           "reason": "",
           "speed_compliance": 1.0,
           "world": "ellipse_002.sdf",
@@ -1698,15 +1698,15 @@
         },
         {
           "worker": "worker_3",
-          "updated_at": "2026-10-11T14:06:19.407966+00:00",
-          "phase": "driving",
+          "updated_at": "2026-10-11T14:13:21.658681+00:00",
+          "phase": "closed",
           "episode_number": 17,
           "max_episode_sim_sec": 200.0,
-          "sim_duration_sec": 107.00000000000098,
-          "distance_m": 21.38707542486727,
-          "speed_mps": 0.19980707642309992,
+          "sim_duration_sec": 133.20000000000098,
+          "distance_m": 26.62485629651796,
+          "speed_mps": 0.1998165123381323,
           "action": 8,
-          "step": 535,
+          "step": 666,
           "reason": "",
           "speed_compliance": 1.0,
           "world": "ellipse_004.sdf",
@@ -1720,15 +1720,15 @@
         },
         {
           "worker": "worker_4",
-          "updated_at": "2026-10-11T14:06:19.369286+00:00",
-          "phase": "driving",
+          "updated_at": "2026-10-11T14:13:21.649032+00:00",
+          "phase": "closed",
           "episode_number": 17,
           "max_episode_sim_sec": 200.0,
-          "sim_duration_sec": 106.80000000000098,
-          "distance_m": 21.36147127306769,
-          "speed_mps": 0.20019112418930285,
-          "action": 6,
-          "step": 534,
+          "sim_duration_sec": 133.20000000000098,
+          "distance_m": 26.64274198969579,
+          "speed_mps": 0.19999910483675346,
+          "action": 7,
+          "step": 666,
           "reason": "",
           "speed_compliance": 1.0,
           "world": "train_world3.sdf",
@@ -1742,15 +1742,15 @@
         },
         {
           "worker": "worker_5",
-          "updated_at": "2026-10-11T14:06:24.324529+00:00",
-          "phase": "driving",
+          "updated_at": "2026-10-11T14:13:21.663544+00:00",
+          "phase": "closed",
           "episode_number": 17,
           "max_episode_sim_sec": 200.0,
-          "sim_duration_sec": 133.000000000001,
-          "distance_m": 26.601629384682283,
-          "speed_mps": 0.20017936721138158,
+          "sim_duration_sec": 133.20000000000098,
+          "distance_m": 26.641658282832335,
+          "speed_mps": 0.2001741611030717,
           "action": 6,
-          "step": 665,
+          "step": 666,
           "reason": "",
           "speed_compliance": 1.0,
           "world": "rounded_rectangle_001.sdf",
@@ -1765,24 +1765,23 @@
       ],
       "periodic_evaluation": {
         "worker": "定期评估",
-        "updated_at": "2026-10-11T14:12:37.926613+00:00",
-        "phase": "driving",
-        "episode_number": 16,
+        "updated_at": "2026-10-11T14:13:32.726643+00:00",
+        "phase": "closed",
+        "episode_number": 17,
         "max_episode_sim_sec": 200.0,
-        "sim_duration_sec": 38.400000000000006,
-        "distance_m": 7.673363344876169,
-        "speed_mps": 0.19999904745436725,
-        "action": 7,
-        "step": 192,
+        "sim_duration_sec": 0.0,
+        "distance_m": 0.0,
+        "speed_mps": 0.0,
+        "action": null,
+        "step": 0,
         "reason": "",
-        "speed_compliance": 1.0,
-        "world": "ellipse_006.sdf",
-        "spawn_index": 7,
+        "world": "rounded_rectangle_005.sdf",
+        "spawn_index": 0,
         "spawn_pose": [
-          0.014854057886616194,
-          -1.9648275317314268,
+          1.2529624971103608,
+          -0.009027527981023471,
           0.0,
-          3.2500565675758306
+          1.7281278682653691
         ]
       },
       "curves": {
@@ -2796,6 +2795,10 @@
           [
             2490892,
             2.7371203032089397e-05
+          ],
+          [
+            2492578,
+            6.028590360074304e-05
           ]
         ],
         "kl": [
@@ -2922,6 +2925,10 @@
           [
             2490892,
             0.013508182018995285
+          ],
+          [
+            2492578,
+            0.011530847288668156
           ]
         ],
         "entropy": [
@@ -3048,6 +3055,10 @@
           [
             2490892,
             -0.2553417980670929
+          ],
+          [
+            2492578,
+            -0.2590201795101166
           ]
         ],
         "explained_variance": [
@@ -3174,6 +3185,10 @@
           [
             2490892,
             0.975827693939209
+          ],
+          [
+            2492578,
+            0.9751918911933899
           ]
         ]
       }
@@ -41176,6 +41191,6 @@
     "media/validation.png": "98a713b0515f53fc",
     "media/learning.png": "0b5b1b39b0201a9b"
   },
-  "snapshot_id": "6954bd427b6ea4f702b72130ba867c28a65fa36ed375bb245dc10c7cda3c9866",
-  "generated_at": "2026-10-11T14:12:41.218536+00:00"
+  "snapshot_id": "8aecfa3732721308312c85476e0a893466f307886d875e03a82c57c05db5cd82",
+  "generated_at": "2026-10-11T14:13:32.737500+00:00"
 }
