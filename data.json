@@ -3,6 +3,625 @@
   "task": "持续避障巡航",
   "runs": [
     {
+      "id": "PPO_privileged_20261011_212817_3a2a9e",
+      "started_at": "2026-10-11T21:28:17.971360+08:00",
+      "ended_at": null,
+      "observation_mode": "privileged",
+      "observation_spec": {
+        "kind": "ground_truth_local_distance_field_v1",
+        "dimension": 292,
+        "settings": {
+          "grid_rows": 17,
+          "grid_cols": 17,
+          "grid_back_m": 0.4,
+          "grid_front_m": 1.4,
+          "grid_half_width_m": 0.9,
+          "distance_clip_m": 0.5,
+          "body_clearance_radius_m": 0.085,
+          "forward_check_m": 1.5,
+          "forward_check_samples": 61,
+          "obstacle_z_min_m": 0.02,
+          "obstacle_z_max_m": 0.22
+        },
+        "state_features": [
+          "forward_speed",
+          "yaw_rate",
+          "previous_action"
+        ],
+        "lidar_required": false,
+        "pose_source": "gazebo_physics_step_ack"
+      },
+      "status": "training",
+      "is_running": true,
+      "updated_at": "2026-10-11T13:29:14.490595+00:00",
+      "phase": "collecting",
+      "steps": 2401246,
+      "start_steps": 2392588,
+      "target_steps": 12392588,
+      "elapsed_wall_sec": 55.21226296999885,
+      "time_budget_sec": 2400.0,
+      "remaining_wall_sec": 2344.787737030001,
+      "training_deadline": "2026-10-11T22:08:19.278311+08:00",
+      "samples_per_sec": 156.81298925755988,
+      "total_episodes": 6,
+      "episode_limit_sec": 200.0,
+      "num_envs": 6,
+      "world": "train_world3.sdf",
+      "train_worlds": [
+        "train_world3.sdf",
+        "rounded_rectangle_001.sdf",
+        "rounded_rectangle_003.sdf",
+        "ellipse_002.sdf",
+        "ellipse_004.sdf"
+      ],
+      "eval_worlds": [
+        "rounded_rectangle_005.sdf",
+        "ellipse_006.sdf"
+      ],
+      "map_evaluation": [
+        {
+          "world": "rounded_rectangle_005.sdf",
+          "training_steps": null,
+          "updated_at": null,
+          "stats": {
+            "count": 0,
+            "counts": {
+              "collision": 0,
+              "stuck": 0,
+              "looping": 0,
+              "slow": 0,
+              "out_of_bounds": 0,
+              "time_limit": 0
+            },
+            "failure_count": 0,
+            "failures": {
+              "collision": {
+                "count": 0,
+                "mean_sec": null,
+                "min_sec": null,
+                "last": null
+              },
+              "stuck": {
+                "count": 0,
+                "mean_sec": null,
+                "min_sec": null,
+                "last": null
+              },
+              "looping": {
+                "count": 0,
+                "mean_sec": null,
+                "min_sec": null,
+                "last": null
+              },
+              "slow": {
+                "count": 0,
+                "mean_sec": null,
+                "min_sec": null,
+                "last": null
+              },
+              "out_of_bounds": {
+                "count": 0,
+                "mean_sec": null,
+                "min_sec": null,
+                "last": null
+              }
+            },
+            "completion_rate": null,
+            "longest_observed_sec": null,
+            "longest_completed_sec": null,
+            "total_sim_sec": 0,
+            "total_distance_m": 0,
+            "mean_speed_mps": null
+          }
+        },
+        {
+          "world": "ellipse_006.sdf",
+          "training_steps": null,
+          "updated_at": null,
+          "stats": {
+            "count": 0,
+            "counts": {
+              "collision": 0,
+              "stuck": 0,
+              "looping": 0,
+              "slow": 0,
+              "out_of_bounds": 0,
+              "time_limit": 0
+            },
+            "failure_count": 0,
+            "failures": {
+              "collision": {
+                "count": 0,
+                "mean_sec": null,
+                "min_sec": null,
+                "last": null
+              },
+              "stuck": {
+                "count": 0,
+                "mean_sec": null,
+                "min_sec": null,
+                "last": null
+              },
+              "looping": {
+                "count": 0,
+                "mean_sec": null,
+                "min_sec": null,
+                "last": null
+              },
+              "slow": {
+                "count": 0,
+                "mean_sec": null,
+                "min_sec": null,
+                "last": null
+              },
+              "out_of_bounds": {
+                "count": 0,
+                "mean_sec": null,
+                "min_sec": null,
+                "last": null
+              }
+            },
+            "completion_rate": null,
+            "longest_observed_sec": null,
+            "longest_completed_sec": null,
+            "total_sim_sec": 0,
+            "total_distance_m": 0,
+            "mean_speed_mps": null
+          }
+        }
+      ],
+      "vehicle": {
+        "label_count": 15,
+        "forward_speed_mps": 0.2,
+        "max_wheel_speed_ratio": 0.6,
+        "wheel_radius_m": 0.0325,
+        "wheel_separation_m": 0.11,
+        "command_publish_hz": 50.0,
+        "command_timeout_ms": 500,
+        "stop_command": 200,
+        "sim_max_wheel_accel_mps2": 0.0,
+        "sim_max_wheel_torque_nm": 5.0,
+        "sim_drive_update_hz": 100.0,
+        "sim_time_step_sec": 0.001,
+        "lidar_point_count": 200,
+        "lidar_front_sector_only": 1,
+        "lidar_max_distance_mm": 10000,
+        "lidar_mount_yaw_deg": 0.0,
+        "lidar_x_m": 0.017,
+        "lidar_y_m": 0.0,
+        "lidar_z_m": 0.13,
+        "lidar_scan_hz": 5.5,
+        "lidar_raw_samples": 1450,
+        "lidar_min_range_m": 0.15,
+        "lidar_physical_max_range_m": 12.0,
+        "lidar_noise_stddev_m": 0.01
+      },
+      "environment": {
+        "step_sim_sec": 0.2,
+        "reset_settle_sec": 0.4,
+        "startup_timeout_sec": 60.0,
+        "data_timeout_sec": 10.0,
+        "state_max_age_sec": 0.03,
+        "command_heartbeat_sec": 0.1,
+        "max_steps": 1000,
+        "stuck_window_sec": 3.0,
+        "stuck_min_travel_m": 0.02,
+        "min_cruise_speed_ratio": 0.75,
+        "speed_tolerance_ratio": 0.2,
+        "loop_window_sec": 12.0,
+        "loop_min_duration_sec": 6.0,
+        "loop_min_turn_rad": 5.5,
+        "loop_max_span_m": 0.65,
+        "workspace_bounds": null
+      },
+      "ppo": {
+        "LEARNING_RATE": 0.0003,
+        "BATCH_SIZE": 256,
+        "N_EPOCHS": 10,
+        "GAMMA": 0.99,
+        "GAE_LAMBDA": 0.95,
+        "CLIP_RANGE": 0.2,
+        "ENTROPY_COEFF": 0.005,
+        "VALUE_COEFF": 0.5,
+        "MAX_GRAD_NORM": 0.5,
+        "POLICY_NET_ARCH": [
+          128,
+          128
+        ]
+      },
+      "seed": 42,
+      "device": "cpu",
+      "rollout_steps": 512,
+      "error_type": null,
+      "recent": {
+        "count": 6,
+        "counts": {
+          "collision": 0,
+          "stuck": 0,
+          "looping": 0,
+          "slow": 0,
+          "out_of_bounds": 0,
+          "time_limit": 6
+        },
+        "failure_count": 0,
+        "failures": {
+          "collision": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "stuck": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "looping": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "slow": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "out_of_bounds": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          }
+        },
+        "completion_rate": 1.0,
+        "longest_observed_sec": 199.9999999999972,
+        "longest_completed_sec": 199.9999999999972,
+        "total_sim_sec": 1199.9999999999832,
+        "total_distance_m": 239.96011195529692,
+        "mean_speed_mps": 0.19999913364123076
+      },
+      "episodes": [
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 39.9805272119706,
+          "mean_speed_mps": 0.19993499495327302,
+          "speed_compliance": 1.0,
+          "reward": 334.643976,
+          "scenario": null,
+          "world": "train_world3.sdf",
+          "spawn_index": 0.0,
+          "number": 1,
+          "worker": "worker_0",
+          "ended_at": "2026-10-11T13:28:58.993853+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 39.980981817075694,
+          "mean_speed_mps": 0.1999353673200373,
+          "speed_compliance": 1.0,
+          "reward": 338.733962,
+          "scenario": null,
+          "world": "ellipse_002.sdf",
+          "spawn_index": 3.0,
+          "number": 1,
+          "worker": "worker_3",
+          "ended_at": "2026-10-11T13:28:58.992856+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 40.00782290677887,
+          "mean_speed_mps": 0.2000708558516713,
+          "speed_compliance": 1.0,
+          "reward": 337.905735,
+          "scenario": null,
+          "world": "ellipse_004.sdf",
+          "spawn_index": 2.0,
+          "number": 1,
+          "worker": "worker_4",
+          "ended_at": "2026-10-11T13:28:58.992670+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 40.0051937117727,
+          "mean_speed_mps": 0.20005911601423937,
+          "speed_compliance": 1.0,
+          "reward": 331.821117,
+          "scenario": null,
+          "world": "rounded_rectangle_003.sdf",
+          "spawn_index": 2.0,
+          "number": 1,
+          "worker": "worker_2",
+          "ended_at": "2026-10-11T13:28:58.990288+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 39.98048195108335,
+          "mean_speed_mps": 0.1999355026511507,
+          "speed_compliance": 1.0,
+          "reward": 334.492381,
+          "scenario": null,
+          "world": "train_world3.sdf",
+          "spawn_index": 0.0,
+          "number": 1,
+          "worker": "worker_5",
+          "ended_at": "2026-10-11T13:28:58.989454+00:00"
+        },
+        {
+          "reason": "time_limit",
+          "sim_duration_sec": 199.9999999999972,
+          "distance_m": 40.005104356615696,
+          "mean_speed_mps": 0.20005896505701287,
+          "speed_compliance": 1.0,
+          "reward": 331.970735,
+          "scenario": null,
+          "world": "rounded_rectangle_001.sdf",
+          "spawn_index": 2.0,
+          "number": 1,
+          "worker": "worker_1",
+          "ended_at": "2026-10-11T13:28:58.988303+00:00"
+        }
+      ],
+      "workers": [
+        {
+          "worker": "worker_0",
+          "updated_at": "2026-10-11T13:29:14.177719+00:00",
+          "phase": "driving",
+          "episode_number": 2,
+          "max_episode_sim_sec": 200.0,
+          "sim_duration_sec": 86.8000000000007,
+          "distance_m": 17.35990695272218,
+          "speed_mps": 0.199999503780187,
+          "action": 7,
+          "step": 434,
+          "reason": "",
+          "speed_compliance": 1.0,
+          "world": "train_world3.sdf",
+          "spawn_index": 3,
+          "spawn_pose": [
+            -2.4943493591267414,
+            -2.9714626589017947,
+            0.0,
+            -1.4796413746467276
+          ]
+        },
+        {
+          "worker": "worker_1",
+          "updated_at": "2026-10-11T13:29:14.182491+00:00",
+          "phase": "driving",
+          "episode_number": 2,
+          "max_episode_sim_sec": 200.0,
+          "sim_duration_sec": 86.8000000000007,
+          "distance_m": 17.360020717297214,
+          "speed_mps": 0.19980962871236435,
+          "action": 8,
+          "step": 434,
+          "reason": "",
+          "speed_compliance": 1.0,
+          "world": "rounded_rectangle_001.sdf",
+          "spawn_index": 2,
+          "spawn_pose": [
+            -1.3865994566820816,
+            -0.016517686187782536,
+            0.0,
+            -1.4829042433086692
+          ]
+        },
+        {
+          "worker": "worker_2",
+          "updated_at": "2026-10-11T13:29:14.220492+00:00",
+          "phase": "driving",
+          "episode_number": 2,
+          "max_episode_sim_sec": 200.0,
+          "sim_duration_sec": 87.0000000000007,
+          "distance_m": 17.400196789827547,
+          "speed_mps": 0.1999993228026533,
+          "action": 7,
+          "step": 435,
+          "reason": "",
+          "speed_compliance": 1.0,
+          "world": "rounded_rectangle_003.sdf",
+          "spawn_index": 0,
+          "spawn_pose": [
+            1.3063155733927152,
+            0.021437620413406293,
+            0.0,
+            1.4531769377953987
+          ]
+        },
+        {
+          "worker": "worker_3",
+          "updated_at": "2026-10-11T13:29:14.218544+00:00",
+          "phase": "driving",
+          "episode_number": 2,
+          "max_episode_sim_sec": 200.0,
+          "sim_duration_sec": 87.0000000000007,
+          "distance_m": 17.400622567747686,
+          "speed_mps": 0.20000028303561906,
+          "action": 7,
+          "step": 435,
+          "reason": "",
+          "speed_compliance": 1.0,
+          "world": "ellipse_002.sdf",
+          "spawn_index": 2,
+          "spawn_pose": [
+            -1.4203276329371604,
+            0.016760380343867246,
+            0.0,
+            -1.4674332843591327
+          ]
+        },
+        {
+          "worker": "worker_4",
+          "updated_at": "2026-10-11T13:29:14.251058+00:00",
+          "phase": "driving",
+          "episode_number": 2,
+          "max_episode_sim_sec": 200.0,
+          "sim_duration_sec": 87.2000000000007,
+          "distance_m": 17.42881325639095,
+          "speed_mps": 0.19999869273635196,
+          "action": 7,
+          "step": 436,
+          "reason": "",
+          "speed_compliance": 1.0,
+          "world": "ellipse_004.sdf",
+          "spawn_index": 3,
+          "spawn_pose": [
+            0.026041704497361852,
+            -1.8044382530583327,
+            0.0,
+            3.186702352009536
+          ]
+        },
+        {
+          "worker": "worker_5",
+          "updated_at": "2026-10-11T13:29:14.179900+00:00",
+          "phase": "driving",
+          "episode_number": 2,
+          "max_episode_sim_sec": 200.0,
+          "sim_duration_sec": 86.8000000000007,
+          "distance_m": 17.349560924217403,
+          "speed_mps": 0.19985106827034546,
+          "action": 8,
+          "step": 434,
+          "reason": "",
+          "speed_compliance": 1.0,
+          "world": "train_world3.sdf",
+          "spawn_index": 2,
+          "spawn_pose": [
+            -1.171988889010456,
+            -4.950754980747243,
+            0.0,
+            3.036988631678144
+          ]
+        }
+      ],
+      "periodic_evaluation": null,
+      "curves": {
+        "reward": [
+          [
+            2395660,
+            250.720947265625
+          ],
+          [
+            2398732,
+            255.77818298339844
+          ],
+          [
+            2401804,
+            255.77818298339844
+          ]
+        ],
+        "completion": [
+          [
+            2398732,
+            1.0
+          ],
+          [
+            2401804,
+            1.0
+          ]
+        ],
+        "collision": [
+          [
+            2398732,
+            0.0
+          ],
+          [
+            2401804,
+            0.0
+          ]
+        ],
+        "stuck": [
+          [
+            2398732,
+            0.0
+          ],
+          [
+            2401804,
+            0.0
+          ]
+        ],
+        "looping": [
+          [
+            2398732,
+            0.0
+          ],
+          [
+            2401804,
+            0.0
+          ]
+        ],
+        "speed": [
+          [
+            2398732,
+            0.199999138712883
+          ],
+          [
+            2401804,
+            0.199999138712883
+          ]
+        ],
+        "duration": [
+          [
+            2398732,
+            200.0
+          ],
+          [
+            2401804,
+            200.0
+          ]
+        ],
+        "value_loss": [
+          [
+            2398732,
+            9.330491593573242e-05
+          ],
+          [
+            2401804,
+            0.00015273294411599636
+          ]
+        ],
+        "kl": [
+          [
+            2398732,
+            0.007154385093599558
+          ],
+          [
+            2401804,
+            0.010058430954813957
+          ]
+        ],
+        "entropy": [
+          [
+            2398732,
+            -0.17138203978538513
+          ],
+          [
+            2401804,
+            -0.17148765921592712
+          ]
+        ],
+        "explained_variance": [
+          [
+            2398732,
+            0.5845508575439453
+          ],
+          [
+            2401804,
+            0.8621323108673096
+          ]
+        ]
+      }
+    },
+    {
       "id": "PPO_privileged_20261011_012519_9587cf",
       "started_at": "2026-10-11T01:25:19.066927+08:00",
       "ended_at": "2026-10-11T07:25:23.540355+08:00",
@@ -36316,7 +36935,7 @@
       }
     }
   ],
-  "default_run_id": "PPO_privileged_20261011_012519_9587cf",
+  "default_run_id": "PPO_privileged_20261011_212817_3a2a9e",
   "validated_model": {
     "id": "validated_privileged_2392588_20261011_074049",
     "verified": true,
@@ -38000,6 +38619,6 @@
     "media/validation.png": "98a713b0515f53fc",
     "media/learning.png": "0b5b1b39b0201a9b"
   },
-  "snapshot_id": "c27d6d12ed5dc834dd80b9b5b5971573980b717a732a1c62e9891c62149376a2",
-  "generated_at": "2026-10-11T13:28:17.423198+00:00"
+  "snapshot_id": "12bb939efb6b4e2bce4518a0377fa6436739a61c3eb4cabda73cf23dc474627c",
+  "generated_at": "2026-10-11T13:29:17.932443+00:00"
 }
