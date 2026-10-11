@@ -35312,6 +35312,77 @@
   },
   "evaluations": [
     {
+      "id": "evaluation_20261011_102545_3003a4",
+      "status": "failed",
+      "observation_mode": "privileged",
+      "is_running": false,
+      "updated_at": "2026-10-11T02:25:47.530660+00:00",
+      "model_name": "model.zip",
+      "model_sha256": "7171b17cb1e492ec0434887bbb0128e0246ae0ce0d15875f1854a14d246b3365",
+      "model_run": "validated_privileged_2392588_20261011_074049",
+      "completed_episodes": 0,
+      "total_episodes": 1,
+      "stats": {
+        "count": 0,
+        "counts": {
+          "collision": 0,
+          "stuck": 0,
+          "looping": 0,
+          "slow": 0,
+          "out_of_bounds": 0,
+          "time_limit": 0
+        },
+        "failure_count": 0,
+        "failures": {
+          "collision": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "stuck": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "looping": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "slow": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "out_of_bounds": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          }
+        },
+        "completion_rate": null,
+        "longest_observed_sec": null,
+        "longest_completed_sec": null,
+        "total_sim_sec": 0,
+        "total_distance_m": 0,
+        "mean_speed_mps": null
+      },
+      "live": {
+        "worker": "独立评估",
+        "updated_at": "2026-10-11T02:25:47.530660+00:00",
+        "phase": "closed",
+        "episode_number": 0,
+        "max_episode_sim_sec": 180.0
+      },
+      "passed": null,
+      "error_type": "AttributeError"
+    },
+    {
       "id": "evaluation_20261011_102417_a5c14c",
       "status": "failed",
       "observation_mode": "privileged",
@@ -35780,6 +35851,6 @@
     "media/validation.png": "98a713b0515f53fc",
     "media/learning.png": "0b5b1b39b0201a9b"
   },
-  "snapshot_id": "d0098a5867a178497aade92ab644bfe936237efaad5ef3e0531cbd3bb0994776",
-  "generated_at": "2026-10-11T02:24:36.917356+00:00"
+  "snapshot_id": "46ca2745600a8739d89b52831c62d878799c76e9c9c9c5ddb883e2332bbe463d",
+  "generated_at": "2026-10-11T02:25:52.140805+00:00"
 }
