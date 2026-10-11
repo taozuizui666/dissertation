@@ -47,6 +47,9 @@
       "episode_limit_sec": 150.0,
       "num_envs": 4,
       "world": "train_world3.sdf",
+      "train_worlds": [],
+      "eval_worlds": [],
+      "map_evaluation": [],
       "vehicle": {
         "label_count": 15,
         "forward_speed_mps": 0.2,
@@ -174,6 +177,8 @@
           "speed_compliance": 1.0,
           "reward": 250.431532,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 821,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:25:22.830660+00:00"
@@ -186,6 +191,8 @@
           "speed_compliance": 1.0,
           "reward": 250.077913,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 819,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:25:17.353360+00:00"
@@ -198,6 +205,8 @@
           "speed_compliance": 1.0,
           "reward": 251.374733,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 819,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:25:17.347337+00:00"
@@ -210,6 +219,8 @@
           "speed_compliance": 1.0,
           "reward": 250.408502,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 819,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:25:17.346093+00:00"
@@ -222,6 +233,8 @@
           "speed_compliance": 1.0,
           "reward": 250.797364,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 820,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:25:03.439836+00:00"
@@ -234,6 +247,8 @@
           "speed_compliance": 1.0,
           "reward": 251.389939,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 818,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:24:58.037318+00:00"
@@ -246,6 +261,8 @@
           "speed_compliance": 1.0,
           "reward": 249.480355,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 818,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:24:58.033558+00:00"
@@ -258,6 +275,8 @@
           "speed_compliance": 1.0,
           "reward": 250.297622,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 818,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:24:58.031469+00:00"
@@ -270,6 +289,8 @@
           "speed_compliance": 1.0,
           "reward": 250.224024,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 819,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:24:44.177130+00:00"
@@ -282,6 +303,8 @@
           "speed_compliance": 1.0,
           "reward": 250.365621,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 817,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:24:38.592848+00:00"
@@ -294,6 +317,8 @@
           "speed_compliance": 1.0,
           "reward": 250.275068,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 817,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:24:38.591133+00:00"
@@ -306,6 +331,8 @@
           "speed_compliance": 1.0,
           "reward": 251.291654,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 817,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:24:38.589971+00:00"
@@ -318,6 +345,8 @@
           "speed_compliance": 1.0,
           "reward": 250.755039,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 818,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:22:31.246953+00:00"
@@ -330,6 +359,8 @@
           "speed_compliance": 1.0,
           "reward": 250.070744,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 816,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:22:25.657843+00:00"
@@ -342,6 +373,8 @@
           "speed_compliance": 1.0,
           "reward": 250.326195,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 816,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:22:25.656732+00:00"
@@ -354,6 +387,8 @@
           "speed_compliance": 1.0,
           "reward": 251.289473,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 816,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:22:25.654585+00:00"
@@ -366,6 +401,8 @@
           "speed_compliance": 1.0,
           "reward": 250.65335,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 817,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:22:11.528955+00:00"
@@ -378,6 +415,8 @@
           "speed_compliance": 1.0,
           "reward": 250.1061,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 815,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:22:05.844444+00:00"
@@ -390,6 +429,8 @@
           "speed_compliance": 1.0,
           "reward": 251.287757,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 815,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:22:05.842119+00:00"
@@ -402,6 +443,8 @@
           "speed_compliance": 1.0,
           "reward": 250.421022,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 815,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:22:05.839131+00:00"
@@ -414,6 +457,8 @@
           "speed_compliance": 1.0,
           "reward": 250.695865,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 816,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:21:51.631539+00:00"
@@ -426,6 +471,8 @@
           "speed_compliance": 1.0,
           "reward": 251.404348,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 814,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:21:46.039654+00:00"
@@ -438,6 +485,8 @@
           "speed_compliance": 1.0,
           "reward": 250.08991,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 814,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:21:46.038259+00:00"
@@ -450,6 +499,8 @@
           "speed_compliance": 1.0,
           "reward": 250.44761,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 814,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:21:46.037966+00:00"
@@ -462,6 +513,8 @@
           "speed_compliance": 1.0,
           "reward": 250.573308,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 815,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:21:32.057433+00:00"
@@ -474,6 +527,8 @@
           "speed_compliance": 1.0,
           "reward": 251.445671,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 813,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:21:26.404010+00:00"
@@ -486,6 +541,8 @@
           "speed_compliance": 1.0,
           "reward": 250.07566,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 813,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:21:26.401369+00:00"
@@ -498,6 +555,8 @@
           "speed_compliance": 1.0,
           "reward": 250.218156,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 813,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:21:26.398116+00:00"
@@ -510,6 +569,8 @@
           "speed_compliance": 1.0,
           "reward": 250.744424,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 814,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:21:12.553845+00:00"
@@ -522,6 +583,8 @@
           "speed_compliance": 1.0,
           "reward": 249.953084,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 812,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:21:06.926988+00:00"
@@ -534,6 +597,8 @@
           "speed_compliance": 1.0,
           "reward": 251.400932,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 812,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:21:06.920594+00:00"
@@ -546,6 +611,8 @@
           "speed_compliance": 1.0,
           "reward": 250.541336,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 812,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:21:06.919058+00:00"
@@ -558,6 +625,8 @@
           "speed_compliance": 1.0,
           "reward": 250.302261,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 813,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:20:52.821534+00:00"
@@ -570,6 +639,8 @@
           "speed_compliance": 1.0,
           "reward": 251.062034,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 811,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:20:47.089071+00:00"
@@ -582,6 +653,8 @@
           "speed_compliance": 1.0,
           "reward": 249.27358,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 811,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:20:47.087645+00:00"
@@ -594,6 +667,8 @@
           "speed_compliance": 1.0,
           "reward": 250.488643,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 811,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:20:47.084191+00:00"
@@ -606,6 +681,8 @@
           "speed_compliance": 1.0,
           "reward": 250.699661,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 812,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:20:33.103150+00:00"
@@ -618,6 +695,8 @@
           "speed_compliance": 1.0,
           "reward": 250.557581,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 810,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:20:27.540038+00:00"
@@ -630,6 +709,8 @@
           "speed_compliance": 1.0,
           "reward": 250.138454,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 810,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:20:27.539691+00:00"
@@ -642,6 +723,8 @@
           "speed_compliance": 1.0,
           "reward": 251.318459,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 810,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:20:27.536591+00:00"
@@ -654,6 +737,8 @@
           "speed_compliance": 1.0,
           "reward": 250.838624,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 811,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:20:13.338433+00:00"
@@ -666,6 +751,8 @@
           "speed_compliance": 1.0,
           "reward": 251.263651,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 809,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:20:07.767589+00:00"
@@ -678,6 +765,8 @@
           "speed_compliance": 1.0,
           "reward": 250.197578,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 809,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:20:07.759458+00:00"
@@ -690,6 +779,8 @@
           "speed_compliance": 1.0,
           "reward": 250.532033,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 809,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:20:07.759052+00:00"
@@ -702,6 +793,8 @@
           "speed_compliance": 1.0,
           "reward": 250.766894,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 810,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:19:53.877625+00:00"
@@ -714,6 +807,8 @@
           "speed_compliance": 1.0,
           "reward": 251.433465,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 808,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:19:48.088643+00:00"
@@ -726,6 +821,8 @@
           "speed_compliance": 1.0,
           "reward": 250.534248,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 808,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:19:48.080547+00:00"
@@ -738,6 +835,8 @@
           "speed_compliance": 1.0,
           "reward": 250.264692,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 808,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:19:48.080524+00:00"
@@ -750,6 +849,8 @@
           "speed_compliance": 1.0,
           "reward": 250.676838,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 809,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:19:34.112582+00:00"
@@ -762,6 +863,8 @@
           "speed_compliance": 1.0,
           "reward": 250.323717,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 807,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:19:28.599782+00:00"
@@ -774,6 +877,8 @@
           "speed_compliance": 1.0,
           "reward": 249.865067,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 807,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:19:28.598581+00:00"
@@ -786,6 +891,8 @@
           "speed_compliance": 1.0,
           "reward": 251.369172,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 807,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:19:28.597558+00:00"
@@ -798,6 +905,8 @@
           "speed_compliance": 1.0,
           "reward": 250.783384,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 808,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:19:14.456723+00:00"
@@ -810,6 +919,8 @@
           "speed_compliance": 1.0,
           "reward": 250.297961,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 806,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:19:08.869377+00:00"
@@ -822,6 +933,8 @@
           "speed_compliance": 1.0,
           "reward": 250.299056,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 806,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:19:08.864648+00:00"
@@ -834,6 +947,8 @@
           "speed_compliance": 1.0,
           "reward": 251.232942,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 806,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:19:08.862067+00:00"
@@ -846,6 +961,8 @@
           "speed_compliance": 1.0,
           "reward": 250.951514,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 807,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:18:54.800340+00:00"
@@ -858,6 +975,8 @@
           "speed_compliance": 1.0,
           "reward": 250.289273,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 805,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:18:49.340026+00:00"
@@ -870,6 +989,8 @@
           "speed_compliance": 1.0,
           "reward": 251.162846,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 805,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:18:49.338778+00:00"
@@ -882,6 +1003,8 @@
           "speed_compliance": 1.0,
           "reward": 250.338888,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 805,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:18:49.336224+00:00"
@@ -894,6 +1017,8 @@
           "speed_compliance": 1.0,
           "reward": 250.655505,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 806,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:18:35.628192+00:00"
@@ -906,6 +1031,8 @@
           "speed_compliance": 1.0,
           "reward": 251.347077,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 804,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:18:29.892308+00:00"
@@ -918,6 +1045,8 @@
           "speed_compliance": 1.0,
           "reward": 250.244161,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 804,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:18:29.891988+00:00"
@@ -930,6 +1059,8 @@
           "speed_compliance": 1.0,
           "reward": 250.297371,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 804,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:18:29.891132+00:00"
@@ -942,6 +1073,8 @@
           "speed_compliance": 1.0,
           "reward": 250.600537,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 805,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:18:15.752087+00:00"
@@ -954,6 +1087,8 @@
           "speed_compliance": 1.0,
           "reward": 250.412709,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 803,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:18:10.215344+00:00"
@@ -966,6 +1101,8 @@
           "speed_compliance": 1.0,
           "reward": 250.096955,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 803,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:18:10.214452+00:00"
@@ -978,6 +1115,8 @@
           "speed_compliance": 1.0,
           "reward": 251.355557,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 803,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:18:10.214175+00:00"
@@ -990,6 +1129,8 @@
           "speed_compliance": 1.0,
           "reward": 250.656245,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 804,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:17:56.050761+00:00"
@@ -1002,6 +1143,8 @@
           "speed_compliance": 1.0,
           "reward": 250.412428,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 802,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:17:50.350961+00:00"
@@ -1014,6 +1157,8 @@
           "speed_compliance": 1.0,
           "reward": 251.318699,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 802,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:17:50.350693+00:00"
@@ -1026,6 +1171,8 @@
           "speed_compliance": 1.0,
           "reward": 250.073032,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 802,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:17:50.343207+00:00"
@@ -1038,6 +1185,8 @@
           "speed_compliance": 1.0,
           "reward": 250.673304,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 803,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:17:36.524369+00:00"
@@ -1050,6 +1199,8 @@
           "speed_compliance": 1.0,
           "reward": 250.175876,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 801,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:17:30.922302+00:00"
@@ -1062,6 +1213,8 @@
           "speed_compliance": 1.0,
           "reward": 250.084043,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 801,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:17:30.921716+00:00"
@@ -1074,6 +1227,8 @@
           "speed_compliance": 1.0,
           "reward": 251.05369,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 801,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:17:30.920995+00:00"
@@ -1086,6 +1241,8 @@
           "speed_compliance": 1.0,
           "reward": 250.419407,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 802,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:17:16.799906+00:00"
@@ -1098,6 +1255,8 @@
           "speed_compliance": 1.0,
           "reward": 249.677346,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 800,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:15:17.452333+00:00"
@@ -1110,6 +1269,8 @@
           "speed_compliance": 1.0,
           "reward": 250.178625,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 800,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:15:17.451387+00:00"
@@ -1122,6 +1283,8 @@
           "speed_compliance": 1.0,
           "reward": 251.206452,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 800,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:15:17.447890+00:00"
@@ -1134,6 +1297,8 @@
           "speed_compliance": 1.0,
           "reward": 250.673631,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 801,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:15:03.258419+00:00"
@@ -1146,6 +1311,8 @@
           "speed_compliance": 1.0,
           "reward": 251.016853,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 799,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:14:57.665831+00:00"
@@ -1158,6 +1325,8 @@
           "speed_compliance": 1.0,
           "reward": 250.257473,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 799,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:14:57.664542+00:00"
@@ -1170,6 +1339,8 @@
           "speed_compliance": 1.0,
           "reward": 250.345827,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 799,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:14:57.662878+00:00"
@@ -1182,6 +1353,8 @@
           "speed_compliance": 1.0,
           "reward": 250.593691,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 800,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:14:43.708258+00:00"
@@ -1194,6 +1367,8 @@
           "speed_compliance": 1.0,
           "reward": 250.12015,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 798,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:14:37.961399+00:00"
@@ -1206,6 +1381,8 @@
           "speed_compliance": 1.0,
           "reward": 250.472397,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 798,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:14:37.960086+00:00"
@@ -1218,6 +1395,8 @@
           "speed_compliance": 1.0,
           "reward": 251.291306,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 798,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:14:37.957601+00:00"
@@ -1230,6 +1409,8 @@
           "speed_compliance": 1.0,
           "reward": 250.786659,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 799,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:14:23.883198+00:00"
@@ -1242,6 +1423,8 @@
           "speed_compliance": 1.0,
           "reward": 251.292804,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 797,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:14:18.220915+00:00"
@@ -1254,6 +1437,8 @@
           "speed_compliance": 1.0,
           "reward": 250.000608,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 797,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:14:18.218209+00:00"
@@ -1266,6 +1451,8 @@
           "speed_compliance": 1.0,
           "reward": 250.517377,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 797,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:14:18.218087+00:00"
@@ -1278,6 +1465,8 @@
           "speed_compliance": 1.0,
           "reward": 250.746042,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 798,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:14:03.840461+00:00"
@@ -1290,6 +1479,8 @@
           "speed_compliance": 1.0,
           "reward": 251.376601,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 796,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:13:58.321387+00:00"
@@ -1302,6 +1493,8 @@
           "speed_compliance": 1.0,
           "reward": 249.915621,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 796,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:13:58.317650+00:00"
@@ -1314,6 +1507,8 @@
           "speed_compliance": 1.0,
           "reward": 250.51307,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 796,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:13:58.315744+00:00"
@@ -1326,6 +1521,8 @@
           "speed_compliance": 1.0,
           "reward": 250.77649,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 797,
           "worker": "worker_0",
           "ended_at": "2026-10-10T23:13:43.898291+00:00"
@@ -1338,6 +1535,8 @@
           "speed_compliance": 1.0,
           "reward": 249.958065,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 795,
           "worker": "worker_2",
           "ended_at": "2026-10-10T23:13:38.444955+00:00"
@@ -1350,6 +1549,8 @@
           "speed_compliance": 1.0,
           "reward": 250.522229,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 795,
           "worker": "worker_1",
           "ended_at": "2026-10-10T23:13:38.443570+00:00"
@@ -1362,6 +1563,8 @@
           "speed_compliance": 1.0,
           "reward": 251.297051,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 795,
           "worker": "worker_3",
           "ended_at": "2026-10-10T23:13:38.440271+00:00"
@@ -19109,6 +19312,9 @@
       "episode_limit_sec": 150.0,
       "num_envs": 4,
       "world": "train_world3.sdf",
+      "train_worlds": [],
+      "eval_worlds": [],
+      "map_evaluation": [],
       "vehicle": {
         "label_count": 15,
         "forward_speed_mps": 0.2,
@@ -19201,6 +19407,8 @@
               "speed_compliance": 0.9982668977469671,
               "reward": 122.852407,
               "scenario": null,
+              "world": "",
+              "spawn_index": null,
               "number": 83,
               "worker": "worker_3",
               "ended_at": "2026-10-10T17:04:37.786199+00:00"
@@ -19247,6 +19455,8 @@
           "speed_compliance": 1.0,
           "reward": 238.639524,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 80,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:12:08.790847+00:00"
@@ -19259,6 +19469,8 @@
           "speed_compliance": 1.0,
           "reward": 239.122907,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 88,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:12:06.954367+00:00"
@@ -19271,6 +19483,8 @@
           "speed_compliance": 1.0,
           "reward": 239.45188,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 94,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:11:10.654497+00:00"
@@ -19283,6 +19497,8 @@
           "speed_compliance": 1.0,
           "reward": 239.446936,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 94,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:11:06.188599+00:00"
@@ -19295,6 +19511,8 @@
           "speed_compliance": 1.0,
           "reward": 237.515868,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 79,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:10:58.002676+00:00"
@@ -19307,6 +19525,8 @@
           "speed_compliance": 1.0,
           "reward": 238.117265,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 87,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:10:56.120917+00:00"
@@ -19319,6 +19539,8 @@
           "speed_compliance": 1.0,
           "reward": 237.710661,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 93,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:10:47.666233+00:00"
@@ -19331,6 +19553,8 @@
           "speed_compliance": 1.0,
           "reward": 237.72571,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 93,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:10:43.251549+00:00"
@@ -19343,6 +19567,8 @@
           "speed_compliance": 1.0,
           "reward": 236.398232,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 78,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:10:34.578836+00:00"
@@ -19355,6 +19581,8 @@
           "speed_compliance": 1.0,
           "reward": 234.780683,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 86,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:10:32.791322+00:00"
@@ -19367,6 +19595,8 @@
           "speed_compliance": 1.0,
           "reward": 235.960072,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 92,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:10:24.492708+00:00"
@@ -19379,6 +19609,8 @@
           "speed_compliance": 1.0,
           "reward": 236.113798,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 92,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:10:19.931221+00:00"
@@ -19391,6 +19623,8 @@
           "speed_compliance": 1.0,
           "reward": 233.440468,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 77,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:10:11.778468+00:00"
@@ -19403,6 +19637,8 @@
           "speed_compliance": 1.0,
           "reward": 233.22869,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 85,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:10:10.137075+00:00"
@@ -19415,6 +19651,8 @@
           "speed_compliance": 1.0,
           "reward": 232.666377,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 91,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:10:02.612753+00:00"
@@ -19427,6 +19665,8 @@
           "speed_compliance": 1.0,
           "reward": 232.920758,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 91,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:09:15.120154+00:00"
@@ -19439,6 +19679,8 @@
           "speed_compliance": 1.0,
           "reward": 229.064014,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 76,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:09:07.633066+00:00"
@@ -19451,6 +19693,8 @@
           "speed_compliance": 1.0,
           "reward": 230.425491,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 84,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:09:05.965728+00:00"
@@ -19463,6 +19707,8 @@
           "speed_compliance": 1.0,
           "reward": 229.767798,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 90,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:08:57.102361+00:00"
@@ -19475,6 +19721,8 @@
           "speed_compliance": 1.0,
           "reward": 228.306211,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 90,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:08:52.774599+00:00"
@@ -19487,6 +19735,8 @@
           "speed_compliance": 1.0,
           "reward": 225.455704,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 75,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:08:44.202104+00:00"
@@ -19499,6 +19749,8 @@
           "speed_compliance": 1.0,
           "reward": 228.211442,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 83,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:08:42.424197+00:00"
@@ -19511,6 +19763,8 @@
           "speed_compliance": 1.0,
           "reward": 226.400119,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 89,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:08:33.905930+00:00"
@@ -19523,6 +19777,8 @@
           "speed_compliance": 1.0,
           "reward": 225.285709,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 89,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:08:29.640260+00:00"
@@ -19535,6 +19791,8 @@
           "speed_compliance": 1.0,
           "reward": 224.705688,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 74,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:08:21.287968+00:00"
@@ -19547,6 +19805,8 @@
           "speed_compliance": 1.0,
           "reward": 222.842338,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 82,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:08:19.448823+00:00"
@@ -19559,6 +19819,8 @@
           "speed_compliance": 1.0,
           "reward": 223.046149,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 88,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:08:11.191928+00:00"
@@ -19571,6 +19833,8 @@
           "speed_compliance": 1.0,
           "reward": 220.816607,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 88,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:08:06.807887+00:00"
@@ -19583,6 +19847,8 @@
           "speed_compliance": 1.0,
           "reward": 220.128813,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 73,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:07:11.221989+00:00"
@@ -19595,6 +19861,8 @@
           "speed_compliance": 1.0,
           "reward": 218.726119,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 81,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:07:09.392345+00:00"
@@ -19607,6 +19875,8 @@
           "speed_compliance": 1.0,
           "reward": 217.566087,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 87,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:07:00.920523+00:00"
@@ -19619,6 +19889,8 @@
           "speed_compliance": 1.0,
           "reward": 216.559388,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 87,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:06:56.527975+00:00"
@@ -19631,6 +19903,8 @@
           "speed_compliance": 1.0,
           "reward": 214.10806,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 72,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:06:48.243220+00:00"
@@ -19643,6 +19917,8 @@
           "speed_compliance": 1.0,
           "reward": 212.213242,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 80,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:06:46.257012+00:00"
@@ -19655,6 +19931,8 @@
           "speed_compliance": 1.0,
           "reward": 212.112984,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 86,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:06:38.063380+00:00"
@@ -19667,6 +19945,8 @@
           "speed_compliance": 1.0,
           "reward": 209.862057,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 86,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:06:33.745411+00:00"
@@ -19679,6 +19959,8 @@
           "speed_compliance": 1.0,
           "reward": 206.315629,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 71,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:06:25.347737+00:00"
@@ -19691,6 +19973,8 @@
           "speed_compliance": 1.0,
           "reward": 209.562021,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 79,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:06:23.556164+00:00"
@@ -19703,6 +19987,8 @@
           "speed_compliance": 1.0,
           "reward": 208.599438,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 85,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:06:15.061701+00:00"
@@ -19715,6 +20001,8 @@
           "speed_compliance": 1.0,
           "reward": 204.151409,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 85,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:06:10.798202+00:00"
@@ -19727,6 +20015,8 @@
           "speed_compliance": 1.0,
           "reward": 202.366272,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 70,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:06:02.528494+00:00"
@@ -19739,6 +20029,8 @@
           "speed_compliance": 1.0,
           "reward": 196.893113,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 78,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:06:00.722107+00:00"
@@ -19751,6 +20043,8 @@
           "speed_compliance": 1.0,
           "reward": 198.543292,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 84,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:05:05.229161+00:00"
@@ -19763,6 +20057,8 @@
           "speed_compliance": 1.0,
           "reward": 200.7365,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 84,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:05:00.856504+00:00"
@@ -19775,6 +20071,8 @@
           "speed_compliance": 1.0,
           "reward": 200.536525,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 69,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:04:52.338468+00:00"
@@ -19787,6 +20085,8 @@
           "speed_compliance": 1.0,
           "reward": 189.76653,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 77,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:04:50.543982+00:00"
@@ -19799,6 +20099,8 @@
           "speed_compliance": 1.0,
           "reward": 196.56966,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 83,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:04:42.304931+00:00"
@@ -19811,6 +20113,8 @@
           "speed_compliance": 0.9982668977469671,
           "reward": 122.852407,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 83,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:04:37.786199+00:00"
@@ -19823,6 +20127,8 @@
           "speed_compliance": 1.0,
           "reward": 183.53587,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 68,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:04:30.467049+00:00"
@@ -19835,6 +20141,8 @@
           "speed_compliance": 1.0,
           "reward": 186.128773,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 76,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:04:28.949719+00:00"
@@ -19847,6 +20155,8 @@
           "speed_compliance": 0.9972826086956522,
           "reward": 71.695442,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 82,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:04:22.467761+00:00"
@@ -19859,6 +20169,8 @@
           "speed_compliance": 0.9980952380952381,
           "reward": 103.661444,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 82,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:04:21.533974+00:00"
@@ -19871,6 +20183,8 @@
           "speed_compliance": 0.9411764705882353,
           "reward": -17.643136,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 81,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:04:12.634891+00:00"
@@ -19883,6 +20197,8 @@
           "speed_compliance": 1.0,
           "reward": 181.853794,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 80,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:04:12.024884+00:00"
@@ -19895,6 +20211,8 @@
           "speed_compliance": 0.9979550102249489,
           "reward": 97.693932,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 67,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:04:10.282992+00:00"
@@ -19907,6 +20225,8 @@
           "speed_compliance": 0.9969879518072289,
           "reward": 58.604759,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 75,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:04:08.729920+00:00"
@@ -19919,6 +20239,8 @@
           "speed_compliance": 0.9941860465116279,
           "reward": 19.842935,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 81,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:04:07.234583+00:00"
@@ -19931,6 +20253,8 @@
           "speed_compliance": 0.9956331877729258,
           "reward": 34.425181,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 80,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:04:02.715447+00:00"
@@ -19943,6 +20267,8 @@
           "speed_compliance": 0.9545454545454546,
           "reward": -16.129548,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 74,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:03:59.557754+00:00"
@@ -19955,6 +20281,8 @@
           "speed_compliance": 0.9957627118644068,
           "reward": 29.861933,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 73,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:03:58.805221+00:00"
@@ -19967,6 +20295,8 @@
           "speed_compliance": 0.9907407407407407,
           "reward": 6.913375,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 66,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:03:13.188836+00:00"
@@ -19979,6 +20309,8 @@
           "speed_compliance": 0.8571428571428571,
           "reward": -20.437863,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 79,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:03:12.563168+00:00"
@@ -19991,6 +20323,8 @@
           "speed_compliance": 0.9974358974358974,
           "reward": 72.222906,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 78,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:03:12.245080+00:00"
@@ -20003,6 +20337,8 @@
           "speed_compliance": 0.9941860465116279,
           "reward": 21.550549,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 65,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:03:09.965790+00:00"
@@ -20015,6 +20351,8 @@
           "speed_compliance": 0.9962121212121212,
           "reward": 34.261847,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 72,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:03:08.577891+00:00"
@@ -20027,6 +20365,8 @@
           "speed_compliance": 0.9968553459119497,
           "reward": 56.906687,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 79,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:03:07.312463+00:00"
@@ -20039,6 +20379,8 @@
           "speed_compliance": 0.984375,
           "reward": -5.280145,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 64,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:03:05.086217+00:00"
@@ -20051,6 +20393,8 @@
           "speed_compliance": 0.96875,
           "reward": -13.264078,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 63,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:03:03.290624+00:00"
@@ -20063,6 +20407,8 @@
           "speed_compliance": 0.9855072463768116,
           "reward": -9.756039,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 62,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:03:02.315942+00:00"
@@ -20075,6 +20421,8 @@
           "speed_compliance": 0.8333333333333334,
           "reward": -20.759383,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 77,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:03:00.973793+00:00"
@@ -20087,6 +20435,8 @@
           "speed_compliance": 1.0,
           "reward": -13.094297,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 71,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:03:00.712673+00:00"
@@ -20099,6 +20449,8 @@
           "speed_compliance": 0.9821428571428571,
           "reward": -12.732661,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 76,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:03:00.526022+00:00"
@@ -20111,6 +20463,8 @@
           "speed_compliance": 0.9090909090909091,
           "reward": -19.00423,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 61,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:02:59.836580+00:00"
@@ -20123,6 +20477,8 @@
           "speed_compliance": 0.990990990990991,
           "reward": 1.058631,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 60,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:02:59.387717+00:00"
@@ -20135,6 +20491,8 @@
           "speed_compliance": 0.8888888888888888,
           "reward": -19.79152,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 70,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:02:58.891088+00:00"
@@ -20147,6 +20505,8 @@
           "speed_compliance": 0.9090909090909091,
           "reward": -19.408787,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 75,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:02:58.517212+00:00"
@@ -20159,6 +20519,8 @@
           "speed_compliance": 0.96875,
           "reward": -14.031555,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 69,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:02:58.314203+00:00"
@@ -20171,6 +20533,8 @@
           "speed_compliance": 0.9666666666666667,
           "reward": -17.879236,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 74,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:02:57.925567+00:00"
@@ -20183,6 +20547,8 @@
           "speed_compliance": 0.9949494949494949,
           "reward": 21.942628,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 68,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:02:57.213395+00:00"
@@ -20195,6 +20561,8 @@
           "speed_compliance": 0.9852941176470589,
           "reward": -5.302087,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 78,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:02:56.935539+00:00"
@@ -20207,6 +20575,8 @@
           "speed_compliance": 0.9655172413793104,
           "reward": -15.315581,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 73,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:02:56.681123+00:00"
@@ -20219,6 +20589,8 @@
           "speed_compliance": 0.9875,
           "reward": -4.639965,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 72,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:02:55.789062+00:00"
@@ -20231,6 +20603,8 @@
           "speed_compliance": 0.9923664122137404,
           "reward": 6.963254,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 59,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:02:55.193681+00:00"
@@ -20243,6 +20617,8 @@
           "speed_compliance": 0.875,
           "reward": -20.242506,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 77,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:02:54.629711+00:00"
@@ -20255,6 +20631,8 @@
           "speed_compliance": 0.9962962962962963,
           "reward": 40.46708,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 76,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:02:54.269589+00:00"
@@ -20267,6 +20645,8 @@
           "speed_compliance": 0.996268656716418,
           "reward": 32.948708,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 71,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:02:53.242756+00:00"
@@ -20279,6 +20659,8 @@
           "speed_compliance": 0.995850622406639,
           "reward": 32.984272,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 58,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:02:51.302776+00:00"
@@ -20291,6 +20673,8 @@
           "speed_compliance": 0.9655172413793104,
           "reward": -14.322523,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 67,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:02:50.854733+00:00"
@@ -20303,6 +20687,8 @@
           "speed_compliance": 0.9878048780487805,
           "reward": -4.213037,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 66,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:02:49.932877+00:00"
@@ -20315,6 +20701,8 @@
           "speed_compliance": 0.9873417721518988,
           "reward": -4.491012,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 65,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:02:47.689351+00:00"
@@ -20327,6 +20715,8 @@
           "speed_compliance": 0.9824561403508771,
           "reward": -11.7745,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 75,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:02:46.530392+00:00"
@@ -20339,6 +20729,8 @@
           "speed_compliance": 0.9893617021276596,
           "reward": -2.393904,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 70,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:02:45.419024+00:00"
@@ -20351,6 +20743,8 @@
           "speed_compliance": 0.9655172413793104,
           "reward": -14.364949,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 64,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:02:45.163266+00:00"
@@ -20363,6 +20757,8 @@
           "speed_compliance": 0.9761904761904762,
           "reward": -12.416479,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 74,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:02:44.399339+00:00"
@@ -20375,6 +20771,8 @@
           "speed_compliance": 0.9583333333333334,
           "reward": -17.655867,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 63,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:02:43.990307+00:00"
@@ -20387,6 +20785,8 @@
           "speed_compliance": 0.975,
           "reward": -16.064041,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 57,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:02:43.568480+00:00"
@@ -20399,6 +20799,8 @@
           "speed_compliance": 0.972972972972973,
           "reward": -14.169925,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 62,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:02:43.097132+00:00"
@@ -20411,6 +20813,8 @@
           "speed_compliance": 0.9523809523809523,
           "reward": -16.356283,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 73,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:02:42.705902+00:00"
@@ -20423,6 +20827,8 @@
           "speed_compliance": 0.9900990099009901,
           "reward": -0.838823,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 56,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:02:42.029437+00:00"
@@ -20435,6 +20841,8 @@
           "speed_compliance": 0.9803921568627451,
           "reward": -11.466452,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 72,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:02:41.806407+00:00"
@@ -21666,6 +22074,9 @@
       "episode_limit_sec": 150.0,
       "num_envs": 4,
       "world": "train_world3.sdf",
+      "train_worlds": [],
+      "eval_worlds": [],
+      "map_evaluation": [],
       "vehicle": {
         "label_count": 15,
         "forward_speed_mps": 0.2,
@@ -21758,6 +22169,8 @@
               "speed_compliance": 0.8571428571428571,
               "reward": -19.535341,
               "scenario": null,
+              "world": "",
+              "spawn_index": null,
               "number": 52,
               "worker": "worker_1",
               "ended_at": "2026-10-10T17:01:10.402837+00:00"
@@ -21804,6 +22217,8 @@
           "speed_compliance": 0.8571428571428571,
           "reward": -19.535341,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 52,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:01:10.402837+00:00"
@@ -21816,6 +22231,8 @@
           "speed_compliance": 0.9090909090909091,
           "reward": -19.783603,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 57,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:01:05.855753+00:00"
@@ -21828,6 +22245,8 @@
           "speed_compliance": 0.9545454545454546,
           "reward": -19.250394,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 51,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:01:04.080900+00:00"
@@ -21840,6 +22259,8 @@
           "speed_compliance": 0.95,
           "reward": -18.555314,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 61,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:00:56.979914+00:00"
@@ -21852,6 +22273,8 @@
           "speed_compliance": 0.9375,
           "reward": -18.623042,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 56,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:00:56.092997+00:00"
@@ -21864,6 +22287,8 @@
           "speed_compliance": 0.9375,
           "reward": -21.437723,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 48,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:00:46.232648+00:00"
@@ -21876,6 +22301,8 @@
           "speed_compliance": 0.8888888888888888,
           "reward": -19.596816,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 50,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:00:42.569896+00:00"
@@ -21888,6 +22315,8 @@
           "speed_compliance": 0.9818181818181818,
           "reward": -15.785705,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 55,
           "worker": "worker_3",
           "ended_at": "2026-10-10T17:00:39.873457+00:00"
@@ -21900,6 +22329,8 @@
           "speed_compliance": 0.8571428571428571,
           "reward": -20.274798,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 60,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:00:37.158106+00:00"
@@ -21912,6 +22343,8 @@
           "speed_compliance": 0.9473684210526315,
           "reward": -17.29863,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 49,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:00:34.451354+00:00"
@@ -21924,6 +22357,8 @@
           "speed_compliance": 0.9333333333333333,
           "reward": -19.518702,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 59,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:00:30.865855+00:00"
@@ -21936,6 +22371,8 @@
           "speed_compliance": 0.8,
           "reward": -20.433207,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 47,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:00:29.880725+00:00"
@@ -21948,6 +22385,8 @@
           "speed_compliance": 0.95,
           "reward": -17.00717,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 46,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:00:23.551483+00:00"
@@ -21960,6 +22399,8 @@
           "speed_compliance": 0.9333333333333333,
           "reward": -17.897398,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 48,
           "worker": "worker_1",
           "ended_at": "2026-10-10T17:00:13.681724+00:00"
@@ -21972,6 +22413,8 @@
           "speed_compliance": 0.8333333333333334,
           "reward": -20.169995,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 58,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:00:13.679472+00:00"
@@ -21984,6 +22427,8 @@
           "speed_compliance": 0.9444444444444444,
           "reward": -18.837105,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 57,
           "worker": "worker_0",
           "ended_at": "2026-10-10T17:00:08.259496+00:00"
@@ -21996,6 +22441,8 @@
           "speed_compliance": 0.8888888888888888,
           "reward": -19.436216,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 45,
           "worker": "worker_2",
           "ended_at": "2026-10-10T17:00:04.570292+00:00"
@@ -22008,6 +22455,8 @@
           "speed_compliance": 0.8571428571428571,
           "reward": -20.388656,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 47,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:59.123288+00:00"
@@ -22020,6 +22469,8 @@
           "speed_compliance": 0.9722222222222222,
           "reward": -16.82137,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 44,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:54.444497+00:00"
@@ -22032,6 +22483,8 @@
           "speed_compliance": 0.9,
           "reward": -19.245711,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 46,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:50.871777+00:00"
@@ -22044,6 +22497,8 @@
           "speed_compliance": 0.9615384615384616,
           "reward": -15.52393,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 56,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:49.070092+00:00"
@@ -22056,6 +22511,8 @@
           "speed_compliance": 0.9473684210526315,
           "reward": -18.88565,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 54,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:47.743585+00:00"
@@ -22068,6 +22525,8 @@
           "speed_compliance": 0.9411764705882353,
           "reward": -18.011691,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 45,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:47.530301+00:00"
@@ -22080,6 +22539,8 @@
           "speed_compliance": 0.9411764705882353,
           "reward": -18.095912,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 53,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:46.939931+00:00"
@@ -22092,6 +22553,8 @@
           "speed_compliance": 0.8571428571428571,
           "reward": -20.182729,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 44,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:46.931503+00:00"
@@ -22104,6 +22567,8 @@
           "speed_compliance": 0.8,
           "reward": -20.26123,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 55,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:46.736563+00:00"
@@ -22116,6 +22581,8 @@
           "speed_compliance": 0.8,
           "reward": -20.440345,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 54,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:46.437210+00:00"
@@ -22128,6 +22595,8 @@
           "speed_compliance": 0.9545454545454546,
           "reward": -16.879793,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 43,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:46.257376+00:00"
@@ -22140,6 +22609,8 @@
           "speed_compliance": 0.9,
           "reward": -19.648922,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 43,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:46.256610+00:00"
@@ -22152,6 +22623,8 @@
           "speed_compliance": 0.9,
           "reward": -19.36995,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 53,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:45.992343+00:00"
@@ -22164,6 +22637,8 @@
           "speed_compliance": 0.9523809523809523,
           "reward": -17.714047,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 52,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:45.663824+00:00"
@@ -22176,6 +22651,8 @@
           "speed_compliance": 0.875,
           "reward": -20.128751,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 42,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:45.663417+00:00"
@@ -22188,6 +22665,8 @@
           "speed_compliance": 0.8888888888888888,
           "reward": -19.633497,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 52,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:45.405370+00:00"
@@ -22200,6 +22679,8 @@
           "speed_compliance": 0.875,
           "reward": -19.709189,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 41,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:45.204525+00:00"
@@ -22212,6 +22693,8 @@
           "speed_compliance": 0.9523809523809523,
           "reward": -17.198102,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 42,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:44.787783+00:00"
@@ -22224,6 +22707,8 @@
           "speed_compliance": 0.9333333333333333,
           "reward": -18.566447,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 51,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:44.581165+00:00"
@@ -22236,6 +22721,8 @@
           "speed_compliance": 0.875,
           "reward": -19.412527,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 40,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:44.369504+00:00"
@@ -22248,6 +22735,8 @@
           "speed_compliance": 0.8333333333333334,
           "reward": -20.421452,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 51,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:44.074179+00:00"
@@ -22260,6 +22749,8 @@
           "speed_compliance": 0.9,
           "reward": -19.768037,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 39,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:43.870765+00:00"
@@ -22272,6 +22763,8 @@
           "speed_compliance": 0.8571428571428571,
           "reward": -20.045182,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 50,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:43.627492+00:00"
@@ -22284,6 +22777,8 @@
           "speed_compliance": 0.8333333333333334,
           "reward": -20.240826,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 50,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:43.473167+00:00"
@@ -22296,6 +22791,8 @@
           "speed_compliance": 0.9736842105263158,
           "reward": -14.564296,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 41,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:43.189289+00:00"
@@ -22308,6 +22805,8 @@
           "speed_compliance": 0.9090909090909091,
           "reward": -19.07105,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 49,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:42.995094+00:00"
@@ -22320,6 +22819,8 @@
           "speed_compliance": 0.9230769230769231,
           "reward": -18.025642,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 38,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:42.990718+00:00"
@@ -22332,6 +22833,8 @@
           "speed_compliance": 0.875,
           "reward": -19.768948,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 49,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:42.988157+00:00"
@@ -22344,6 +22847,8 @@
           "speed_compliance": 0.9166666666666666,
           "reward": -20.1703,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 48,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:42.639619+00:00"
@@ -22356,6 +22861,8 @@
           "speed_compliance": 0.8888888888888888,
           "reward": -19.846691,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 48,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:42.408252+00:00"
@@ -22368,6 +22875,8 @@
           "speed_compliance": 0.9285714285714286,
           "reward": -17.879581,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 37,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:42.216382+00:00"
@@ -22380,6 +22889,8 @@
           "speed_compliance": 0.9,
           "reward": -20.544551,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 47,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:41.871156+00:00"
@@ -22392,6 +22903,8 @@
           "speed_compliance": 0.8333333333333334,
           "reward": -20.665485,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 47,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:41.864702+00:00"
@@ -22404,6 +22917,8 @@
           "speed_compliance": 0.8888888888888888,
           "reward": -20.701783,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 46,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:41.581467+00:00"
@@ -22416,6 +22931,8 @@
           "speed_compliance": 0.8,
           "reward": -20.616939,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 36,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:41.385867+00:00"
@@ -22428,6 +22945,8 @@
           "speed_compliance": 0.9444444444444444,
           "reward": -17.140851,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 46,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:41.160228+00:00"
@@ -22440,6 +22959,8 @@
           "speed_compliance": 0.9523809523809523,
           "reward": -17.002901,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 35,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:40.953387+00:00"
@@ -22452,6 +22973,8 @@
           "speed_compliance": 0.8571428571428571,
           "reward": -19.750741,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 45,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:40.741882+00:00"
@@ -22464,6 +22987,8 @@
           "speed_compliance": 0.8571428571428571,
           "reward": -19.923072,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 40,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:40.541084+00:00"
@@ -22476,6 +23001,8 @@
           "speed_compliance": 0.8888888888888888,
           "reward": -20.61979,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 44,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:40.282133+00:00"
@@ -22488,6 +23015,8 @@
           "speed_compliance": 0.9666666666666667,
           "reward": -14.128671,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 39,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:40.089506+00:00"
@@ -22500,6 +23029,8 @@
           "speed_compliance": 0.9166666666666666,
           "reward": -19.25956,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 45,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:39.806623+00:00"
@@ -22512,6 +23043,8 @@
           "speed_compliance": 0.8571428571428571,
           "reward": -20.845975,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 43,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:39.560631+00:00"
@@ -22524,6 +23057,8 @@
           "speed_compliance": 0.8571428571428571,
           "reward": -19.925167,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 34,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:39.347879+00:00"
@@ -22536,6 +23071,8 @@
           "speed_compliance": 0.9,
           "reward": -19.98573,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 42,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:39.063880+00:00"
@@ -22548,6 +23085,8 @@
           "speed_compliance": 0.9,
           "reward": -19.375329,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 33,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:38.861404+00:00"
@@ -22560,6 +23099,8 @@
           "speed_compliance": 0.8888888888888888,
           "reward": -20.119862,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 44,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:38.854770+00:00"
@@ -22572,6 +23113,8 @@
           "speed_compliance": 0.9230769230769231,
           "reward": -18.382016,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 41,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:38.544518+00:00"
@@ -22584,6 +23127,8 @@
           "speed_compliance": 0.8333333333333334,
           "reward": -20.404311,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 43,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:38.330857+00:00"
@@ -22596,6 +23141,8 @@
           "speed_compliance": 0.9473684210526315,
           "reward": -16.902885,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 32,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:38.146320+00:00"
@@ -22608,6 +23155,8 @@
           "speed_compliance": 0.9,
           "reward": -19.847552,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 38,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:37.885964+00:00"
@@ -22620,6 +23169,8 @@
           "speed_compliance": 0.75,
           "reward": -20.377681,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 42,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:37.701298+00:00"
@@ -22632,6 +23183,8 @@
           "speed_compliance": 0.9375,
           "reward": -17.921267,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 41,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:37.478077+00:00"
@@ -22644,6 +23197,8 @@
           "speed_compliance": 0.8,
           "reward": -20.176217,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 40,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:37.261354+00:00"
@@ -22656,6 +23211,8 @@
           "speed_compliance": 0.9166666666666666,
           "reward": -18.69125,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 37,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:37.030563+00:00"
@@ -22668,6 +23225,8 @@
           "speed_compliance": 0.8571428571428571,
           "reward": -20.308856,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 39,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:36.830487+00:00"
@@ -22680,6 +23239,8 @@
           "speed_compliance": 0.9230769230769231,
           "reward": -19.445615,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 31,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:36.625070+00:00"
@@ -22692,6 +23253,8 @@
           "speed_compliance": 0.9,
           "reward": -19.326353,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 38,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:36.355652+00:00"
@@ -22704,6 +23267,8 @@
           "speed_compliance": 0.9166666666666666,
           "reward": -19.066933,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 40,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:36.172470+00:00"
@@ -22716,6 +23281,8 @@
           "speed_compliance": 0.9375,
           "reward": -17.748794,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 36,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:35.962429+00:00"
@@ -22728,6 +23295,8 @@
           "speed_compliance": 0.8888888888888888,
           "reward": -20.02979,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 30,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:35.648590+00:00"
@@ -22740,6 +23309,8 @@
           "speed_compliance": 0.75,
           "reward": -20.613739,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 37,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:35.480535+00:00"
@@ -22752,6 +23323,8 @@
           "speed_compliance": 0.9523809523809523,
           "reward": -18.359025,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 39,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:35.185838+00:00"
@@ -22764,6 +23337,8 @@
           "speed_compliance": 0.75,
           "reward": -20.572299,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 36,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:35.185377+00:00"
@@ -22776,6 +23351,8 @@
           "speed_compliance": 0.9285714285714286,
           "reward": -18.222651,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 29,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:34.917664+00:00"
@@ -22788,6 +23365,8 @@
           "speed_compliance": 0.9,
           "reward": -19.769265,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 35,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:34.914432+00:00"
@@ -22800,6 +23379,8 @@
           "speed_compliance": 0.875,
           "reward": -20.293502,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 35,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:34.756021+00:00"
@@ -22812,6 +23393,8 @@
           "speed_compliance": 0.9090909090909091,
           "reward": -20.082634,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 34,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:34.410694+00:00"
@@ -22824,6 +23407,8 @@
           "speed_compliance": 0.9473684210526315,
           "reward": -17.073984,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 34,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:34.195095+00:00"
@@ -22836,6 +23421,8 @@
           "speed_compliance": 0.9545454545454546,
           "reward": -15.476314,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 28,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:33.919827+00:00"
@@ -22848,6 +23435,8 @@
           "speed_compliance": 0.8333333333333334,
           "reward": -20.242349,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 38,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:33.664176+00:00"
@@ -22860,6 +23449,8 @@
           "speed_compliance": 0.875,
           "reward": -19.976024,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 33,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:33.430863+00:00"
@@ -22872,6 +23463,8 @@
           "speed_compliance": 0.875,
           "reward": -20.383636,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 37,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:33.221549+00:00"
@@ -22884,6 +23477,8 @@
           "speed_compliance": 0.8888888888888888,
           "reward": -20.021323,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 32,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:32.955043+00:00"
@@ -22896,6 +23491,8 @@
           "speed_compliance": 0.9473684210526315,
           "reward": -19.444298,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 33,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:32.754934+00:00"
@@ -22908,6 +23505,8 @@
           "speed_compliance": 0.9,
           "reward": -19.618062,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 36,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:32.556757+00:00"
@@ -22920,6 +23519,8 @@
           "speed_compliance": 0.9090909090909091,
           "reward": -19.084899,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 27,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:32.275631+00:00"
@@ -22932,6 +23533,8 @@
           "speed_compliance": 0.8571428571428571,
           "reward": -20.009131,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 31,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:32.112039+00:00"
@@ -22944,6 +23547,8 @@
           "speed_compliance": 0.875,
           "reward": -19.996851,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 35,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:31.859576+00:00"
@@ -22956,6 +23561,8 @@
           "speed_compliance": 0.875,
           "reward": -19.556706,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 30,
           "worker": "worker_1",
           "ended_at": "2026-10-10T16:59:31.567844+00:00"
@@ -22968,6 +23575,8 @@
           "speed_compliance": 0.9629629629629629,
           "reward": -15.296342,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 26,
           "worker": "worker_2",
           "ended_at": "2026-10-10T16:59:31.307538+00:00"
@@ -22980,6 +23589,8 @@
           "speed_compliance": 0.9166666666666666,
           "reward": -18.925385,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 32,
           "worker": "worker_3",
           "ended_at": "2026-10-10T16:59:31.133090+00:00"
@@ -22992,6 +23603,8 @@
           "speed_compliance": 0.9333333333333333,
           "reward": -18.724607,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 34,
           "worker": "worker_0",
           "ended_at": "2026-10-10T16:59:30.971327+00:00"
@@ -23133,6 +23746,9 @@
       "episode_limit_sec": 150.0,
       "num_envs": 4,
       "world": "train_world3.sdf",
+      "train_worlds": [],
+      "eval_worlds": [],
+      "map_evaluation": [],
       "vehicle": {
         "label_count": 15,
         "forward_speed_mps": 0.2,
@@ -23225,6 +23841,8 @@
               "speed_compliance": 0.9666666666666667,
               "reward": -10.173061,
               "scenario": null,
+              "world": "",
+              "spawn_index": null,
               "number": 36,
               "worker": "worker_2",
               "ended_at": "2026-10-10T01:30:04.450918+00:00"
@@ -23271,6 +23889,8 @@
           "speed_compliance": 1.0,
           "reward": 261.270188,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 37,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:30:29.625749+00:00"
@@ -23283,6 +23903,8 @@
           "speed_compliance": 1.0,
           "reward": 266.889168,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 34,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:30:26.541414+00:00"
@@ -23295,6 +23917,8 @@
           "speed_compliance": 1.0,
           "reward": 259.595111,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 38,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:30:21.867802+00:00"
@@ -23307,6 +23931,8 @@
           "speed_compliance": 1.0,
           "reward": 266.801729,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 33,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:30:21.664567+00:00"
@@ -23319,6 +23945,8 @@
           "speed_compliance": 0.9666666666666667,
           "reward": -10.173061,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 36,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:30:04.450918+00:00"
@@ -23331,6 +23959,8 @@
           "speed_compliance": 1.0,
           "reward": 261.198164,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 35,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:30:03.316326+00:00"
@@ -23343,6 +23973,8 @@
           "speed_compliance": 1.0,
           "reward": 267.268486,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 33,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:30:01.173434+00:00"
@@ -23355,6 +23987,8 @@
           "speed_compliance": 0.9976019184652278,
           "reward": 124.304117,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 37,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:29:56.373418+00:00"
@@ -23367,6 +24001,8 @@
           "speed_compliance": 1.0,
           "reward": 267.40097,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 32,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:29:56.182266+00:00"
@@ -23379,6 +24015,8 @@
           "speed_compliance": 0.993421052631579,
           "reward": 32.176952,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 36,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:29:42.339448+00:00"
@@ -23391,6 +24029,8 @@
           "speed_compliance": 1.0,
           "reward": 260.53495,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 34,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:29:37.983960+00:00"
@@ -23403,6 +24043,8 @@
           "speed_compliance": 0.9934640522875817,
           "reward": 32.825704,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 35,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:29:37.154785+00:00"
@@ -23415,6 +24057,8 @@
           "speed_compliance": 1.0,
           "reward": 266.778878,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 32,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:29:35.664438+00:00"
@@ -23427,6 +24071,8 @@
           "speed_compliance": 0.9934640522875817,
           "reward": 32.094296,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 34,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:29:31.767741+00:00"
@@ -23439,6 +24085,8 @@
           "speed_compliance": 1.0,
           "reward": 267.149692,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 31,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:29:30.599857+00:00"
@@ -23451,6 +24099,8 @@
           "speed_compliance": 0.9976019184652278,
           "reward": 122.260435,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 33,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:29:26.282579+00:00"
@@ -23463,6 +24113,8 @@
           "speed_compliance": 0.9964285714285714,
           "reward": 75.412224,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 32,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:29:12.107764+00:00"
@@ -23475,6 +24127,8 @@
           "speed_compliance": 0.9629629629629629,
           "reward": -11.369653,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 33,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:29:11.712630+00:00"
@@ -23487,6 +24141,8 @@
           "speed_compliance": 0.9655172413793104,
           "reward": -10.770184,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 32,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:29:10.694113+00:00"
@@ -23499,6 +24155,8 @@
           "speed_compliance": 0.9965986394557823,
           "reward": 80.907184,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 31,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:29:09.592027+00:00"
@@ -23511,6 +24169,8 @@
           "speed_compliance": 1.0,
           "reward": 267.252985,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 31,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:29:09.233930+00:00"
@@ -23523,6 +24183,8 @@
           "speed_compliance": 1.0,
           "reward": 266.978314,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 30,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:28:12.010101+00:00"
@@ -23535,6 +24197,8 @@
           "speed_compliance": 0.9976133651551312,
           "reward": 126.233548,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 31,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:28:09.641034+00:00"
@@ -23547,6 +24211,8 @@
           "speed_compliance": 1.0,
           "reward": 261.715586,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 30,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:28:07.031973+00:00"
@@ -23559,6 +24225,8 @@
           "speed_compliance": 0.998533724340176,
           "reward": 216.345426,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 30,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:27:55.038350+00:00"
@@ -23571,6 +24239,8 @@
           "speed_compliance": 1.0,
           "reward": 267.294223,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 30,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:27:51.057310+00:00"
@@ -23583,6 +24253,8 @@
           "speed_compliance": 1.0,
           "reward": 266.918798,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 29,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:27:46.410970+00:00"
@@ -23595,6 +24267,8 @@
           "speed_compliance": 0.998211091234347,
           "reward": 174.040782,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 29,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:27:41.344523+00:00"
@@ -23607,6 +24281,8 @@
           "speed_compliance": 0.9964788732394366,
           "reward": 77.240468,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 29,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:27:32.254243+00:00"
@@ -23619,6 +24295,8 @@
           "speed_compliance": 1.0,
           "reward": 266.30901,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 29,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:27:26.059829+00:00"
@@ -23631,6 +24309,8 @@
           "speed_compliance": 1.0,
           "reward": 262.66801,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 28,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:27:22.687117+00:00"
@@ -23643,6 +24323,8 @@
           "speed_compliance": 1.0,
           "reward": 260.354624,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 28,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:27:22.682733+00:00"
@@ -23655,6 +24337,8 @@
           "speed_compliance": 1.0,
           "reward": 267.719131,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 28,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:27:20.803314+00:00"
@@ -23667,6 +24351,8 @@
           "speed_compliance": 1.0,
           "reward": 267.549211,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 28,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:27:00.390550+00:00"
@@ -23679,6 +24365,8 @@
           "speed_compliance": 1.0,
           "reward": 267.76163,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 27,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:26:57.060828+00:00"
@@ -23691,6 +24379,8 @@
           "speed_compliance": 1.0,
           "reward": 267.615392,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 27,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:26:57.053955+00:00"
@@ -23703,6 +24393,8 @@
           "speed_compliance": 1.0,
           "reward": 267.355319,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 27,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:26:55.415107+00:00"
@@ -23715,6 +24407,8 @@
           "speed_compliance": 1.0,
           "reward": 267.749905,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 27,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:25:42.042577+00:00"
@@ -23727,6 +24421,8 @@
           "speed_compliance": 1.0,
           "reward": 268.438266,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 26,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:25:38.567993+00:00"
@@ -23739,6 +24435,8 @@
           "speed_compliance": 1.0,
           "reward": 268.024312,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 26,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:25:38.567017+00:00"
@@ -23751,6 +24449,8 @@
           "speed_compliance": 1.0,
           "reward": 267.707433,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 26,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:25:36.732629+00:00"
@@ -23763,6 +24463,8 @@
           "speed_compliance": 1.0,
           "reward": 267.106265,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 26,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:25:16.267426+00:00"
@@ -23775,6 +24477,8 @@
           "speed_compliance": 1.0,
           "reward": 268.369161,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 25,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:25:12.869370+00:00"
@@ -23787,6 +24491,8 @@
           "speed_compliance": 1.0,
           "reward": 267.840519,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 25,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:25:12.867240+00:00"
@@ -23799,6 +24505,8 @@
           "speed_compliance": 1.0,
           "reward": 267.562055,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 25,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:25:11.293131+00:00"
@@ -23811,6 +24519,8 @@
           "speed_compliance": 1.0,
           "reward": 267.622533,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 25,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:24:51.424325+00:00"
@@ -23823,6 +24533,8 @@
           "speed_compliance": 1.0,
           "reward": 268.498903,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 24,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:24:48.168808+00:00"
@@ -23835,6 +24547,8 @@
           "speed_compliance": 1.0,
           "reward": 268.453472,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 24,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:24:48.165286+00:00"
@@ -23847,6 +24561,8 @@
           "speed_compliance": 1.0,
           "reward": 267.514244,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 24,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:24:46.563652+00:00"
@@ -23859,6 +24575,8 @@
           "speed_compliance": 1.0,
           "reward": 267.590656,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 24,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:23:32.744699+00:00"
@@ -23871,6 +24589,8 @@
           "speed_compliance": 1.0,
           "reward": 268.097367,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 23,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:23:29.542132+00:00"
@@ -23883,6 +24603,8 @@
           "speed_compliance": 1.0,
           "reward": 268.293281,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 23,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:23:29.541363+00:00"
@@ -23895,6 +24617,8 @@
           "speed_compliance": 1.0,
           "reward": 267.286409,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 23,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:23:27.822364+00:00"
@@ -23907,6 +24631,8 @@
           "speed_compliance": 0.9896907216494846,
           "reward": 13.975521,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 23,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:23:07.311237+00:00"
@@ -23919,6 +24645,8 @@
           "speed_compliance": 1.0,
           "reward": 267.265245,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 22,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:23:04.040182+00:00"
@@ -23931,6 +24659,8 @@
           "speed_compliance": 1.0,
           "reward": 268.167425,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 22,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:23:04.039851+00:00"
@@ -23943,6 +24673,8 @@
           "speed_compliance": 1.0,
           "reward": 268.858423,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 22,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:23:04.035207+00:00"
@@ -23955,6 +24687,8 @@
           "speed_compliance": 0.9985835694050992,
           "reward": 231.415463,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 22,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:23:02.494052+00:00"
@@ -23967,6 +24701,8 @@
           "speed_compliance": 1.0,
           "reward": 268.670276,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 21,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:22:38.614544+00:00"
@@ -23979,6 +24715,8 @@
           "speed_compliance": 1.0,
           "reward": 267.924099,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 21,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:22:38.614507+00:00"
@@ -23991,6 +24729,8 @@
           "speed_compliance": 1.0,
           "reward": 267.994349,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 21,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:22:38.612377+00:00"
@@ -24003,6 +24743,8 @@
           "speed_compliance": 1.0,
           "reward": 267.846366,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 21,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:22:38.610657+00:00"
@@ -24015,6 +24757,8 @@
           "speed_compliance": 1.0,
           "reward": 267.693087,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 20,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:21:20.178035+00:00"
@@ -24027,6 +24771,8 @@
           "speed_compliance": 1.0,
           "reward": 267.671461,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 20,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:21:20.093339+00:00"
@@ -24039,6 +24785,8 @@
           "speed_compliance": 1.0,
           "reward": 268.24339,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 20,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:21:20.088423+00:00"
@@ -24051,6 +24799,8 @@
           "speed_compliance": 1.0,
           "reward": 267.484803,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 20,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:21:20.087038+00:00"
@@ -24063,6 +24813,8 @@
           "speed_compliance": 1.0,
           "reward": 268.152588,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 19,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:20:54.965847+00:00"
@@ -24075,6 +24827,8 @@
           "speed_compliance": 1.0,
           "reward": 267.333911,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 19,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:20:54.955780+00:00"
@@ -24087,6 +24841,8 @@
           "speed_compliance": 1.0,
           "reward": 267.256174,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 19,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:20:54.953073+00:00"
@@ -24099,6 +24855,8 @@
           "speed_compliance": 1.0,
           "reward": 268.306798,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 19,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:20:54.946643+00:00"
@@ -24111,6 +24869,8 @@
           "speed_compliance": 1.0,
           "reward": 268.192472,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 18,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:20:29.844421+00:00"
@@ -24123,6 +24883,8 @@
           "speed_compliance": 1.0,
           "reward": 267.416137,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 18,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:20:29.840412+00:00"
@@ -24135,6 +24897,8 @@
           "speed_compliance": 1.0,
           "reward": 266.652235,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 18,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:20:29.837012+00:00"
@@ -24147,6 +24911,8 @@
           "speed_compliance": 1.0,
           "reward": 267.981174,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 18,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:20:29.829524+00:00"
@@ -24159,6 +24925,8 @@
           "speed_compliance": 1.0,
           "reward": 267.322528,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 17,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:20:04.582282+00:00"
@@ -24171,6 +24939,8 @@
           "speed_compliance": 1.0,
           "reward": 268.182278,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 17,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:20:04.578877+00:00"
@@ -24183,6 +24953,8 @@
           "speed_compliance": 1.0,
           "reward": 267.629695,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 17,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:20:04.577366+00:00"
@@ -24195,6 +24967,8 @@
           "speed_compliance": 1.0,
           "reward": 268.058083,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 17,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:20:04.577310+00:00"
@@ -24207,6 +24981,8 @@
           "speed_compliance": 1.0,
           "reward": 267.942908,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 16,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:18:46.396769+00:00"
@@ -24219,6 +24995,8 @@
           "speed_compliance": 1.0,
           "reward": 268.185696,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 16,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:18:46.396495+00:00"
@@ -24231,6 +25009,8 @@
           "speed_compliance": 1.0,
           "reward": 268.686462,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 16,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:18:46.394285+00:00"
@@ -24243,6 +25023,8 @@
           "speed_compliance": 1.0,
           "reward": 267.078017,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 16,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:18:46.394043+00:00"
@@ -24255,6 +25037,8 @@
           "speed_compliance": 1.0,
           "reward": 268.770179,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 15,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:18:20.929346+00:00"
@@ -24267,6 +25051,8 @@
           "speed_compliance": 1.0,
           "reward": 267.137049,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 15,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:18:20.924515+00:00"
@@ -24279,6 +25065,8 @@
           "speed_compliance": 1.0,
           "reward": 268.210367,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 15,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:18:20.924294+00:00"
@@ -24291,6 +25079,8 @@
           "speed_compliance": 1.0,
           "reward": 267.489035,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 15,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:18:20.923129+00:00"
@@ -24303,6 +25093,8 @@
           "speed_compliance": 1.0,
           "reward": 267.624446,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 14,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:17:55.972597+00:00"
@@ -24315,6 +25107,8 @@
           "speed_compliance": 1.0,
           "reward": 267.408691,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 14,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:17:55.968246+00:00"
@@ -24327,6 +25121,8 @@
           "speed_compliance": 1.0,
           "reward": 268.563663,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 14,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:17:55.966471+00:00"
@@ -24339,6 +25135,8 @@
           "speed_compliance": 1.0,
           "reward": 268.028187,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 14,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:17:55.966396+00:00"
@@ -24351,6 +25149,8 @@
           "speed_compliance": 1.0,
           "reward": 267.901717,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 13,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:16:38.156179+00:00"
@@ -24363,6 +25163,8 @@
           "speed_compliance": 1.0,
           "reward": 267.887655,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 13,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:16:38.148857+00:00"
@@ -24375,6 +25177,8 @@
           "speed_compliance": 1.0,
           "reward": 267.654452,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 13,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:16:38.147096+00:00"
@@ -24387,6 +25191,8 @@
           "speed_compliance": 1.0,
           "reward": 268.342906,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 13,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:16:38.146064+00:00"
@@ -24399,6 +25205,8 @@
           "speed_compliance": 1.0,
           "reward": 267.855298,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 12,
           "worker": "worker_2",
           "ended_at": "2026-10-10T01:16:13.270055+00:00"
@@ -24411,6 +25219,8 @@
           "speed_compliance": 1.0,
           "reward": 267.031161,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 12,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:16:13.264184+00:00"
@@ -24423,6 +25233,8 @@
           "speed_compliance": 1.0,
           "reward": 268.360464,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 12,
           "worker": "worker_0",
           "ended_at": "2026-10-10T01:16:13.260760+00:00"
@@ -24435,6 +25247,8 @@
           "speed_compliance": 1.0,
           "reward": 267.414027,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 12,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:16:13.259125+00:00"
@@ -24447,6 +25261,8 @@
           "speed_compliance": 1.0,
           "reward": 267.832646,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 11,
           "worker": "worker_3",
           "ended_at": "2026-10-10T01:15:48.845535+00:00"
@@ -24459,6 +25275,8 @@
           "speed_compliance": 1.0,
           "reward": 267.259726,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 11,
           "worker": "worker_1",
           "ended_at": "2026-10-10T01:15:48.843385+00:00"
@@ -26699,6 +27517,9 @@
       "episode_limit_sec": 150.0,
       "num_envs": 4,
       "world": "train_world3.sdf",
+      "train_worlds": [],
+      "eval_worlds": [],
+      "map_evaluation": [],
       "vehicle": {
         "label_count": 15,
         "forward_speed_mps": 0.1,
@@ -26826,6 +27647,8 @@
           "speed_compliance": 1.0,
           "reward": 118.658308,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 49,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:51:57.371368+00:00"
@@ -26838,6 +27661,8 @@
           "speed_compliance": 1.0,
           "reward": 117.761651,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 49,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:51:57.367919+00:00"
@@ -26850,6 +27675,8 @@
           "speed_compliance": 1.0,
           "reward": 118.984007,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 49,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:51:57.366490+00:00"
@@ -26862,6 +27689,8 @@
           "speed_compliance": 1.0,
           "reward": 119.378396,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 49,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:51:57.365137+00:00"
@@ -26874,6 +27703,8 @@
           "speed_compliance": 1.0,
           "reward": 119.653882,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 48,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:51:19.174231+00:00"
@@ -26886,6 +27717,8 @@
           "speed_compliance": 1.0,
           "reward": 118.365307,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 48,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:51:19.172751+00:00"
@@ -26898,6 +27731,8 @@
           "speed_compliance": 1.0,
           "reward": 117.95652,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 48,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:51:19.168021+00:00"
@@ -26910,6 +27745,8 @@
           "speed_compliance": 1.0,
           "reward": 118.656389,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 48,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:51:19.161894+00:00"
@@ -26922,6 +27759,8 @@
           "speed_compliance": 1.0,
           "reward": 118.61304,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 47,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:50:40.443516+00:00"
@@ -26934,6 +27773,8 @@
           "speed_compliance": 1.0,
           "reward": 118.686071,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 47,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:50:40.439328+00:00"
@@ -26946,6 +27787,8 @@
           "speed_compliance": 1.0,
           "reward": 119.004028,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 47,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:50:40.433937+00:00"
@@ -26958,6 +27801,8 @@
           "speed_compliance": 1.0,
           "reward": 118.071044,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 47,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:50:40.431634+00:00"
@@ -26970,6 +27815,8 @@
           "speed_compliance": 1.0,
           "reward": 117.942252,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 46,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:48:23.641463+00:00"
@@ -26982,6 +27829,8 @@
           "speed_compliance": 1.0,
           "reward": 119.278677,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 46,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:48:23.636811+00:00"
@@ -26994,6 +27843,8 @@
           "speed_compliance": 1.0,
           "reward": 119.080719,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 46,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:48:23.636241+00:00"
@@ -27006,6 +27857,8 @@
           "speed_compliance": 1.0,
           "reward": 118.569407,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 46,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:48:23.633282+00:00"
@@ -27018,6 +27871,8 @@
           "speed_compliance": 1.0,
           "reward": 117.490443,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 45,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:47:45.363230+00:00"
@@ -27030,6 +27885,8 @@
           "speed_compliance": 1.0,
           "reward": 119.802344,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 45,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:47:45.361409+00:00"
@@ -27042,6 +27899,8 @@
           "speed_compliance": 1.0,
           "reward": 118.318511,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 45,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:47:45.360415+00:00"
@@ -27054,6 +27913,8 @@
           "speed_compliance": 1.0,
           "reward": 118.6839,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 45,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:47:45.357287+00:00"
@@ -27066,6 +27927,8 @@
           "speed_compliance": 1.0,
           "reward": 118.343446,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 44,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:47:07.442509+00:00"
@@ -27078,6 +27941,8 @@
           "speed_compliance": 1.0,
           "reward": 118.867042,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 44,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:47:07.442257+00:00"
@@ -27090,6 +27955,8 @@
           "speed_compliance": 1.0,
           "reward": 117.958921,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 44,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:47:07.431717+00:00"
@@ -27102,6 +27969,8 @@
           "speed_compliance": 1.0,
           "reward": 119.218391,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 44,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:47:07.429915+00:00"
@@ -27114,6 +27983,8 @@
           "speed_compliance": 1.0,
           "reward": 118.701934,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 43,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:46:29.150906+00:00"
@@ -27126,6 +27997,8 @@
           "speed_compliance": 1.0,
           "reward": 118.304134,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 43,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:46:29.148735+00:00"
@@ -27138,6 +28011,8 @@
           "speed_compliance": 1.0,
           "reward": 117.075549,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 43,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:46:29.143479+00:00"
@@ -27150,6 +28025,8 @@
           "speed_compliance": 1.0,
           "reward": 120.024113,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 43,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:46:29.142559+00:00"
@@ -27162,6 +28039,8 @@
           "speed_compliance": 1.0,
           "reward": 118.343502,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 42,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:45:51.423027+00:00"
@@ -27174,6 +28053,8 @@
           "speed_compliance": 1.0,
           "reward": 118.952761,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 42,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:45:51.415608+00:00"
@@ -27186,6 +28067,8 @@
           "speed_compliance": 1.0,
           "reward": 119.284971,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 42,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:45:51.414494+00:00"
@@ -27198,6 +28081,8 @@
           "speed_compliance": 1.0,
           "reward": 117.919032,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 42,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:45:51.408125+00:00"
@@ -27210,6 +28095,8 @@
           "speed_compliance": 1.0,
           "reward": 117.985054,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 41,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:45:13.780423+00:00"
@@ -27222,6 +28109,8 @@
           "speed_compliance": 1.0,
           "reward": 117.199595,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 41,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:45:13.778380+00:00"
@@ -27234,6 +28123,8 @@
           "speed_compliance": 1.0,
           "reward": 119.271195,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 41,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:45:13.774081+00:00"
@@ -27246,6 +28137,8 @@
           "speed_compliance": 1.0,
           "reward": 118.711786,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 41,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:45:13.773617+00:00"
@@ -27258,6 +28151,8 @@
           "speed_compliance": 1.0,
           "reward": 117.756635,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 40,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:42:56.698632+00:00"
@@ -27270,6 +28165,8 @@
           "speed_compliance": 1.0,
           "reward": 119.427369,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 40,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:42:56.695258+00:00"
@@ -27282,6 +28179,8 @@
           "speed_compliance": 1.0,
           "reward": 118.849029,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 40,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:42:56.693207+00:00"
@@ -27294,6 +28193,8 @@
           "speed_compliance": 1.0,
           "reward": 116.96519,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 40,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:42:56.689830+00:00"
@@ -27306,6 +28207,8 @@
           "speed_compliance": 1.0,
           "reward": 119.391956,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 39,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:42:19.150748+00:00"
@@ -27318,6 +28221,8 @@
           "speed_compliance": 1.0,
           "reward": 118.646884,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 39,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:42:19.149138+00:00"
@@ -27330,6 +28235,8 @@
           "speed_compliance": 1.0,
           "reward": 117.509092,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 39,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:42:19.148990+00:00"
@@ -27342,6 +28249,8 @@
           "speed_compliance": 1.0,
           "reward": 117.857027,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 39,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:42:19.140082+00:00"
@@ -27354,6 +28263,8 @@
           "speed_compliance": 1.0,
           "reward": 117.870899,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 38,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:41:41.386011+00:00"
@@ -27366,6 +28277,8 @@
           "speed_compliance": 1.0,
           "reward": 118.723262,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 38,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:41:41.379211+00:00"
@@ -27378,6 +28291,8 @@
           "speed_compliance": 1.0,
           "reward": 119.331688,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 38,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:41:41.373578+00:00"
@@ -27390,6 +28305,8 @@
           "speed_compliance": 1.0,
           "reward": 117.364019,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 38,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:41:41.373467+00:00"
@@ -27402,6 +28319,8 @@
           "speed_compliance": 1.0,
           "reward": 117.792243,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 37,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:41:03.983809+00:00"
@@ -27414,6 +28333,8 @@
           "speed_compliance": 1.0,
           "reward": 117.098352,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 37,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:41:03.981892+00:00"
@@ -27426,6 +28347,8 @@
           "speed_compliance": 1.0,
           "reward": 119.212622,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 37,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:41:03.974022+00:00"
@@ -27438,6 +28361,8 @@
           "speed_compliance": 1.0,
           "reward": 118.757044,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 37,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:41:03.969700+00:00"
@@ -27450,6 +28375,8 @@
           "speed_compliance": 1.0,
           "reward": 119.076148,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 36,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:40:26.213364+00:00"
@@ -27462,6 +28389,8 @@
           "speed_compliance": 1.0,
           "reward": 118.710042,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 36,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:40:26.208995+00:00"
@@ -27474,6 +28403,8 @@
           "speed_compliance": 1.0,
           "reward": 117.134045,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 36,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:40:26.205770+00:00"
@@ -27486,6 +28417,8 @@
           "speed_compliance": 1.0,
           "reward": 117.431999,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 36,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:40:26.202655+00:00"
@@ -27498,6 +28431,8 @@
           "speed_compliance": 1.0,
           "reward": 119.15602,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 35,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:39:48.937885+00:00"
@@ -27510,6 +28445,8 @@
           "speed_compliance": 1.0,
           "reward": 117.836595,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 35,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:39:48.931012+00:00"
@@ -27522,6 +28459,8 @@
           "speed_compliance": 1.0,
           "reward": 116.780536,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 35,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:39:48.928970+00:00"
@@ -27534,6 +28473,8 @@
           "speed_compliance": 1.0,
           "reward": 119.054788,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 35,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:39:48.924975+00:00"
@@ -27546,6 +28487,8 @@
           "speed_compliance": 1.0,
           "reward": 116.549368,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 34,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:39:11.231469+00:00"
@@ -27558,6 +28501,8 @@
           "speed_compliance": 1.0,
           "reward": 119.34065,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 34,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:39:11.226778+00:00"
@@ -27570,6 +28515,8 @@
           "speed_compliance": 1.0,
           "reward": 118.569343,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 34,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:39:11.226020+00:00"
@@ -27582,6 +28529,8 @@
           "speed_compliance": 1.0,
           "reward": 117.237618,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 34,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:39:11.219820+00:00"
@@ -27594,6 +28543,8 @@
           "speed_compliance": 1.0,
           "reward": 119.460306,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 33,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:36:53.660115+00:00"
@@ -27606,6 +28557,8 @@
           "speed_compliance": 1.0,
           "reward": 116.669019,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 33,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:36:53.653435+00:00"
@@ -27618,6 +28571,8 @@
           "speed_compliance": 1.0,
           "reward": 117.048331,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 33,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:36:53.648510+00:00"
@@ -27630,6 +28585,8 @@
           "speed_compliance": 1.0,
           "reward": 118.318436,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 33,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:36:53.642529+00:00"
@@ -27642,6 +28599,8 @@
           "speed_compliance": 1.0,
           "reward": 118.620399,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 32,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:36:15.233354+00:00"
@@ -27654,6 +28613,8 @@
           "speed_compliance": 1.0,
           "reward": 117.338174,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 32,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:36:15.230054+00:00"
@@ -27666,6 +28627,8 @@
           "speed_compliance": 1.0,
           "reward": 119.166626,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 32,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:36:15.228424+00:00"
@@ -27678,6 +28641,8 @@
           "speed_compliance": 1.0,
           "reward": 116.602983,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 32,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:36:15.225691+00:00"
@@ -27690,6 +28655,8 @@
           "speed_compliance": 1.0,
           "reward": 119.431067,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 31,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:35:37.220247+00:00"
@@ -27702,6 +28669,8 @@
           "speed_compliance": 1.0,
           "reward": 116.22947,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 31,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:35:37.210485+00:00"
@@ -27714,6 +28683,8 @@
           "speed_compliance": 1.0,
           "reward": 118.200096,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 31,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:35:37.209593+00:00"
@@ -27726,6 +28697,8 @@
           "speed_compliance": 1.0,
           "reward": 117.263112,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 31,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:35:37.208019+00:00"
@@ -27738,6 +28711,8 @@
           "speed_compliance": 1.0,
           "reward": 118.575517,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 30,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:34:59.171819+00:00"
@@ -27750,6 +28725,8 @@
           "speed_compliance": 1.0,
           "reward": 117.429498,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 30,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:34:59.171454+00:00"
@@ -27762,6 +28739,8 @@
           "speed_compliance": 1.0,
           "reward": 119.626719,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 30,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:34:59.167825+00:00"
@@ -27774,6 +28753,8 @@
           "speed_compliance": 1.0,
           "reward": 116.804434,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 30,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:34:59.162483+00:00"
@@ -27786,6 +28767,8 @@
           "speed_compliance": 1.0,
           "reward": 118.15228,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 29,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:34:21.477857+00:00"
@@ -27798,6 +28781,8 @@
           "speed_compliance": 1.0,
           "reward": 118.929435,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 29,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:34:21.477663+00:00"
@@ -27810,6 +28795,8 @@
           "speed_compliance": 1.0,
           "reward": 116.805639,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 29,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:34:21.476320+00:00"
@@ -27822,6 +28809,8 @@
           "speed_compliance": 1.0,
           "reward": 117.17769,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 29,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:34:21.464532+00:00"
@@ -27834,6 +28823,8 @@
           "speed_compliance": 1.0,
           "reward": 116.685544,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 28,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:33:43.806831+00:00"
@@ -27846,6 +28837,8 @@
           "speed_compliance": 1.0,
           "reward": 118.397099,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 28,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:33:43.804135+00:00"
@@ -27858,6 +28851,8 @@
           "speed_compliance": 1.0,
           "reward": 118.896594,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 28,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:33:43.803029+00:00"
@@ -27870,6 +28865,8 @@
           "speed_compliance": 1.0,
           "reward": 117.444081,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 28,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:33:43.793776+00:00"
@@ -27882,6 +28879,8 @@
           "speed_compliance": 1.0,
           "reward": 118.849529,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 27,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:33:05.757181+00:00"
@@ -27894,6 +28893,8 @@
           "speed_compliance": 1.0,
           "reward": 117.252379,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 27,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:33:05.756496+00:00"
@@ -27906,6 +28907,8 @@
           "speed_compliance": 1.0,
           "reward": 118.397411,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 27,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:33:05.753894+00:00"
@@ -27918,6 +28921,8 @@
           "speed_compliance": 1.0,
           "reward": 116.616543,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 27,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:33:05.746635+00:00"
@@ -27930,6 +28935,8 @@
           "speed_compliance": 1.0,
           "reward": 119.144279,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 26,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:30:48.409886+00:00"
@@ -27942,6 +28949,8 @@
           "speed_compliance": 1.0,
           "reward": 117.336955,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 26,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:30:48.408004+00:00"
@@ -27954,6 +28963,8 @@
           "speed_compliance": 1.0,
           "reward": 117.094253,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 26,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:30:48.405367+00:00"
@@ -27966,6 +28977,8 @@
           "speed_compliance": 1.0,
           "reward": 118.513498,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 26,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:30:48.404478+00:00"
@@ -27978,6 +28991,8 @@
           "speed_compliance": 1.0,
           "reward": 117.55217,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 25,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:30:10.616135+00:00"
@@ -27990,6 +29005,8 @@
           "speed_compliance": 1.0,
           "reward": 118.372053,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 25,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:30:10.609873+00:00"
@@ -28002,6 +29019,8 @@
           "speed_compliance": 1.0,
           "reward": 116.419328,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 25,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:30:10.606590+00:00"
@@ -28014,6 +29033,8 @@
           "speed_compliance": 1.0,
           "reward": 118.973415,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 25,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:30:10.602643+00:00"
@@ -31152,6 +32173,9 @@
       "episode_limit_sec": 150.0,
       "num_envs": 4,
       "world": "train_world3.sdf",
+      "train_worlds": [],
+      "eval_worlds": [],
+      "map_evaluation": [],
       "vehicle": {
         "label_count": 15,
         "forward_speed_mps": 0.1,
@@ -31279,6 +32303,8 @@
           "speed_compliance": 1.0,
           "reward": 115.930184,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 1,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:07:58.158632+00:00"
@@ -31291,6 +32317,8 @@
           "speed_compliance": 1.0,
           "reward": 118.642367,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 1,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:07:58.155930+00:00"
@@ -31303,6 +32331,8 @@
           "speed_compliance": 1.0,
           "reward": 119.618648,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 1,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:07:58.154304+00:00"
@@ -31315,6 +32345,8 @@
           "speed_compliance": 1.0,
           "reward": 117.088769,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 1,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:07:58.148874+00:00"
@@ -31417,6 +32449,9 @@
       "episode_limit_sec": 150.0,
       "num_envs": 4,
       "world": "train_world3.sdf",
+      "train_worlds": [],
+      "eval_worlds": [],
+      "map_evaluation": [],
       "vehicle": {
         "label_count": 15,
         "forward_speed_mps": 0.1,
@@ -31544,6 +32579,8 @@
           "speed_compliance": 1.0,
           "reward": 117.105712,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 83,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:02:21.065588+00:00"
@@ -31556,6 +32593,8 @@
           "speed_compliance": 1.0,
           "reward": 118.065188,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 78,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:02:12.873435+00:00"
@@ -31568,6 +32607,8 @@
           "speed_compliance": 1.0,
           "reward": 118.107209,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 83,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:02:03.543489+00:00"
@@ -31580,6 +32621,8 @@
           "speed_compliance": 1.0,
           "reward": 115.828495,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 79,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:01:59.670795+00:00"
@@ -31592,6 +32635,8 @@
           "speed_compliance": 1.0,
           "reward": 116.169712,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 82,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:01:48.586197+00:00"
@@ -31604,6 +32649,8 @@
           "speed_compliance": 1.0,
           "reward": 117.641281,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 77,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:01:39.195124+00:00"
@@ -31616,6 +32663,8 @@
           "speed_compliance": 1.0,
           "reward": 117.966358,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 82,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:01:28.282089+00:00"
@@ -31628,6 +32677,8 @@
           "speed_compliance": 1.0,
           "reward": 115.651932,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 78,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:01:23.637752+00:00"
@@ -31640,6 +32691,8 @@
           "speed_compliance": 1.0,
           "reward": 116.509698,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 81,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:01:10.031624+00:00"
@@ -31652,6 +32705,8 @@
           "speed_compliance": 1.0,
           "reward": 117.337401,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 76,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:01:00.224521+00:00"
@@ -31664,6 +32719,8 @@
           "speed_compliance": 1.0,
           "reward": 118.486692,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 81,
           "worker": "worker_0",
           "ended_at": "2026-10-09T17:00:49.301980+00:00"
@@ -31676,6 +32733,8 @@
           "speed_compliance": 1.0,
           "reward": 115.545017,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 77,
           "worker": "worker_1",
           "ended_at": "2026-10-09T17:00:44.723679+00:00"
@@ -31688,6 +32747,8 @@
           "speed_compliance": 1.0,
           "reward": 115.886642,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 80,
           "worker": "worker_3",
           "ended_at": "2026-10-09T17:00:30.601463+00:00"
@@ -31700,6 +32761,8 @@
           "speed_compliance": 1.0,
           "reward": 117.192011,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 75,
           "worker": "worker_2",
           "ended_at": "2026-10-09T17:00:20.544604+00:00"
@@ -31712,6 +32775,8 @@
           "speed_compliance": 1.0,
           "reward": 117.566704,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 80,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:58:29.431833+00:00"
@@ -31724,6 +32789,8 @@
           "speed_compliance": 1.0,
           "reward": 115.502547,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 76,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:58:24.857368+00:00"
@@ -31736,6 +32803,8 @@
           "speed_compliance": 1.0,
           "reward": 115.782862,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 79,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:58:11.541256+00:00"
@@ -31748,6 +32817,8 @@
           "speed_compliance": 1.0,
           "reward": 116.071152,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 74,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:58:01.963914+00:00"
@@ -31760,6 +32831,8 @@
           "speed_compliance": 1.0,
           "reward": 117.07905,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 79,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:57:51.248638+00:00"
@@ -31772,6 +32845,8 @@
           "speed_compliance": 1.0,
           "reward": 114.704241,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 75,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:57:46.461504+00:00"
@@ -31784,6 +32859,8 @@
           "speed_compliance": 1.0,
           "reward": 115.574434,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 78,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:57:33.298941+00:00"
@@ -31796,6 +32873,8 @@
           "speed_compliance": 1.0,
           "reward": 116.631758,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 73,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:57:23.573462+00:00"
@@ -31808,6 +32887,8 @@
           "speed_compliance": 1.0,
           "reward": 117.383643,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 78,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:57:12.463919+00:00"
@@ -31820,6 +32901,8 @@
           "speed_compliance": 1.0,
           "reward": 114.54741,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 74,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:57:07.908152+00:00"
@@ -31832,6 +32915,8 @@
           "speed_compliance": 1.0,
           "reward": 114.548516,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 77,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:56:54.335737+00:00"
@@ -31844,6 +32929,8 @@
           "speed_compliance": 1.0,
           "reward": 115.392821,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 72,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:56:44.574757+00:00"
@@ -31856,6 +32943,8 @@
           "speed_compliance": 1.0,
           "reward": 117.011211,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 77,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:56:33.783329+00:00"
@@ -31868,6 +32957,8 @@
           "speed_compliance": 1.0,
           "reward": 114.555103,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 73,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:56:29.079812+00:00"
@@ -31880,6 +32971,8 @@
           "speed_compliance": 1.0,
           "reward": 114.380567,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 76,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:54:36.471398+00:00"
@@ -31892,6 +32985,8 @@
           "speed_compliance": 1.0,
           "reward": 115.334117,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 71,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:54:26.769884+00:00"
@@ -31904,6 +32999,8 @@
           "speed_compliance": 1.0,
           "reward": 116.156907,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 76,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:54:15.689488+00:00"
@@ -31916,6 +33013,8 @@
           "speed_compliance": 1.0,
           "reward": 113.657467,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 72,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:54:10.962946+00:00"
@@ -31928,6 +33027,8 @@
           "speed_compliance": 1.0,
           "reward": 113.592769,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 75,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:53:57.494607+00:00"
@@ -31940,6 +33041,8 @@
           "speed_compliance": 1.0,
           "reward": 113.792921,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 70,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:53:47.782080+00:00"
@@ -31952,6 +33055,8 @@
           "speed_compliance": 1.0,
           "reward": 115.717817,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 75,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:53:36.927059+00:00"
@@ -31964,6 +33069,8 @@
           "speed_compliance": 1.0,
           "reward": 112.220797,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 71,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:53:32.450778+00:00"
@@ -31976,6 +33083,8 @@
           "speed_compliance": 1.0,
           "reward": 112.764072,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 74,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:53:19.095801+00:00"
@@ -31988,6 +33097,8 @@
           "speed_compliance": 1.0,
           "reward": 113.7132,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 69,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:53:09.436967+00:00"
@@ -32000,6 +33111,8 @@
           "speed_compliance": 1.0,
           "reward": 114.675341,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 74,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:52:58.419879+00:00"
@@ -32012,6 +33125,8 @@
           "speed_compliance": 1.0,
           "reward": 111.228369,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 70,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:52:53.811595+00:00"
@@ -32024,6 +33139,8 @@
           "speed_compliance": 1.0,
           "reward": 112.733752,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 73,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:51:00.207661+00:00"
@@ -32036,6 +33153,8 @@
           "speed_compliance": 1.0,
           "reward": 113.61763,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 68,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:50:50.296245+00:00"
@@ -32048,6 +33167,8 @@
           "speed_compliance": 1.0,
           "reward": 114.194621,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 73,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:50:39.830361+00:00"
@@ -32060,6 +33181,8 @@
           "speed_compliance": 1.0,
           "reward": 110.737931,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 69,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:50:35.332150+00:00"
@@ -32072,6 +33195,8 @@
           "speed_compliance": 1.0,
           "reward": 111.931875,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 72,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:50:22.020229+00:00"
@@ -32084,6 +33209,8 @@
           "speed_compliance": 1.0,
           "reward": 112.426598,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 67,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:50:12.517195+00:00"
@@ -32096,6 +33223,8 @@
           "speed_compliance": 1.0,
           "reward": 112.812154,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 72,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:50:01.772058+00:00"
@@ -32108,6 +33237,8 @@
           "speed_compliance": 1.0,
           "reward": 109.718428,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 68,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:49:57.201916+00:00"
@@ -32120,6 +33251,8 @@
           "speed_compliance": 1.0,
           "reward": 110.743295,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 71,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:49:44.148011+00:00"
@@ -32132,6 +33265,8 @@
           "speed_compliance": 1.0,
           "reward": 111.771049,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 66,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:49:34.402390+00:00"
@@ -32144,6 +33279,8 @@
           "speed_compliance": 1.0,
           "reward": 112.477807,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 71,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:49:23.833690+00:00"
@@ -32156,6 +33293,8 @@
           "speed_compliance": 1.0,
           "reward": 109.491647,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 67,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:49:19.249635+00:00"
@@ -32168,6 +33307,8 @@
           "speed_compliance": 1.0,
           "reward": 110.121477,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 70,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:49:05.710265+00:00"
@@ -32180,6 +33321,8 @@
           "speed_compliance": 1.0,
           "reward": 111.057127,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 65,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:48:56.058821+00:00"
@@ -32192,6 +33335,8 @@
           "speed_compliance": 1.0,
           "reward": 111.102808,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 70,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:47:05.129483+00:00"
@@ -32204,6 +33349,8 @@
           "speed_compliance": 1.0,
           "reward": 108.15448,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 66,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:47:00.628222+00:00"
@@ -32216,6 +33363,8 @@
           "speed_compliance": 1.0,
           "reward": 108.39717,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 69,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:46:48.157917+00:00"
@@ -32228,6 +33377,8 @@
           "speed_compliance": 1.0,
           "reward": 108.605208,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 64,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:46:39.884286+00:00"
@@ -32240,6 +33391,8 @@
           "speed_compliance": 1.0,
           "reward": 109.677916,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 69,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:46:30.893178+00:00"
@@ -32252,6 +33405,8 @@
           "speed_compliance": 1.0,
           "reward": 107.454029,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 65,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:46:27.042864+00:00"
@@ -32264,6 +33419,8 @@
           "speed_compliance": 1.0,
           "reward": 108.6764,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 68,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:46:15.857965+00:00"
@@ -32276,6 +33433,8 @@
           "speed_compliance": 1.0,
           "reward": 108.26838,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 63,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:46:07.879645+00:00"
@@ -32288,6 +33447,8 @@
           "speed_compliance": 1.0,
           "reward": 108.892494,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 68,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:45:58.589674+00:00"
@@ -32300,6 +33461,8 @@
           "speed_compliance": 1.0,
           "reward": 106.924143,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 64,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:45:54.632496+00:00"
@@ -32312,6 +33475,8 @@
           "speed_compliance": 1.0,
           "reward": 106.389655,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 67,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:45:43.575739+00:00"
@@ -32324,6 +33489,8 @@
           "speed_compliance": 1.0,
           "reward": 106.717965,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 62,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:45:35.186809+00:00"
@@ -32336,6 +33503,8 @@
           "speed_compliance": 1.0,
           "reward": 107.208965,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 67,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:45:26.098022+00:00"
@@ -32348,6 +33517,8 @@
           "speed_compliance": 1.0,
           "reward": 105.445681,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 63,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:45:21.566608+00:00"
@@ -32360,6 +33531,8 @@
           "speed_compliance": 1.0,
           "reward": 106.42483,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 66,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:43:24.099203+00:00"
@@ -32372,6 +33545,8 @@
           "speed_compliance": 1.0,
           "reward": 106.042866,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 61,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:43:12.829738+00:00"
@@ -32384,6 +33559,8 @@
           "speed_compliance": 1.0,
           "reward": 106.612948,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 66,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:43:02.096833+00:00"
@@ -32396,6 +33573,8 @@
           "speed_compliance": 1.0,
           "reward": 103.812223,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 62,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:42:57.203559+00:00"
@@ -32408,6 +33587,8 @@
           "speed_compliance": 1.0,
           "reward": 105.438813,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 65,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:42:44.093736+00:00"
@@ -32420,6 +33601,8 @@
           "speed_compliance": 1.0,
           "reward": 105.068831,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 60,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:42:34.054043+00:00"
@@ -32432,6 +33615,8 @@
           "speed_compliance": 1.0,
           "reward": 105.372033,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 65,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:42:23.370203+00:00"
@@ -32444,6 +33629,8 @@
           "speed_compliance": 1.0,
           "reward": 104.228519,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 61,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:42:18.866771+00:00"
@@ -32456,6 +33643,8 @@
           "speed_compliance": 1.0,
           "reward": 102.553846,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 64,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:42:05.390630+00:00"
@@ -32468,6 +33657,8 @@
           "speed_compliance": 1.0,
           "reward": 103.24566,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 59,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:41:55.677371+00:00"
@@ -32480,6 +33671,8 @@
           "speed_compliance": 1.0,
           "reward": 103.048276,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 64,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:41:45.011335+00:00"
@@ -32492,6 +33685,8 @@
           "speed_compliance": 1.0,
           "reward": 101.640993,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 60,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:41:40.234021+00:00"
@@ -32504,6 +33699,8 @@
           "speed_compliance": 1.0,
           "reward": 102.385356,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 63,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:39:46.980805+00:00"
@@ -32516,6 +33713,8 @@
           "speed_compliance": 1.0,
           "reward": 101.221597,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 58,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:39:37.321273+00:00"
@@ -32528,6 +33727,8 @@
           "speed_compliance": 1.0,
           "reward": 101.615703,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 63,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:39:26.204185+00:00"
@@ -32540,6 +33741,8 @@
           "speed_compliance": 1.0,
           "reward": 98.494145,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 59,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:39:21.621512+00:00"
@@ -32552,6 +33755,8 @@
           "speed_compliance": 1.0,
           "reward": 98.36935,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 62,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:39:08.049639+00:00"
@@ -32564,6 +33769,8 @@
           "speed_compliance": 1.0,
           "reward": 101.005167,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 57,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:38:58.437984+00:00"
@@ -32576,6 +33783,8 @@
           "speed_compliance": 1.0,
           "reward": 101.898518,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 62,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:38:47.721770+00:00"
@@ -32588,6 +33797,8 @@
           "speed_compliance": 1.0,
           "reward": 95.386426,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 58,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:38:42.841916+00:00"
@@ -32600,6 +33811,8 @@
           "speed_compliance": 1.0,
           "reward": 98.385842,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 61,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:38:29.009186+00:00"
@@ -32612,6 +33825,8 @@
           "speed_compliance": 1.0,
           "reward": 98.589367,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 56,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:38:19.272292+00:00"
@@ -32624,6 +33839,8 @@
           "speed_compliance": 1.0,
           "reward": 99.414031,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 61,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:38:08.216460+00:00"
@@ -32636,6 +33853,8 @@
           "speed_compliance": 1.0,
           "reward": 94.334383,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 57,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:38:03.624169+00:00"
@@ -32648,6 +33867,8 @@
           "speed_compliance": 1.0,
           "reward": 95.252365,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 60,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:37:51.864915+00:00"
@@ -32660,6 +33881,8 @@
           "speed_compliance": 1.0,
           "reward": 96.749318,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 55,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:37:43.557450+00:00"
@@ -32672,6 +33895,8 @@
           "speed_compliance": 1.0,
           "reward": 95.381736,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 60,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:35:57.902885+00:00"
@@ -32684,6 +33909,8 @@
           "speed_compliance": 1.0,
           "reward": 90.928593,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 56,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:35:53.431776+00:00"
@@ -32696,6 +33923,8 @@
           "speed_compliance": 1.0,
           "reward": 92.079329,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 59,
           "worker": "worker_3",
           "ended_at": "2026-10-09T16:35:40.004068+00:00"
@@ -32708,6 +33937,8 @@
           "speed_compliance": 1.0,
           "reward": 91.481014,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 54,
           "worker": "worker_2",
           "ended_at": "2026-10-09T16:35:30.398629+00:00"
@@ -32720,6 +33951,8 @@
           "speed_compliance": 1.0,
           "reward": 95.150038,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 59,
           "worker": "worker_0",
           "ended_at": "2026-10-09T16:35:19.425452+00:00"
@@ -32732,6 +33965,8 @@
           "speed_compliance": 1.0,
           "reward": 87.23798,
           "scenario": null,
+          "world": "",
+          "spawn_index": null,
           "number": 55,
           "worker": "worker_1",
           "ended_at": "2026-10-09T16:35:14.822645+00:00"
@@ -35173,6 +36408,8 @@
         "speed_compliance": 1.0,
         "reward": 1003.6911830329599,
         "scenario": 0,
+        "world": "",
+        "spawn_index": null,
         "number": 1,
         "worker": "独立验收"
       },
@@ -35184,6 +36421,8 @@
         "speed_compliance": 1.0,
         "reward": 1003.9013379027289,
         "scenario": 1,
+        "world": "",
+        "spawn_index": null,
         "number": 2,
         "worker": "独立验收"
       },
@@ -35195,6 +36434,8 @@
         "speed_compliance": 1.0,
         "reward": 1004.1020602762228,
         "scenario": 2,
+        "world": "",
+        "spawn_index": null,
         "number": 3,
         "worker": "独立验收"
       },
@@ -35206,6 +36447,8 @@
         "speed_compliance": 1.0,
         "reward": 1005.091390154239,
         "scenario": 3,
+        "world": "",
+        "spawn_index": null,
         "number": 4,
         "worker": "独立验收"
       },
@@ -35217,6 +36460,8 @@
         "speed_compliance": 1.0,
         "reward": 1005.1382149217503,
         "scenario": 4,
+        "world": "",
+        "spawn_index": null,
         "number": 5,
         "worker": "独立验收"
       },
@@ -35228,6 +36473,8 @@
         "speed_compliance": 1.0,
         "reward": 1003.7018980486677,
         "scenario": 5,
+        "world": "",
+        "spawn_index": null,
         "number": 6,
         "worker": "独立验收"
       },
@@ -35239,6 +36486,8 @@
         "speed_compliance": 1.0,
         "reward": 1005.0212590274053,
         "scenario": 6,
+        "world": "",
+        "spawn_index": null,
         "number": 7,
         "worker": "独立验收"
       },
@@ -35250,6 +36499,8 @@
         "speed_compliance": 1.0,
         "reward": 1005.2378862898782,
         "scenario": 7,
+        "world": "",
+        "spawn_index": null,
         "number": 8,
         "worker": "独立验收"
       }
@@ -35379,6 +36630,8 @@
           "speed_compliance": 1.0,
           "reward": 799.8935397910313,
           "scenario": 0,
+          "world": "",
+          "spawn_index": null,
           "number": 1,
           "worker": "独立验收"
         },
@@ -35390,6 +36643,8 @@
           "speed_compliance": 1.0,
           "reward": 799.5721514763045,
           "scenario": 1,
+          "world": "",
+          "spawn_index": null,
           "number": 2,
           "worker": "独立验收"
         },
@@ -35401,6 +36656,8 @@
           "speed_compliance": 1.0,
           "reward": 799.3739933471388,
           "scenario": 2,
+          "world": "",
+          "spawn_index": null,
           "number": 3,
           "worker": "独立验收"
         },
@@ -35412,6 +36669,8 @@
           "speed_compliance": 1.0,
           "reward": 797.8473963990991,
           "scenario": 3,
+          "world": "",
+          "spawn_index": null,
           "number": 4,
           "worker": "独立验收"
         },
@@ -35423,6 +36682,8 @@
           "speed_compliance": 1.0,
           "reward": 797.144056211732,
           "scenario": 4,
+          "world": "",
+          "spawn_index": null,
           "number": 5,
           "worker": "独立验收"
         },
@@ -35434,6 +36695,8 @@
           "speed_compliance": 1.0,
           "reward": 800.8122979763871,
           "scenario": 5,
+          "world": "",
+          "spawn_index": null,
           "number": 6,
           "worker": "独立验收"
         },
@@ -35445,6 +36708,8 @@
           "speed_compliance": 1.0,
           "reward": 796.684707818052,
           "scenario": 6,
+          "world": "",
+          "spawn_index": null,
           "number": 7,
           "worker": "独立验收"
         },
@@ -35456,6 +36721,8 @@
           "speed_compliance": 1.0,
           "reward": 797.252109105158,
           "scenario": 7,
+          "world": "",
+          "spawn_index": null,
           "number": 8,
           "worker": "独立验收"
         },
@@ -35467,6 +36734,8 @@
           "speed_compliance": 1.0,
           "reward": 800.5232438917226,
           "scenario": 0,
+          "world": "",
+          "spawn_index": null,
           "number": 9,
           "worker": "独立验收"
         },
@@ -35478,6 +36747,8 @@
           "speed_compliance": 1.0,
           "reward": 801.6491464338607,
           "scenario": 1,
+          "world": "",
+          "spawn_index": null,
           "number": 10,
           "worker": "独立验收"
         },
@@ -35489,6 +36760,8 @@
           "speed_compliance": 1.0,
           "reward": 799.2079038243995,
           "scenario": 2,
+          "world": "",
+          "spawn_index": null,
           "number": 11,
           "worker": "独立验收"
         },
@@ -35500,6 +36773,8 @@
           "speed_compliance": 1.0,
           "reward": 797.8171419788506,
           "scenario": 3,
+          "world": "",
+          "spawn_index": null,
           "number": 12,
           "worker": "独立验收"
         },
@@ -35511,6 +36786,8 @@
           "speed_compliance": 1.0,
           "reward": 797.328453176278,
           "scenario": 4,
+          "world": "",
+          "spawn_index": null,
           "number": 13,
           "worker": "独立验收"
         },
@@ -35522,6 +36799,8 @@
           "speed_compliance": 1.0,
           "reward": 801.2215523253914,
           "scenario": 5,
+          "world": "",
+          "spawn_index": null,
           "number": 14,
           "worker": "独立验收"
         },
@@ -35533,6 +36812,8 @@
           "speed_compliance": 1.0,
           "reward": 796.6602436938364,
           "scenario": 6,
+          "world": "",
+          "spawn_index": null,
           "number": 15,
           "worker": "独立验收"
         },
@@ -35544,6 +36825,8 @@
           "speed_compliance": 1.0,
           "reward": 797.7540340233206,
           "scenario": 7,
+          "world": "",
+          "spawn_index": null,
           "number": 16,
           "worker": "独立验收"
         }
@@ -35705,6 +36988,8 @@
           "speed_compliance": 1.0,
           "reward": 1003.6911830329599,
           "scenario": 0,
+          "world": "",
+          "spawn_index": null,
           "number": 1,
           "worker": "独立验收"
         },
@@ -35716,6 +37001,8 @@
           "speed_compliance": 1.0,
           "reward": 1003.9013379027289,
           "scenario": 1,
+          "world": "",
+          "spawn_index": null,
           "number": 2,
           "worker": "独立验收"
         },
@@ -35727,6 +37014,8 @@
           "speed_compliance": 1.0,
           "reward": 1004.1020602762228,
           "scenario": 2,
+          "world": "",
+          "spawn_index": null,
           "number": 3,
           "worker": "独立验收"
         },
@@ -35738,6 +37027,8 @@
           "speed_compliance": 1.0,
           "reward": 1005.091390154239,
           "scenario": 3,
+          "world": "",
+          "spawn_index": null,
           "number": 4,
           "worker": "独立验收"
         },
@@ -35749,6 +37040,8 @@
           "speed_compliance": 1.0,
           "reward": 1005.1382149217503,
           "scenario": 4,
+          "world": "",
+          "spawn_index": null,
           "number": 5,
           "worker": "独立验收"
         },
@@ -35760,6 +37053,8 @@
           "speed_compliance": 1.0,
           "reward": 1003.7018980486677,
           "scenario": 5,
+          "world": "",
+          "spawn_index": null,
           "number": 6,
           "worker": "独立验收"
         },
@@ -35771,6 +37066,8 @@
           "speed_compliance": 1.0,
           "reward": 1005.0212590274053,
           "scenario": 6,
+          "world": "",
+          "spawn_index": null,
           "number": 7,
           "worker": "独立验收"
         },
@@ -35782,6 +37079,8 @@
           "speed_compliance": 1.0,
           "reward": 1005.2378862898782,
           "scenario": 7,
+          "world": "",
+          "spawn_index": null,
           "number": 8,
           "worker": "独立验收"
         }
@@ -35844,6 +37143,241 @@
     }
   },
   "evaluations": [
+    {
+      "id": "evaluation_20261011_115148_c54484",
+      "status": "complete",
+      "observation_mode": "privileged",
+      "is_running": false,
+      "updated_at": "2026-10-11T03:55:12.981855+00:00",
+      "model_name": "model.zip",
+      "model_sha256": "7171b17cb1e492ec0434887bbb0128e0246ae0ce0d15875f1854a14d246b3365",
+      "model_run": "validated_privileged_2392588_20261011_074049",
+      "completed_episodes": 1,
+      "total_episodes": 1,
+      "stats": {
+        "count": 1,
+        "counts": {
+          "collision": 0,
+          "stuck": 0,
+          "looping": 0,
+          "slow": 0,
+          "out_of_bounds": 0,
+          "time_limit": 1
+        },
+        "failure_count": 0,
+        "failures": {
+          "collision": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "stuck": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "looping": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "slow": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "out_of_bounds": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          }
+        },
+        "completion_rate": 1.0,
+        "longest_observed_sec": 179.99999999999832,
+        "longest_completed_sec": 179.99999999999832,
+        "total_sim_sec": 179.99999999999832,
+        "total_distance_m": 35.98272723465421,
+        "mean_speed_mps": 0.1999377214806471
+      },
+      "live": {
+        "worker": "独立评估",
+        "updated_at": "2026-10-11T03:55:12.708968+00:00",
+        "phase": "closed",
+        "episode_number": 1,
+        "max_episode_sim_sec": 180.0,
+        "sim_duration_sec": 179.99999999999832,
+        "distance_m": 35.98272723465421,
+        "speed_mps": 0.19999945581603606,
+        "action": 7,
+        "step": 900,
+        "reason": "time_limit",
+        "speed_compliance": 1.0
+      },
+      "passed": true,
+      "error_type": null
+    },
+    {
+      "id": "evaluation_20261011_114916_30ebe1",
+      "status": "failed",
+      "observation_mode": "privileged",
+      "is_running": false,
+      "updated_at": "2026-10-11T03:51:38.762420+00:00",
+      "model_name": "model.zip",
+      "model_sha256": "7171b17cb1e492ec0434887bbb0128e0246ae0ce0d15875f1854a14d246b3365",
+      "model_run": "validated_privileged_2392588_20261011_074049",
+      "completed_episodes": 0,
+      "total_episodes": 1,
+      "stats": {
+        "count": 0,
+        "counts": {
+          "collision": 0,
+          "stuck": 0,
+          "looping": 0,
+          "slow": 0,
+          "out_of_bounds": 0,
+          "time_limit": 0
+        },
+        "failure_count": 0,
+        "failures": {
+          "collision": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "stuck": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "looping": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "slow": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "out_of_bounds": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          }
+        },
+        "completion_rate": null,
+        "longest_observed_sec": null,
+        "longest_completed_sec": null,
+        "total_sim_sec": 0,
+        "total_distance_m": 0,
+        "mean_speed_mps": null
+      },
+      "live": {
+        "worker": "独立评估",
+        "updated_at": "2026-10-11T03:51:38.761927+00:00",
+        "phase": "closed",
+        "episode_number": 1,
+        "max_episode_sim_sec": 180.0,
+        "sim_duration_sec": 122.4000000000012,
+        "distance_m": 24.46692360478434,
+        "speed_mps": 0.1999994083445504,
+        "action": 7,
+        "step": 612,
+        "reason": "",
+        "speed_compliance": 1.0,
+        "error_type": "SimulationDataError"
+      },
+      "passed": null,
+      "error_type": "SimulationDataError"
+    },
+    {
+      "id": "evaluation_20261011_105951_180200",
+      "status": "complete",
+      "observation_mode": "privileged",
+      "is_running": false,
+      "updated_at": "2026-10-11T03:03:08.898601+00:00",
+      "model_name": "model.zip",
+      "model_sha256": "7171b17cb1e492ec0434887bbb0128e0246ae0ce0d15875f1854a14d246b3365",
+      "model_run": "validated_privileged_2392588_20261011_074049",
+      "completed_episodes": 1,
+      "total_episodes": 1,
+      "stats": {
+        "count": 1,
+        "counts": {
+          "collision": 0,
+          "stuck": 0,
+          "looping": 0,
+          "slow": 0,
+          "out_of_bounds": 0,
+          "time_limit": 1
+        },
+        "failure_count": 0,
+        "failures": {
+          "collision": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "stuck": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "looping": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "slow": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          },
+          "out_of_bounds": {
+            "count": 0,
+            "mean_sec": null,
+            "min_sec": null,
+            "last": null
+          }
+        },
+        "completion_rate": 1.0,
+        "longest_observed_sec": 179.99999999999832,
+        "longest_completed_sec": 179.99999999999832,
+        "total_sim_sec": 179.99999999999832,
+        "total_distance_m": 35.98272723465421,
+        "mean_speed_mps": 0.1999377214806471
+      },
+      "live": {
+        "worker": "独立评估",
+        "updated_at": "2026-10-11T03:03:08.603106+00:00",
+        "phase": "closed",
+        "episode_number": 1,
+        "max_episode_sim_sec": 180.0,
+        "sim_duration_sec": 179.99999999999832,
+        "distance_m": 35.98272723465421,
+        "speed_mps": 0.19999945581603606,
+        "action": 7,
+        "step": 900,
+        "reason": "time_limit",
+        "speed_compliance": 1.0
+      },
+      "passed": true,
+      "error_type": null
+    },
     {
       "id": "evaluation_20261011_102558_0b8f27",
       "status": "complete",
@@ -36466,6 +38000,6 @@
     "media/validation.png": "98a713b0515f53fc",
     "media/learning.png": "0b5b1b39b0201a9b"
   },
-  "snapshot_id": "cad8789f43d9e9618f3e76fd797fba2c12da484c80b2ba3bdd42d36d07bfcbc6",
-  "generated_at": "2026-10-11T02:45:35.020413+00:00"
+  "snapshot_id": "c27d6d12ed5dc834dd80b9b5b5971573980b717a732a1c62e9891c62149376a2",
+  "generated_at": "2026-10-11T13:28:17.423198+00:00"
 }
