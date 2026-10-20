@@ -4,6 +4,26 @@
 
 author ： TAO RAN
 
+## 仿真采集训练集
+
+使用已验证的 PPO 教师控制 Gazebo 小车，同步记录动作执行前的雷达帧：
+
+```bash
+python Gazebo_simulation/rl_training/privileged/collect_data.py --check
+python Gazebo_simulation/rl_training/privileged/collect_data.py
+```
+
+配置在采集脚本顶部。默认采集一回合、最多 3 分钟，随后生成随机将约 5% 非零雷达点
+置零的增强副本。原始数据和增强数据数量为 1:1，保存到
+`Gazebo_simulation/results/datasets/<批次>/`，仅原始和增强 CSV 原样复制到
+`dataset/simulation/<批次>/`。采集元信息、逐行时间戳及日志保留在 Gazebo 的原始目录。
+采集不执行数据清理、K 特征选择或随机森林训练。
+
+后续训练统一从 `dataset/` 递归读取 `physical/`、`simulation/`。
+训练前需统一实车/仿真标签含义，允许增强数据中的零值，并将同一回合的原始/增强
+文件放入相同的训练/验证分组。详见
+[采集说明](Gazebo_simulation/rl_training/privileged/README.md#采集随机森林训练数据)。
+
 ## 数据训练与模型部署
 
 将采集的操作记录放进根目录 `dataset/`，每行应为 200 个雷达距离加一个操作标签。
