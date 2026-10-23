@@ -1,8 +1,10 @@
 # 模型输出
 
-运行 `../MLcode/train_model.py` 后，清理数据、特征评分、评估报告、Python 模型及
-`randomForest.h` 生成到这里，头文件自动同步到 `../C_code/selfdrive/main/`。
-配置和操作说明见 [MLcode/README.md](../MLcode/README.md)。
+正式入口为 `../MLcode/train_model.py`，当前默认输出到 `simulation/`，包含 Python 模型、
+C++ 头文件、数据检查与训练评估报告。模型仅使用训练地图拟合，保存后不再用验证地图重训。
 
-本目录中的模型、清理数据和评估报告均为生成产物，由脚本管理，不手动修改或提交到 Git。
-此目录只提交 README。固件目录中的 `randomForest.h` 同样由训练脚本生成和同步。
+仿真使用 0–14 标签、直行 7；旧实车直行为 10。因此仿真模型不会同步到实车固件目录。
+根目录已有旧模型继续保留。每次发布先完成 C++ 一致性验证，已有头文件另存备份。
+
+这些生成产物由脚本管理，不手动修改或提交到 Git。本目录只提交 README。
+配置和操作说明见 [MLcode/README.md](../MLcode/README.md)。

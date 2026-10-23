@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""操作数据 -> 清理 -> K 特征 -> 随机森林 -> C++ 头文件 -> 固件同步。"""
+"""指定批次 -> 配对校验 -> 按地图验证 -> 随机森林 -> Python/C++ 模型。"""
 
 from pathlib import Path
 
@@ -8,8 +8,11 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 # 输入 / 输出（绝对路径，或相对于 dissertation 的路径）
-INPUT_DIR = PROJECT_ROOT / "dataset"
-OUTPUT_DIR = PROJECT_ROOT / "software" / "ML_model"
+DATA_SOURCE = "simulation"                # simulation / physical；标签含义不同，禁止混训
+INPUT_DIR = PROJECT_ROOT / "dataset" / DATA_SOURCE
+INPUT_BATCHES = ("collection_20261023_092900_850f9f",) if DATA_SOURCE == "simulation" else ()
+DATA_VARIANT = "dropout"                 # 仿真："raw" / "dropout" / "both"（成对加载）
+OUTPUT_DIR = PROJECT_ROOT / "software" / "ML_model" / DATA_SOURCE
 FIRMWARE_HEADER = PROJECT_ROOT / "software/C_code/selfdrive/main/randomForest.h"
 INPUT_EXTENSIONS = (".txt", ".csv")       # 不区分大小写，递归搜索
 HEADER_FILENAME = "randomForest.h"
@@ -19,9 +22,10 @@ FEATURE_SCORES_FILENAME = "feature_scores.csv"
 TRAIN_REPORT_FILENAME = "training_report.json"
 PYTHON_MODEL_FILENAME = "randomForest.joblib"
 BACKUP_SUBDIR = "backups"
-SYNC_TO_FIRMWARE = True                   # 成功后备份并覆盖固件模型
-SAVE_CLEANED_DATA = True
+SYNC_TO_FIRMWARE = False                  # simulation 禁止同步到旧实车控制器
+SAVE_CLEANED_DATA = False                 # 避免默认再生成数 GB CSV；报告始终保存
 SAVE_PYTHON_MODEL = True
+READ_CHUNK_ROWS = 20000                   # 分块读取/验证，完整数据暂存为紧凑磁盘数组
 
 # 数据格式：必须与 collect_data 中的 LIDAR_RESOLUTION 一致
 LIDAR_POINT_COUNT = 200                   # 一行有该数量的距离 + 1 个标签
@@ -36,18 +40,20 @@ ALLOW_TRAILING_COMMA = False
 CLEAN_REQUIRE_INTEGER_DISTANCES = True
 CLEAN_DROP_ALL_ZERO_SCANS = True
 CLEAN_MAX_ZERO_FRACTION = 1.0              # 仅在采集扇区计算，1.0 不限制
-CLEAN_REMOVE_DUPLICATES = False           # 开启后在每个文件内去重
 CLEAN_DROP_LABELS = (255,)                # 255 是录制标志
-TRAIN_LABELS = tuple(range(16))           # 需要保留直行类别时加入 201
+TRAIN_LABELS = tuple(range(15 if DATA_SOURCE == "simulation" else 16))
+STRAIGHT_COMMAND = 7 if DATA_SOURCE == "simulation" else 10
 LABEL_REMAP = {}                          # 例如 {201: 10}，两者车轮控制相同
 MIN_CLEAN_ROWS = 20
 
-# K 个有效特征：原始列索引、顺序自动写进头文件
+# all 模式完整保留 200 列（含固定零列）；k_best 模式才做训练集上的特征选择
+FEATURE_MODE = "all"                     # all / k_best
 K = 8
 FEATURE_CANDIDATE_INDICES = None          # None = 实际采集列；或 (22, 23, ...)
-REQUIRE_SELECTED_FEATURES_POSITIVE = True # 丢弃选中列为 0 的行，符合固件有效输入
+REQUIRE_SELECTED_FEATURES_POSITIVE = False # 保留缺点零值，让 dropout 参与训练
 
-# 训练 / 验证：多个文件按文件分组；单文件按时间顺序切分
+# 仿真按地图分组：跨批次同地图及 raw/dropout 永远同侧
+VALIDATION_MAPS = ("ellipse_002",) if DATA_SOURCE == "simulation" else ()
 TEST_SIZE = 0.2
 SPLIT_GAP_ROWS = 10                       # 单文件训练 / 验证间丢弃的相邻帧
 RANDOM_SEED = 42
@@ -56,7 +62,7 @@ MAX_DEPTH = 3
 MIN_SAMPLES_LEAF = 1
 CLASS_WEIGHT = None                      # 可改为 "balanced"
 N_JOBS = 1                               # 概率累加顺序可重复
-TOLERANCE_LEVELS = (1, 2)                 # 仅对 0–15 转向指令计算容差准确率
+TOLERANCE_LEVELS = (1, 2)                 # 转向标签允许相差的档位数
 
 # 验证 / 发布：验证失败绝不覆盖原模型
 VERIFY_CPP_EXPORT = True                  # 编译真实 C++ 推理核对 Python 预测
@@ -72,11 +78,12 @@ TOOL_TIMEOUT_SECONDS = 180
 
 import argparse
 from collections import Counter
+from dataclasses import dataclass
 import csv
 from datetime import datetime, timezone
 import hashlib
+from itertools import islice, zip_longest
 import json
-import math
 import os
 import shutil
 import subprocess
@@ -98,7 +105,11 @@ def active_indices():
 def validate_config(args):
     if not isinstance(LIDAR_POINT_COUNT, int) or not 1 <= LIDAR_POINT_COUNT <= 65535:
         raise ValueError("LIDAR_POINT_COUNT 必须为 1–65535 的整数。")
-    if not 1 <= args.k <= len(active_indices()):
+    if DATA_SOURCE not in ("simulation", "physical") or READ_CHUNK_ROWS < 1:
+        raise ValueError("检查 DATA_SOURCE / READ_CHUNK_ROWS。")
+    if DATA_SOURCE == "simulation" and (args.sync or VERIFY_TEENSY_BUILD):
+        raise ValueError("仿真标签与旧实车不同，禁止同步或编译为旧实车模型。")
+    if args.feature_mode == "k_best" and not 1 <= args.k <= len(active_indices()):
         raise ValueError("K 必须在 1 与实际采集列数之间。")
     if not 0 < TEST_SIZE < 1 or SPLIT_GAP_ROWS < 0:
         raise ValueError("TEST_SIZE 必须在 0–1 之间，SPLIT_GAP_ROWS 不能为负。")
@@ -124,107 +135,182 @@ def validate_config(args):
         raise ValueError("VERIFY_SAMPLE_COUNT 至少为 1，VERIFY_RANDOM_PROBE_COUNT 不能为负。")
 
 
-def load_and_clean(input_dir):
-    extensions = {s.lower() for s in INPUT_EXTENSIONS}
-    files = sorted(p for p in input_dir.rglob("*") if p.is_file() and p.suffix.lower() in extensions)
-    if not files:
-        raise ValueError(f"{input_dir} 没有操作数据，原模型未更换。")
-    rows, groups, reports = [], [], []
-    active = active_indices()
-    for group, path in enumerate(files):
-        counts, columns, labels_seen, seen = Counter(), Counter(), Counter(), set()
-        source = str(path.relative_to(input_dir))
-        with path.open(encoding=INPUT_ENCODING, errors="replace") as handle:
-            for line_number, line in enumerate(handle, 1):
-                counts["total"] += 1
-                if INPUT_HAS_HEADER and line_number == 1:
-                    counts["header"] += 1
-                    continue
-                line = line.strip()
-                if not line:
-                    counts["blank"] += 1
-                    continue
-                parts = line.split(INPUT_DELIMITER)
-                if ALLOW_TRAILING_COMMA and not parts[-1].strip():
-                    parts.pop()
-                columns[len(parts)] += 1
-                if len(parts) != LIDAR_POINT_COUNT + 1:
-                    counts["wrong_column_count"] += 1
-                    continue
-                try:
-                    values = [float(p) for p in parts]
-                except ValueError:
-                    counts["non_numeric"] += 1
-                    continue
-                if not all(math.isfinite(v) for v in values):
-                    counts["non_finite"] += 1
-                    continue
-                if not values[-1].is_integer():
-                    counts["non_integer_label"] += 1
-                    continue
-                label = int(values[-1])
-                labels_seen[label] += 1
-                if label in CLEAN_DROP_LABELS:
-                    counts["dropped_label"] += 1
-                    continue
-                label = LABEL_REMAP.get(label, label)
-                if label not in TRAIN_LABELS:
-                    counts["label_not_allowed"] += 1
-                    continue
-                distances = values[:-1]
-                if any(v < 0 or v >= MAX_DISTANCE_MM for v in distances):
-                    counts["distance_out_of_range"] += 1
-                    continue
-                if CLEAN_REQUIRE_INTEGER_DISTANCES and any(not v.is_integer() for v in distances):
-                    counts["non_integer_distance"] += 1
-                    continue
-                zeros = sum(distances[i] == 0 for i in active)
-                if CLEAN_DROP_ALL_ZERO_SCANS and zeros == len(active):
-                    counts["all_zero_scan"] += 1
-                    continue
-                if zeros / len(active) > CLEAN_MAX_ZERO_FRACTION:
-                    counts["too_many_zeros"] += 1
-                    continue
-                row = tuple(distances) + (label,)
-                if CLEAN_REMOVE_DUPLICATES:
-                    if row in seen:
-                        counts["duplicate"] += 1
-                        continue
-                    seen.add(row)
-                rows.append(row)
-                groups.append(group)
-                counts["kept"] += 1
-        reports.append({"file": source, "counts": dict(counts),
-                        "observed_column_counts": dict(columns),
-                        "label_counts_before_filter": dict(labels_seen)})
-        print(f"清理 {source}: {counts['kept']}/{counts['total']} 行保留")
-    if not rows:
-        raise ValueError(f"没有有效数据；应有 {LIDAR_POINT_COUNT + 1} 列。统计：{reports}")
-    report = {"expected_columns": LIDAR_POINT_COUNT + 1, "files": reports,
-              "kept_rows": len(rows), "label_counts": dict(Counter(r[-1] for r in rows))}
-    return rows, groups, report
+@dataclass
+class Dataset:
+    rows: object
+    groups: object
+    variants: object
+    report: dict
 
 
-def split_rows(groups, labels):
+def discover_sources(input_dir, batches):
+    """每项为 (地图/分组名, 可选 raw 路径, 可选 dropout 路径)。"""
+    if DATA_VARIANT not in ("raw", "dropout", "both"):
+        raise ValueError("DATA_VARIANT 必须为 raw、dropout 或 both。")
+    if DATA_SOURCE == "physical":
+        files = sorted(p for p in input_dir.rglob("*")
+                       if p.is_file() and p.suffix.lower() in INPUT_EXTENSIONS)
+        sources = [(str(p.relative_to(input_dir)), p, None) for p in files]
+    else:
+        if not batches:
+            raise ValueError("仿真必须通过 INPUT_BATCHES 或 --batch 明确指定采集批次。")
+        if len(set(batches)) != len(batches):
+            raise ValueError("采集批次重复。")
+        sources = []
+        for batch in batches:
+            if Path(batch).name != batch:
+                raise ValueError("批次只填写目录名，不填写路径。")
+            directory = input_dir / batch
+            variants = ("raw", "dropout") if DATA_VARIANT == "both" else (DATA_VARIANT,)
+            files = {variant: {p.name.removesuffix(f"_{variant}.csv"): p
+                               for p in sorted((directory / variant).glob(f"*_{variant}.csv"))}
+                     for variant in variants}
+            for variant in variants:
+                if not files[variant]:
+                    raise ValueError(f"{directory}/{variant} 没有训练数据。")
+            if DATA_VARIANT == "both" and files["raw"].keys() != files["dropout"].keys():
+                raise ValueError(f"{directory} 的 raw/dropout 文件未一一配对。")
+            for name in files[variants[0]]:
+                sources.append((name, files.get("raw", {}).get(name),
+                                files.get("dropout", {}).get(name)))
+    if not sources:
+        raise ValueError(f"{input_dir} 没有训练数据，原模型未更换。")
+    return sources
+
+
+def read_chunks(path, report):
+    """严格检查格式；损坏行中止，避免跳行破坏 raw/dropout 对齐。"""
+    import numpy as np
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        if INPUT_HAS_HEADER:
+            digest.update(next(handle, b""))
+        while lines := list(islice(handle, READ_CHUNK_ROWS)):
+            for line in lines:
+                digest.update(line)
+            if lines[0].startswith(b"version https://git-lfs.github.com/spec/"):
+                raise ValueError(f"{path} 是 Git LFS 指针，请先下载实际数据。")
+            text = [line.decode(INPUT_ENCODING).strip() for line in lines]
+            if ALLOW_TRAILING_COMMA:
+                text = [line.removesuffix(INPUT_DELIMITER) for line in text]
+            try:
+                data = np.loadtxt(text, delimiter=INPUT_DELIMITER, dtype=np.float64,
+                                  ndmin=2, comments=None)
+            except ValueError as error:
+                raise ValueError(f"{path} 第 {report['total'] + 1} 行起格式异常：{error}") from error
+            if data.shape != (len(lines), LIDAR_POINT_COUNT + 1):
+                raise ValueError(f"{path} 存在空行或列数异常，应为 {LIDAR_POINT_COUNT + 1} 列。")
+            report["total"] += len(data)
+            yield data
+    report["sha256"] = digest.hexdigest()
+
+
+def clean_mask(data, report):
+    import numpy as np
+    keep = np.ones(len(data), dtype=bool)
+    counts = report.setdefault("removed", Counter())
+
+    def reject(reason, invalid):
+        counts[reason] += int(np.count_nonzero(keep & invalid))
+        keep[invalid] = False
+
+    reject("non_finite", ~np.isfinite(data).all(axis=1))
+    labels, distances = data[:, -1], data[:, :-1]
+    reject("non_integer_label", labels != np.floor(labels))
+    reject("dropped_label", np.isin(labels, CLEAN_DROP_LABELS))
+    original = labels.copy()
+    for old, new in LABEL_REMAP.items():
+        labels[original == old] = new
+    reject("label_not_allowed", ~np.isin(labels, TRAIN_LABELS))
+    reject("distance_out_of_range", ((distances < 0) | (distances >= MAX_DISTANCE_MM)).any(axis=1))
+    if CLEAN_REQUIRE_INTEGER_DISTANCES:
+        reject("non_integer_distance", (distances != np.floor(distances)).any(axis=1))
+    zeros = (distances[:, active_indices()] == 0).mean(axis=1)
+    if CLEAN_DROP_ALL_ZERO_SCANS:
+        reject("all_zero_scan", zeros == 1)
+    reject("too_many_zeros", zeros > CLEAN_MAX_ZERO_FRACTION)
+    return keep
+
+
+def load_and_clean(input_dir, cache_dir, batches=None):
+    import numpy as np
+    sources = discover_sources(input_dir, INPUT_BATCHES if batches is None else batches)
+    names = sorted({name for name, _, _ in sources})
+    reports, total, labels = [], 0, Counter()
+    dtype = np.uint16 if CLEAN_REQUIRE_INTEGER_DISTANCES else np.float32
+    row_path, index_path = cache_dir / "rows.bin", cache_dir / "indices.bin"
+    with row_path.open("wb") as row_file, index_path.open("wb") as index_file:
+        for name, raw, dropout in sources:
+            paths = [p for p in (raw, dropout) if p is not None]
+            file_reports = [{"file": str(p.relative_to(input_dir)), "map": name,
+                             "variant": "raw" if p == raw else "dropout", "total": 0,
+                             "kept": 0, "label_counts": Counter()} for p in paths]
+            streams = [read_chunks(p, r) for p, r in zip(paths, file_reports)]
+            for chunks in zip_longest(*streams):
+                if any(c is None for c in chunks) or len({len(c) for c in chunks}) != 1:
+                    raise ValueError(f"{name}: raw/dropout 行数不一致。")
+                if raw is not None and dropout is not None:
+                    raw_data, drop_data = chunks
+                    if not np.array_equal(raw_data[:, -1], drop_data[:, -1], equal_nan=True):
+                        raise ValueError(f"{name}: raw/dropout 标签未对齐。")
+                    equal = (drop_data[:, :-1] == raw_data[:, :-1]) | (drop_data[:, :-1] == 0)
+                    equal |= np.isnan(drop_data[:, :-1]) & np.isnan(raw_data[:, :-1])
+                    if not equal.all():
+                        raise ValueError(f"{name}: dropout 含非置零改动，配对数据不一致。")
+                masks = [clean_mask(c, r) for c, r in zip(chunks, file_reports)]
+                joint = np.logical_and.reduce(masks)
+                for chunk, mask, report in zip(chunks, masks, file_reports):
+                    report["removed"]["paired_invalid"] += int(np.count_nonzero(mask & ~joint))
+                    kept = chunk[joint].astype(dtype)
+                    kept.tofile(row_file)
+                    index = np.empty((len(kept), 2), dtype=np.int32)
+                    index[:, 0], index[:, 1] = names.index(name), int(report["variant"] == "dropout")
+                    index.tofile(index_file)
+                    report["kept"] += len(kept)
+                    unique, counts = np.unique(kept[:, -1], return_counts=True)
+                    label_counts = {int(k): int(v) for k, v in zip(unique, counts)}
+                    report["label_counts"].update(label_counts)
+                    labels.update(label_counts)
+                    total += len(kept)
+            reports.extend(file_reports)
+            print(f"读取 {paths[0].parent.parent.name}/{name}: " +
+                  ", ".join(f"{r['variant']} {r['kept']}/{r['total']}" for r in file_reports), flush=True)
+    if not total:
+        raise ValueError("没有有效数据，原模型未更换。")
+    rows = np.memmap(row_path, dtype=dtype, mode="r", shape=(total, LIDAR_POINT_COUNT + 1))
+    index = np.memmap(index_path, dtype=np.int32, mode="r", shape=(total, 2))
+    report = {"source": DATA_SOURCE, "data_variant": DATA_VARIANT if DATA_SOURCE == "simulation" else "raw",
+              "expected_columns": LIDAR_POINT_COUNT + 1,
+              "files": reports, "group_names": names, "kept_rows": total,
+              "label_counts": dict(labels), "storage_dtype": str(rows.dtype)}
+    return Dataset(rows, index[:, 0], index[:, 1], report)
+
+
+def split_rows(dataset):
     import numpy as np
     from sklearn.model_selection import GroupShuffleSplit
+    groups, labels = dataset.groups, dataset.rows[:, -1]
     indices = np.arange(len(labels))
-    if len(set(groups)) > 1:
-        split = GroupShuffleSplit(n_splits=1, test_size=TEST_SIZE, random_state=RANDOM_SEED)
-        train, test = next(split.split(indices, labels, groups))
+    names = dataset.report["group_names"]
+    if DATA_SOURCE == "simulation":
+        if not VALIDATION_MAPS or not set(VALIDATION_MAPS) <= set(names):
+            raise ValueError(f"VALIDATION_MAPS 必须是输入中的地图；当前地图：{names}")
+        test_mask = np.isin(groups, [names.index(name) for name in VALIDATION_MAPS])
+        train, test = indices[~test_mask], indices[test_mask]
+        method = "held_out_maps"
+    elif len(names) > 1:
+        splitter = GroupShuffleSplit(n_splits=1, test_size=TEST_SIZE, random_state=RANDOM_SEED)
+        train, test = next(splitter.split(indices, labels, groups))
         method = "by_file"
     else:
         boundary = int(len(labels) * (1 - TEST_SIZE))
         train, test = indices[:max(0, boundary - SPLIT_GAP_ROWS)], indices[boundary:]
         method = "chronological_with_gap"
     if len(train) < 2 or len(test) < 1:
-        raise ValueError("训练或验证数据不足；补充数据或调整 TEST_SIZE / SPLIT_GAP_ROWS。")
-    missing = set(labels) - set(labels[train])
-    if missing or len(set(labels[train])) < 2:
-        raise ValueError(f"训练部分缺少类别 {sorted(missing)} 或少于两类；"
-                         "请补充多次采集数据或调整划分配置，不回退到随机相邻帧划分。")
-    if len(train) <= len(set(labels[train])):
-        raise ValueError("训练样本数必须多于类别数，才能计算 ANOVA F 分数。")
+        raise ValueError("训练或验证数据不足，请检查地图划分。")
+    missing = set(np.unique(labels)) - set(np.unique(labels[train]))
+    if missing or len(np.unique(labels[train])) < 2:
+        raise ValueError(f"训练部分缺少类别 {sorted(missing)} 或少于两类。")
     return train, test, method
 
 
@@ -235,50 +321,83 @@ def make_classifier():
                                   random_state=RANDOM_SEED, n_jobs=N_JOBS)
 
 
-def train(rows, groups, k):
+def feature_array(rows, indices, selected):
+    import numpy as np
+    result = np.empty((len(indices), len(selected)), dtype=np.float32)
+    for start in range(0, len(indices), READ_CHUNK_ROWS):
+        subset = indices[start:start + READ_CHUNK_ROWS]
+        result[start:start + len(subset)] = rows[np.ix_(subset, selected)]
+    return result
+
+
+def validation_metrics(true, predictions, labels, majority):
+    import numpy as np
+    from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, f1_score
+    errors = np.abs(predictions.astype(int) - true.astype(int))
+    return {"rows": len(true), "accuracy": float(accuracy_score(true, predictions)),
+            "macro_f1": float(f1_score(true, predictions, labels=np.unique(true), average="macro", zero_division=0)),
+            "majority_baseline_accuracy": float(np.mean(true == majority)),
+            "confusion_labels": labels,
+            "confusion_matrix": confusion_matrix(true, predictions, labels=labels).tolist(),
+            "classification_report": classification_report(true, predictions, labels=labels,
+                                                           output_dict=True, zero_division=0),
+            "steering_mae": float(np.mean(errors)),
+            "steering_tolerant_accuracy": {str(t): float(np.mean(errors <= t)) for t in TOLERANCE_LEVELS}}
+
+
+def train(dataset, k=K, feature_mode=FEATURE_MODE):
     import numpy as np
     from sklearn.feature_selection import SelectKBest, f_classif
-    from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
-    data = np.asarray(rows, dtype=np.float64)
-    X, y = data[:, :-1], data[:, -1].astype(int)
-    train_idx, test_idx, method = split_rows(groups, y)
-    candidates = active_indices() if FEATURE_CANDIDATE_INDICES is None else sorted(set(FEATURE_CANDIDATE_INDICES))
-    candidates = np.asarray([i for i in candidates if np.ptp(X[train_idx, i]) > 0])
-    if len(candidates) < k:
-        raise ValueError(f"训练部分仅有 {len(candidates)} 个非常量候选特征，无法选择 K={k}。")
-    selector = SelectKBest(f_classif, k=k)
-    with np.errstate(divide="ignore", invalid="ignore"):
-        selector.fit(X[train_idx][:, candidates], y[train_idx])
-    selected = candidates[selector.get_support(indices=True)]
-    valid = np.all(X[:, selected] > 0, axis=1) if REQUIRE_SELECTED_FEATURES_POSITIVE else np.ones(len(y), bool)
-    train_idx, test_idx = train_idx[valid[train_idx]], test_idx[valid[test_idx]]
-    if len(test_idx) == 0 or set(y) != set(y[train_idx]) or len(set(y[train_idx])) < 2:
-        raise ValueError("选中特征的有效样本不足或训练类别缺失；检查 0 值、K 和数据划分。")
-    samples = X[:, selected].astype(np.float32)
-    classifier = make_classifier().fit(samples[train_idx], y[train_idx])
-    predictions, true = classifier.predict(samples[test_idx]), y[test_idx]
-    labels = sorted(set(y.tolist()))
-    metrics = {"accuracy": float(accuracy_score(true, predictions)), "confusion_labels": labels,
-               "confusion_matrix": confusion_matrix(true, predictions, labels=labels).tolist(),
-               "classification_report": classification_report(true, predictions, labels=labels,
-                                                              output_dict=True, zero_division=0)}
-    steering = (true >= 0) & (true <= 15)
-    if steering.any():
-        errors = np.abs(predictions[steering] - true[steering])
-        predicted_steering = (predictions[steering] >= 0) & (predictions[steering] <= 15)
-        metrics["steering_mae"] = float(np.mean(errors))
-        metrics["steering_tolerant_accuracy"] = {
-            str(t): float(np.mean(predicted_steering & (errors <= t))) for t in TOLERANCE_LEVELS}
+    rows, groups = dataset.rows, dataset.groups
+    y = rows[:, -1].astype(np.int16)
+    train_idx, test_idx, method = split_rows(dataset)
+    scores = []
+    if feature_mode == "all":
+        selected = list(range(LIDAR_POINT_COUNT))
+    elif feature_mode == "k_best":
+        selection_idx = train_idx[dataset.variants[train_idx] == 0]
+        if not len(selection_idx):
+            selection_idx = train_idx  # dropout 单独模式只用训练侧 dropout 评分
+        candidates = active_indices() if FEATURE_CANDIDATE_INDICES is None else sorted(set(FEATURE_CANDIDATE_INDICES))
+        candidates = [i for i in candidates if np.ptp(rows[selection_idx, i]) > 0]
+        if not 1 <= k <= len(candidates):
+            raise ValueError(f"训练部分仅有 {len(candidates)} 个非常量候选特征，无法选择 K={k}。")
+        selector = SelectKBest(f_classif, k=k)
+        with np.errstate(divide="ignore", invalid="ignore"):
+            selector.fit(feature_array(rows, selection_idx, candidates), y[selection_idx])
+        selected = np.asarray(candidates)[selector.get_support(indices=True)].tolist()
+        scores = [(i, float(v), int(i in selected)) for i, v in zip(candidates, selector.scores_)]
+    else:
+        raise ValueError("FEATURE_MODE 必须为 all 或 k_best。")
+    if REQUIRE_SELECTED_FEATURES_POSITIVE:
+        raise ValueError("当前训练保留 dropout 零值，请将 REQUIRE_SELECTED_FEATURES_POSITIVE 设为 False。")
+    print(f"训练：{len(train_idx)} 行，{len(selected)} 列，{N_ESTIMATORS} 棵树；验证 {len(test_idx)} 行", flush=True)
+    samples = feature_array(rows, train_idx, selected)
+    classifier = make_classifier().fit(samples, y[train_idx])
+    del samples
+    predictions = np.empty(len(test_idx), dtype=y.dtype)
+    for start in range(0, len(test_idx), READ_CHUNK_ROWS):
+        subset = test_idx[start:start + READ_CHUNK_ROWS]
+        predictions[start:start + len(subset)] = classifier.predict(feature_array(rows, subset, selected))
+    labels = sorted(int(v) for v in np.unique(y))
+    train_counts = dict(zip(*np.unique(y[train_idx], return_counts=True)))
+    majority = max(train_counts, key=train_counts.get)
+    metrics = {"combined": validation_metrics(y[test_idx], predictions, labels, majority)}
+    for variant, name in enumerate(("raw", "dropout")):
+        mask = dataset.variants[test_idx] == variant
+        if mask.any():
+            metrics[name] = validation_metrics(y[test_idx][mask], predictions[mask], labels, majority)
+    names = dataset.report["group_names"]
     split = {"method": method, "train_rows": len(train_idx), "test_rows": len(test_idx),
-             "train_files": sorted({groups[i] for i in train_idx}),
-             "test_files": sorted({groups[i] for i in test_idx}),
-             "selected_zero_rows_dropped": int((~valid).sum()),
-             "train_label_counts": dict(Counter(y[train_idx].tolist())),
-             "test_label_counts": dict(Counter(true.tolist()))}
-    # 验证后只重训森林；冻结特征，不用验证数据重新选特征。
-    classifier = make_classifier().fit(samples[valid], y[valid])
-    scores = [(int(i), float(s), int(i in selected)) for i, s in zip(candidates, selector.scores_)]
-    return classifier, selected.tolist(), samples[valid], scores, split, metrics
+             "train_groups": [names[int(i)] for i in np.unique(groups[train_idx])],
+             "test_groups": [names[int(i)] for i in np.unique(groups[test_idx])],
+             "train_label_counts": {int(k): int(v) for k, v in train_counts.items()},
+             "test_label_counts": {int(k): int(v) for k, v in zip(*np.unique(y[test_idx], return_counts=True))},
+             "absent_labels": sorted(set(TRAIN_LABELS) - set(labels))}
+    rng = np.random.default_rng(RANDOM_SEED)
+    chosen = rng.choice(len(rows), min(len(rows), VERIFY_SAMPLE_COUNT), replace=False)
+    samples = feature_array(rows, chosen, selected)
+    return classifier, selected, samples, scores, split, metrics
 
 
 def cpp_number(value):
@@ -362,7 +481,10 @@ def verify_cpp(header, classifier, samples, directory):
                     row = samples[chosen[0]].copy()
                     row[feature] = edge
                     edges.append(row)
-    check = np.vstack((samples[chosen], probes, np.asarray(edges).reshape(-1, samples.shape[1])))
+    zero_probes = samples[chosen[:min(100, len(chosen))]].copy()
+    zero_probes[:, ::3] = 0
+    check = np.vstack((samples[chosen], probes, zero_probes, np.zeros((1, samples.shape[1]), dtype=np.float32),
+                       np.asarray(edges).reshape(-1, samples.shape[1])))
     (directory / "randomForest.h").write_text(header, encoding="utf-8")
     source = directory / "verify.cpp"
     source.write_text('''#include <iostream>
@@ -392,7 +514,7 @@ int main() {
     if not np.array_equal(result[:, 0], classifier.predict(check)):
         raise ValueError("C++ 与 Python 指令预测不一致，原模型未更换。")
     np.testing.assert_allclose(result[:, 1:], classifier.predict_proba(check), rtol=1e-12, atol=1e-12)
-    print(f"C++ 导出验证通过：{len(check)} 个样本（含随机输入和阈值边界）")
+    print(f"C++ 导出验证通过：{len(check)} 个样本（含零值、随机输入和阈值边界）")
     return {"status": "passed", "samples": len(check)}
 
 
@@ -480,7 +602,10 @@ def publish(staged_files, output_dir, firmware_header=None):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--k", type=int, default=K)
+    parser.add_argument("--k", type=int, default=K, help="仅 k_best 模式生效")
+    parser.add_argument("--feature-mode", choices=("all", "k_best"), default=FEATURE_MODE)
+    parser.add_argument("--batch", action="append", help="批次目录名，可重复指定；覆盖 INPUT_BATCHES")
+    parser.add_argument("--check", action="store_true", help="仅检查配置和文件配对，不训练")
     parser.add_argument("--input-dir", default=INPUT_DIR)
     parser.add_argument("--output-dir", default=OUTPUT_DIR)
     parser.add_argument("--firmware-header", default=FIRMWARE_HEADER)
@@ -492,11 +617,20 @@ def main(argv=None):
     args.sync = SYNC_TO_FIRMWARE and not args.no_sync and not args.clean_only
     try:
         validate_config(args)
-        rows, groups, clean_report = load_and_clean(args.input_dir)
-        if not args.clean_only and len(rows) < MIN_CLEAN_ROWS:
-            raise ValueError(f"清理后仅 {len(rows)} 行，至少需要 MIN_CLEAN_ROWS={MIN_CLEAN_ROWS}。")
+        batches = args.batch if args.batch is not None else INPUT_BATCHES
+        sources = discover_sources(args.input_dir, batches)
+        if args.check:
+            names = {name for name, _, _ in sources}
+            if DATA_SOURCE == "simulation" and (not VALIDATION_MAPS or not set(VALIDATION_MAPS) < names):
+                raise ValueError("VALIDATION_MAPS 必须存在且留有训练地图。")
+            print(f"配置检查通过：{len(sources)} 组文件，数据 {DATA_VARIANT}，特征 {args.feature_mode}，验证地图 {VALIDATION_MAPS}")
+            return 0
         with tempfile.TemporaryDirectory(prefix="dissertation-ml-") as temporary:
             stage = Path(temporary)
+            dataset = load_and_clean(args.input_dir, stage, batches)
+            rows, clean_report = dataset.rows, dataset.report
+            if not args.clean_only and len(rows) < MIN_CLEAN_ROWS:
+                raise ValueError(f"清理后仅 {len(rows)} 行，至少需要 {MIN_CLEAN_ROWS} 行。")
             write_json(stage / CLEAN_REPORT_FILENAME, clean_report)
             artifacts = [stage / CLEAN_REPORT_FILENAME]
             if SAVE_CLEANED_DATA:
@@ -509,9 +643,7 @@ def main(argv=None):
                 import sklearn
                 if tuple(int(v) for v in sklearn.__version__.split(".")[:2]) < (1, 4):
                     raise ValueError("需要 scikit-learn >= 1.4，请按 requirements.txt 更新依赖。")
-                classifier, selected, samples, scores, split, metrics = train(rows, groups, args.k)
-                for key in ("train_files", "test_files"):
-                    split[key] = [clean_report["files"][i]["file"] for i in split[key]]
+                classifier, selected, samples, scores, split, metrics = train(dataset, args.k, args.feature_mode)
                 header = export_header(classifier, selected)
                 checks = {"cpp": {"status": "disabled"}, "teensy": {"status": "disabled"}}
                 if VERIFY_CPP_EXPORT:
@@ -531,20 +663,26 @@ def main(argv=None):
                           "firmware_header": str(args.firmware_header) if args.sync else None,
                           "configuration": {n: v for n, v in globals().items() if n.isupper()},
                           "versions": {"numpy": np.__version__, "sklearn": sklearn.__version__},
-                          "cleaning": clean_report, "k": args.k, "selected_indices": selected,
+                          "cleaning": clean_report, "feature_mode": args.feature_mode,
+                          "input_batches": list(batches), "data_variant": clean_report["data_variant"],
+                          "feature_count": len(selected),
+                          "k": args.k if args.feature_mode == "k_best" else None, "selected_indices": selected,
                           "class_commands": classifier.classes_.astype(int).tolist(),
                           "validation_split": split, "validation_metrics": metrics,
-                          "validation_note": "指标来自独立验证集；最终森林使用冻结特征在全部有效数据上重训。",
-                          "refit_rows": len(samples), "export_checks": checks,
+                          "validation_note": "保存的森林即验证的森林；未使用验证地图重训。macro_f1 按验证中出现的类别计算。",
+                          "refit_on_validation": False, "export_checks": checks,
                           "header_sha256": hashlib.sha256(header.encode()).hexdigest()}
                 write_json(stage / TRAIN_REPORT_FILENAME, report)
                 artifacts.append(stage / TRAIN_REPORT_FILENAME)
                 if SAVE_PYTHON_MODEL:
                     joblib.dump({"classifier": classifier, "selected_indices": selected,
                                  "lidar_point_count": LIDAR_POINT_COUNT,
-                                 "class_commands": report["class_commands"]}, stage / PYTHON_MODEL_FILENAME)
+                                 "class_commands": report["class_commands"],
+                                 "data_source": DATA_SOURCE, "data_variant": clean_report["data_variant"],
+                                 "straight_command": STRAIGHT_COMMAND,
+                                 "allow_zero_input": True, "feature_mode": args.feature_mode}, stage / PYTHON_MODEL_FILENAME)
                     artifacts.append(stage / PYTHON_MODEL_FILENAME)
-                print(f"选中特征：{selected}；验证准确率：{metrics['accuracy']:.4f}")
+                print(f"特征数：{len(selected)}；验证准确率：{metrics['combined']['accuracy']:.4f}")
             publish(artifacts, args.output_dir, args.firmware_header if args.sync else None)
         print(f"输出目录：{args.output_dir}")
         if args.sync:

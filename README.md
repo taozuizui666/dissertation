@@ -30,18 +30,18 @@ python Gazebo_simulation/rl_training/privileged/collect_data.py
 
 ## 数据训练与模型部署
 
-将采集的操作记录放进根目录 `dataset/`，每行应为 200 个雷达距离加一个操作标签。
-正式训练入口为 `software/MLcode/train_model.py`，完成清理、K 特征选择、训练、导出和同步。
-K、雷达点数、路径及清理参数集中在脚本顶部。
+训练数据位于 `dataset/simulation/<批次>/raw` 与 `dropout`，每行 200 个距离加一个标签。
+正式入口 `software/MLcode/train_model.py` 默认使用明确指定的最新批次，完整保留 200 列，
+将 `ellipse_002` 留作验证地图。`DATA_VARIANT` 默认 `"dropout"`，也可选 `"raw"` 或 `"both"`。
+配置集中在脚本顶部。
 
 ```bash
+python software/MLcode/train_model.py --check
 python software/MLcode/train_model.py
 ```
 
-成功后生成 `software/ML_model/randomForest.h` 并备份、同步到
-`software/C_code/selfdrive/main/randomForest.h`，打开对应 `main.ino` 编译上传。
-模型头文件和训练输出属于生成产物，不手动修改，也不提交到 Git。
-首次获取工程时，需要先准备数据并运行训练脚本，生成模型后再编译固件。
+模型与报告输出到 `software/ML_model/simulation/`。保存的模型与验证时一致，不用验证地图重训。
+仿真标签与旧实车控制指令不同，因此不会同步至实车固件。模型和报告属于生成产物，不提交到 Git。
 本机已配置 `python` 使用 Python 3，并安装用户级训练和 Notebook 依赖。
 如需补装全部依赖，在项目根目录执行：
 
