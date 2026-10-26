@@ -1,0 +1,83 @@
+% Compile with XeLaTeX + BibTeX through latexmk. See README.md.
+\documentclass[12pt,a4paper,oneside]{report}
+
+% Editable document settings.
+\newcommand{\DissertationTitle}{Integrating LiDAR and Machine Learning on Low-Cost ARM Microcontrollers for Autonomous Navigation}
+\newcommand{\AuthorName}{TAO RAN}
+\newcommand{\ProgrammeName}{Master of Science in Precision Scientific Instrumentation}
+\newcommand{\SubmissionYear}{2026}
+
+\usepackage[left=3.5cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{fontspec}
+\IfFontExistsTF{Times New Roman}{
+  \setmainfont{Times New Roman}
+}{
+  % Times-compatible preview font; use Times New Roman for submission.
+  \setmainfont{texgyretermes-regular.otf}[
+    BoldFont=texgyretermes-bold.otf,
+    ItalicFont=texgyretermes-italic.otf,
+    BoldItalicFont=texgyretermes-bolditalic.otf
+  ]
+  \PackageWarningNoLine{dissertation}{Times New Roman unavailable; using TeX Gyre Termes for this preview}
+}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={\DissertationTitle},pdfauthor={\AuthorName}}
+\onehalfspacing
+\setlength{\emergencystretch}{1em}
+\clubpenalty=10000
+\widowpenalty=10000
+\setcounter{secnumdepth}{1}
+\setcounter{tocdepth}{1}
+\renewcommand{\contentsname}{Table of Contents}
+\renewcommand{\bibname}{References}
+\urlstyle{same}
+
+% Planned chapters have no page numbers until their text is added.
+\newcommand{\plannedchapter}[2]{%
+  \addtocontents{toc}{\protect\contentsline{chapter}{\protect\numberline{#1}#2}{\textendash}{}}}
+\newcommand{\plannedsection}[2]{%
+  \addtocontents{toc}{\protect\contentsline{section}{\protect\numberline{#1}#2}{\textendash}{}}}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+
+% This draft contains the title page, contents, Introduction and cited references.
+% Add the required declarations and Abstract when preparing the full dissertation.
+\begin{titlepage}
+  \centering
+  \vspace*{1.5cm}
+  {\Large\bfseries \DissertationTitle\par}
+  \vspace{2cm}
+  {\large \AuthorName\par}
+  \vfill
+  {\normalsize SCHOOL OF PHYSICAL AND MATHEMATICAL SCIENCES\par}
+  \vspace{1cm}
+  {\normalsize A dissertation submitted in partial fulfilment of the requirements
+  for the degree of\par}
+  \vspace{0.4cm}
+  {\normalsize \ProgrammeName\par}
+  \vspace{1.2cm}
+  {\large \SubmissionYear\par}
+\end{titlepage}
+
+\pagenumbering{roman}
+\hypersetup{pageanchor=true}
+\tableofcontents
+\vspace{0.8em}
+{\small A dash indicates a planned section whose text has not yet been added.\par}
+\clearpage
+\pagenumbering{arabic}
+
+\input{chapters/introduction}
+\input{chapters/outline}
+
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{References}
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\end{document}
