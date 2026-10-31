@@ -1,0 +1,93 @@
+% !TeX root = ../main.tex
+\chapter{Conclusions and Future Work}
+\label{ch:conclusions}
+\section{Purpose and Completed Contribution}
+This project investigates how a digital-twin-oriented training environment can
+replace manual driving demonstrations when developing a navigation policy for
+a resource-constrained board. The implemented solution assigns different roles
+to different models: a PPO-trained neural teacher learns from reward feedback
+in a virtual vehicle, while a supervised tree student learns the teacher's
+LiDAR-to-action mapping. Training remains a host-side activity and the exported
+student is the candidate for eventual onboard inference.
+
+The contribution is the connection between these stages. The virtual platform
+provides controlled interaction and privileged state; the teacher supplies
+commands without human per-sample action labels; the collector preserves scan
+and action pairing; and the student/export workflow produces a separately
+evaluable controller. The present evidence covers the virtual training side,
+rather than a completed physical twin or a demonstrated low-power deployment.
+
+\section{Answers to the Research Questions}
+\textbf{RQ1: Automated supervision.}
+The selected PPO--MLP teacher supplies two completed collection batches containing
+1,439,983 and 1,079,979 original LiDAR--action pairs, respectively. The collection
+process uses teacher commands rather than human driving labels, with model,
+map and episode provenance retained. Its separate T3 qualification completes
+eight episodes without recorded collision or listed motion failure. These
+records establish automated supervision under the implemented conditions.
+They do not measure how much operator time is saved or show that teacher labels
+are better than human labels. Reward design, modelling and experiment selection
+remain engineering responsibilities.
+
+\textbf{RQ2: Transfer to compact policies.}
+The automatically generated data support useful student cruising. Across the
+normal and scattered-dropout conditions, the forests complete between 57 and
+59 of 60 primary episodes and the single tree completes all sixty. Over all
+conditions, the forests complete 62--67 of 80 episodes and the single tree
+completes 74. Offline action accuracy does not reproduce this closed-loop
+ranking. Contiguous sector loss accounts for 46 of the 53 primary collisions,
+and the selected scattered-dropout augmentation gives no consistent advantage.
+The strongest tested candidate is therefore the single-tree configuration,
+although the comparison does not isolate one structural cause. This result
+supports the wider objective of obtaining a compact useful policy, while
+qualifying the initial choice of a random forest.
+
+\textbf{RQ3: Resource-constrained deployment.}
+Tree depth and estimator count make the threshold-evaluation workload explicit,
+and the exported C++ implementation agrees with the fitted model on the checked
+host inputs. These properties justify pursuing embedded integration. They do
+not establish Flash occupancy, peak RAM, worst-case control latency or energy
+per decision on the intended board. Nor does successful export establish that
+the physical sensor and actuator interfaces reproduce the simulated ones.
+The final low-power deployment objective therefore remains partially answered.
+
+\section{Interpretation of the Method Choices}
+RL addresses the lack of an initial action-labelled dataset by learning from
+sequential outcomes. PPO provides the implemented actor--critic training
+procedure, and the MLP represents the teacher's policy and value function.
+Privileged geometry is useful because the teacher's immediate role is to
+produce demonstrations; the student is subsequently restricted to the sensor
+representation available for deployment. A forest offers bounded-depth tree
+inference and ensemble aggregation, while the single tree tests whether a
+simpler configuration suffices. These choices form a coherent division of
+training and deployment responsibilities, not a claim that PPO, MLPs or forests
+are individually optimal for every navigation task.
+
+The experimental lesson is that the workflow should be judged by the quality
+of the generated supervision and the behaviour and implementation cost of its
+student. Selecting a family for practical reasons is a starting hypothesis;
+the closed-loop comparison can legitimately favour a different compact member
+of the candidate set. The main research purpose is preserved when that happens.
+
+\section{Limitations and Priorities}
+The next simulation priority is the frozen-candidate comparison on independent
+maps and perturbed student starts. Recovery criteria and observation windows
+should be fixed before execution. Selected failure replays with original and
+corrupted scans, mask indices and decision timestamps would then help explain
+the recurrent R1 and sector collisions. Matched structural comparisons would
+be needed before attributing the tree/forest difference to depth or ensembling.
+
+A direct test of the manual-demonstration replacement claim would compare the
+automated workflow with a documented human-driven or scripted-teacher baseline
+under matched tasks and student settings. Relevant measurements include
+operator involvement, collection cost, coverage and resulting driving behaviour.
+The absence of that comparison limits claims about efficiency, without changing
+the recorded fact that this pipeline generated its action labels automatically.
+
+The later physical phase should calibrate the virtual vehicle against the real
+platform, verify sensor/action correspondence, and measure compiled memory,
+control latency and energy together with repeated driving outcomes. This would
+connect the implemented virtual training side to the intended physical twin and
+low-power controller. Until then, the dissertation establishes an automated
+simulation-to-student training mechanism and identifies the evidence still
+needed for its full embedded objective.

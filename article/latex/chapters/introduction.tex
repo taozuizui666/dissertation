@@ -1,213 +1,166 @@
 % !TeX root = ../main.tex
 \chapter{Introduction}
 \label{ch:introduction}
+\section{Background and Motivation}
+The purpose of this project is to develop a digital-twin-oriented training
+workflow that replaces human driving demonstrations with automatically generated
+supervision for a compact navigation policy. The intended outcome is a learned
+LiDAR-to-steering controller that can ultimately run on a resource-constrained,
+low-power development board. The central question concerns how such a controller
+can be trained without requiring a person to drive and label every training
+trajectory, while keeping the deployed computation small.
 
-\section{Background of Low-Cost Mobile Platforms}
-\label{sec:background}
+The intended vehicle uses a Teensy 4.0 ARM Cortex-M7 board~\cite{pjrcTeensy40}.
+Training and deployment have different requirements: learning may use a host
+computer, extensive simulation and information unavailable on the vehicle,
+whereas onboard operation must process sensor data and produce commands within
+memory, timing and energy budgets. Separating these stages permits a more capable
+training system to produce a simpler deployed controller. Low-power operation
+is an engineering objective of this separation; it is not an energy measurement
+established by the present experiments.
 
-An autonomous mobile platform must repeatedly convert sensor measurements into
-motion commands while operating within the limits of its sensing, computation
-and actuation hardware. For a small vehicle, the practical problem includes
-obtaining usable range measurements, representing the surrounding obstacles,
-selecting a steering action and applying that action before the observation
-becomes outdated. These stages form a coupled measurement and control system.
+In this dissertation, \emph{digital-twin-oriented training} denotes the use of
+a parameterised virtual counterpart of the vehicle, sensor and control interface
+to learn behaviour, generate demonstrations and test the resulting controller.
+The implemented Gazebo model provides the virtual training side of this approach.
+Physical calibration, live physical--virtual data exchange and experimental
+confirmation of model fidelity remain future integration tasks. The present
+study therefore evaluates the proposed training mechanism in simulation, without
+assuming that a completed, continuously synchronised physical twin already exists.
 
-Low-cost ARM microcontrollers provide a practical basis for building and
-studying such systems. Their communication peripherals and motor-control
-interfaces allow sensing and actuation to be integrated on a compact platform.
-The Teensy 4.0 board selected for this project uses an ARM Cortex-M7 processor
-and provides serial and pulse-width modulation interfaces suitable for the
-vehicle hardware~\cite{pjrcTeensy40}. However, its finite program memory, working
-memory and available processing time impose limits on the size and execution
-cost of a learned controller. Model selection must account for these limits
-alongside prediction performance.
+The task is forward obstacle-avoiding cruising in static ring roads. Range-based
+local control has classical precedents such as the Vector Field Histogram~\cite{borenstein1991vfh}.
+Here, a learned policy converts fixed angular LiDAR bins into discrete steering
+commands. The task provides a concrete setting in which to test automated
+supervision and compact inference; route planning, SLAM and dynamic traffic are
+outside the evaluated scope.
 
-Light detection and ranging (LiDAR) supplies distance observations that can be
-used to select steering actions in a local environment. In this project, planar
-range measurements are converted into a fixed-length input representation for
-the control model. The representation must preserve a consistent relationship
-between angular position and distance across data collection, simulation and
-embedded inference. Missing returns, angular coverage and observation age also
-affect the information available to the controller. These properties make the
-sensor interface an essential part of the learning problem.
+\section{Problem Statement}
+A supervised random-forest controller needs examples of what action to take
+for each sensor observation. Under a human-demonstration approach, an operator
+must drive the vehicle while observations and commands are recorded. Covering
+new roads, starting conditions and sensor conditions can require further
+collection. Merely choosing a compact classifier does not solve this source-of-labels
+problem: the fitting algorithm still needs informative, correctly paired examples.
 
-The task considered in this dissertation is continuous local obstacle avoidance
-and cruising at a fixed target forward speed. A differential-drive vehicle
-selects discrete steering actions from LiDAR observations. Autonomous navigation
-is used in this specific sense throughout the study.
+The virtual vehicle offers a different route. Its simulated interaction provides
+travel, clearance and collision feedback from which a policy can learn without
+pre-existing steering labels. Once learned, that policy can drive the simulated
+vehicle and supply labels automatically. Reinforcement learning (RL) is therefore
+used to obtain a \emph{teacher}, rather than to perform the final random-forest
+fitting directly. In the implemented workflow, Proximal Policy Optimization
+(PPO) trains a neural teacher~\cite{schulman2017ppo}; supervised behaviour cloning
+then fits the random forest to the teacher's LiDAR--action pairs.
 
-\section{Motivation and Problem Statement}
-\label{sec:motivation}
+This arrangement must solve three connected engineering problems. First, reward
+and termination definitions must produce a teacher whose behaviour is useful
+for the driving task. Second, scan and action records must preserve the
+observation--decision relationship, because an incorrect temporal pairing would
+create misleading supervision even for a capable teacher. Third, the student's
+restricted input and model capacity must retain useful behaviour when it drives
+on its own. Teacher performance does not guarantee student performance: the
+student can change its future observations through its own errors~\cite{ross2011reduction}.
 
-Training a supervised controller requires observations paired with suitable
-actions. Collecting these examples entirely through physical driving requires
-repeated operation of the vehicle and consistent action labels. Simulation
-provides a way to generate demonstrations while controlling the map, initial
-pose and vehicle parameters. It also makes geometric and physical state
-information available that would require additional sensing or estimation on
-the real platform.
+Replacing human demonstrations does not eliminate human engineering. Vehicle
+modelling, reward design, scenario selection and acceptance criteria remain
+human decisions. The completed experiments establish automated collection of
+action labels; they do not quantify labour savings or establish superiority over
+a human-trained controller, since no matched human-demonstration study has been
+performed.
 
-The proposed approach uses this additional information to train a teacher
-policy. Proximal Policy Optimization (PPO) alternates between collecting
-experience and updating a policy through a surrogate objective
-function~\cite{schulman2017ppo}. In the present implementation, the teacher
-observes a local distance field derived from the simulated map together with
-selected vehicle-state variables. During demonstration collection, simulated
-LiDAR scans are recorded alongside the teacher's executed actions. This produces
-a supervised dataset for a student controller that receives only LiDAR input.
+\section{Proposed Approach and Method Rationale}
+The proposed solution separates learning to drive from learning a deployable
+sensor-to-action mapping. A privileged teacher first learns in simulation using
+map-derived distances and vehicle state. During demonstration collection, the
+same simulated vehicle produces LiDAR scans and executes teacher actions. A
+student then learns from these paired observations and commands, and is evaluated
+in closed loop using LiDAR alone. This information separation is related to
+privileged-to-sensor policy transfer~\cite{chen2019cheating}.
 
-A random forest is selected as the student model. Random forests combine
-multiple decision trees to produce a prediction~\cite{breiman2001random}.
-Restricting tree depth and tree count gives this project an explicit means of
-controlling the number of decisions performed during inference. The trained
-forest can also be exported as C++ inference code. Whether a particular forest
-meets the target board's resource and timing requirements must still be
-established by measurement.
+RL is selected because it can optimise behaviour from the consequences of
+sequential actions without first requiring a labelled driving dataset. PPO is
+the specific training algorithm: its clipped policy update and established
+actor--critic implementation provide a practical way to train from simulated
+rollouts~\cite{schulman2017ppo,raffin2021sb3}. The teacher model is a feed-forward
+multilayer perceptron (MLP), with separate policy and value branches. PPO is thus
+an optimisation method, MLP is the teacher's function approximator, and random
+forest is the separately fitted student model. These terms describe different
+parts of the workflow.
 
-The teacher and student do not receive equivalent information. Vehicle state
-and map-derived geometry available to the teacher may not be recoverable from
-a single student scan. Consequently, disagreement with a teacher action cannot
-automatically be attributed to insufficient student model capacity. This
-information difference must be considered when interpreting the achievable
-action-prediction performance.
+Random forests are selected as the principal student family because numerical
+LiDAR bins can be partitioned by threshold tests, and tree depth and tree count
+provide explicit controls over inference work~\cite{breiman2001random,sklearnForest}.
+The fitted decision structures can be exported to C++ without running a neural
+training framework on the vehicle. An ensemble also offers a way to combine
+several partitions instead of relying on one tree. These are design motivations,
+not guarantees of minimal memory, lowest power or best navigation performance.
+A deeper single tree is included to test whether the ensemble's extra structure
+is justified by the observed results.
 
-Closed-loop operation introduces a further difficulty: an action changes the
-vehicle's subsequent observations. A student can therefore encounter states
-that differ from those represented in its demonstrations. This departure from
-independent supervised prediction is a central issue in imitation
-learning~\cite{ross2011reduction}. Offline action accuracy is consequently
-insufficient as the sole measure of controller quality. A small steering error
-may be corrected on a later step or may accumulate into an unsafe trajectory.
+The rationale is consequently a division of responsibilities: simulation supplies
+repeatable interaction, RL supplies a teacher without human action labels,
+behaviour cloning transfers its commands to sensor inputs, and tree inference
+provides a controllable implementation for later embedded integration. Alternative
+teachers and compact student families remain possible; this study evaluates one
+concrete, reproducible route rather than claiming that each choice is universally
+optimal.
 
-The central problem addressed by this dissertation is how to construct and
-evaluate a LiDAR-based student controller from privileged simulation
-demonstrations while retaining a credible path to a low-cost ARM implementation.
-This requires consistent sensor and action definitions, traceable training data,
-an appropriately constrained model and separate evidence for prediction,
-closed-loop driving and embedded execution.
+\section{Objectives and Research Questions}
+The overall objective is to demonstrate an automated path from a virtual vehicle
+to a compact navigation policy, with evidence at each transition. The specific
+objectives are to train and qualify an RL teacher, generate traceable demonstrations,
+fit LiDAR-only students, assess the transfer of useful behaviour, and verify
+exported inference before eventual board deployment.
 
-\section{Research Objectives and Questions}
-\label{sec:objectives}
-
-The overall objective is to develop and evaluate a pipeline that connects
-privileged teacher demonstrations with a lightweight LiDAR-based controller
-intended for an ARM microcontroller. The specific objectives are:
-
-\begin{enumerate}
-  \item Establish a vehicle and simulation interface with explicit LiDAR
-  representation, discrete action definitions and control timing.
-  \item Generate traceable LiDAR--action demonstrations using a PPO teacher,
-  including perturbed initial poses, near-wall starts and controlled input
-  dropout augmentation.
-  \item Train a constrained random forest and evaluate action prediction using
-  a map-based separation between fitting and validation data.
-  \item Assess the student in closed-loop simulation using completion, failure,
-  progress and clearance measurements, with sensor-loss conditions evaluated
-  separately from normal operation.
-  \item Export the learned model to C++, verify inference consistency and
-  establish the integration and measurement requirements for target-board and
-  physical-vehicle evaluation.
-\end{enumerate}
-
-These objectives lead to three research questions:
-
+Three questions organise the investigation:
 \begin{description}
-  \item[RQ1:] \textbf{Learning from demonstrations.}
-  Can a random forest trained on privileged-teacher demonstrations reproduce
-  useful steering behaviour from LiDAR alone on a map excluded from forest
-  fitting?
-  \item[RQ2:] \textbf{Closed-loop behaviour and robustness.}
-  How does offline action-prediction performance relate to closed-loop driving,
-  and how is that driving affected by missing range observations and changes in
-  the initial state or map?
-  \item[RQ3:] \textbf{Embedded feasibility.}
-  What model resources, execution times and interface conditions determine
-  whether the controller can be used on the target ARM vehicle, and what
-  additional evidence is needed to establish physical driving performance?
+\item[RQ1: Automated supervision.] Can an RL teacher generate useful paired
+LiDAR--action demonstrations in the virtual vehicle without human driving
+labels, and can that collection be repeated with documented provenance?
+\item[RQ2: Transfer to compact policies.] Can random-forest students retain
+useful closed-loop behaviour from these demonstrations, how do they compare
+with a single-tree baseline, and what limits appear under sensor loss?
+\item[RQ3: Resource-constrained deployment.] Why is the selected tree
+representation suitable for pursuing embedded inference, what does the verified
+export establish, and which resource and physical measurements remain necessary?
 \end{description}
 
-The questions require different forms of evidence. Held-out prediction metrics
-address action imitation, repeated driving episodes address interaction with
-the environment, and target-board measurements address embedded feasibility.
-Success at one level does not by itself establish success at the others.
+The first question is examined through teacher qualification and two recorded
+collection batches. The second uses offline prediction, primary closed-loop
+comparisons and repeat runs. The third is addressed through model structure,
+interface compatibility and host-side C++ agreement; actual board-level
+performance remains an open experimental part of the project.
 
-\section{Scope and Constraints}
-\label{sec:scope}
+\section{Scope and Contributions}
+The completed contribution is an integrated training workflow, not a new RL
+algorithm or tree-learning rule. It links a parameterised virtual vehicle, a
+privileged PPO teacher, automated demonstration collection, map-separated
+student fitting and closed-loop evaluation. Model, map and episode records make
+the supervision source traceable, and export checks connect fitted predictions
+to executable C++ inference.
 
-The experimental platform combines a Teensy 4.0 vehicle implementation with a
-ROS 2 and Gazebo Classic simulation. The current simulated driving task uses
-static obstacles, a target forward speed of approximately
-\(0.2\,\mathrm{m\,s^{-1}}\), and fifteen steering labels. Both wheel targets
-remain positive within the steering action set. The investigated behaviour is
-therefore forward cruising and local avoidance within roads compatible with
-the vehicle's turning capability. Goal-directed route planning, simultaneous
-localisation and mapping, dynamic-obstacle interaction, reversing and in-place
-rotation are outside the current task definition.
+The primary comparison comprises 320 episodes across four controller
+configurations. The single depth-six tree completes 74 of its 80 episodes,
+whereas the three shallow forests complete between 62 and 67. This finding
+supports evaluating the simplest useful student instead of treating a random
+forest as a required winner. It also identifies a limit of the training approach:
+every candidate experiences collisions under contiguous sector loss. The
+comparison is configuration-specific because depth, sampling and ensemble size
+are not all held constant.
 
-The student input contains 200 distance columns expressed in millimetres. Only
-the configured front angular sector carries range observations; columns outside
-that sector remain zero. Missing measurements can also appear as zeros within
-the active sector. An input width of 200 must therefore be distinguished from
-200 independently observed directions. The current baseline retains all columns
-and uses a forest with 88 trees and a maximum depth of three.
+Three maps supply student fitting data, while \mapname{ellipse_002} is used for
+validation and selection. It is therefore not an untouched final test map~\cite{sklearnCV}.
+A later batch tests consistency on the same map set without retraining. Independent-map
+recovery, target-board resource consumption, physical driving and physical--virtual
+fidelity have not yet been measured. The observed simulation results support the
+training mechanism while leaving these broader deployment questions open.
 
-Dataset separation is performed by map rather than by randomly distributing
-adjacent frames between fitting and validation sets. Original observations and
-their dropout copies retain the same map assignment. A map excluded from
-student fitting is not automatically excluded from every stage of teacher
-development or student model selection. These roles must be documented
-separately when making claims about generalisation.
-
-Hardware transfer remains subject to interface and measurement constraints.
-The simulation steering labels and wheel-speed commands differ from the legacy
-physical firmware's steering and PWM conventions. Input freshness and missing
-value handling must also agree with the deployed model. Host-side C++ agreement
-establishes consistency of model inference on the tested inputs; it does not
-establish board-level timing, motor response or physical driving safety. Those
-claims require corresponding hardware measurements and repeated vehicle tests.
-
-\section{Contributions of the Dissertation}
-\label{sec:contributions}
-
-The contributions of the work completed at this stage concern the integration
-and evaluation of established learning methods for the selected vehicle:
-
-\begin{enumerate}
-  \item A simulation data-collection pipeline connects a map-informed PPO
-  teacher with a LiDAR-only student. It records observation--action pairing and
-  dataset provenance, and supports initial-pose perturbations, near-wall starts
-  and reproducible dropout augmentation.
-  \item A random-forest training and export workflow preserves map-based
-  validation, reports class-sensitive and steering-distance metrics, and
-  checks the exported C++ predictions against the Python model. The current
-  export report records agreement on 3,149 verification inputs.
-  \item A closed-loop evaluation workflow reports driving outcomes separately
-  from offline imitation metrics. In the existing baseline experiment, the
-  student completed twenty 180-second episodes across four maps, travelling
-  approximately 720~m with no recorded collisions. One of those maps was
-  excluded from forest fitting. These observations apply to the recorded
-  vehicle settings, starts and durations.
-\end{enumerate}
-
-These contributions provide an implemented basis for examining the three
-research questions. They do not establish a new PPO or random-forest algorithm.
-Target-board resource measurements, extended sensor-loss experiments and
-quantitative physical driving results remain necessary to complete the
-evaluation of embedded deployment.
-
-\section{Organization of the Dissertation}
-\label{sec:organization}
-
-Chapter~2 reviews LiDAR-based local navigation, learning on constrained
-microcontrollers, random forests, PPO, privileged teachers and simulation to
-reality. Chapter~3 describes the physical platform, sensor representation,
-differential-drive model and simulation interfaces. Chapter~4 presents the
-teacher formulation, demonstration collection, data pairing, starting-state
-perturbation and augmentation methods.
-
-Chapter~5 describes data validation, student training, evaluation metrics, C++
-export and embedded integration. Chapter~6 presents the experimental design,
-available results, comparative evaluations and limitations, with offline,
-closed-loop and hardware evidence distinguished throughout. Chapter~7 concludes
-the dissertation by answering the research questions and identifying the
-remaining work.
+\section{Organisation of the Dissertation}
+Chapter~\ref{ch:literature} places the training strategy and compact policies in
+context. Chapter~\ref{ch:system} describes the virtual counterpart and interfaces.
+Chapter~\ref{ch:teacher} explains the RL choice, teacher architecture and automated
+collection. Chapter~\ref{ch:student} develops the random-forest rationale, fitting
+and export. Chapter~\ref{ch:results} evaluates the resulting workflow and its
+limits. Chapter~\ref{ch:conclusions} answers the research questions and identifies
+the remaining work. Appendix~\ref{app:evidence} records the principal evidence
+sources.

@@ -1,0 +1,169 @@
+% !TeX root = ../main.tex
+\chapter{Virtual Vehicle and Digital-Twin Training Workflow}
+\label{ch:system}
+\section{Virtual Counterpart and Training Scope}
+The virtual counterpart represents the vehicle geometry, differential-drive
+motion, LiDAR configuration, command labels and task environment needed for
+training. Shared parameters make these assumptions explicit and reproducible.
+For example, wheel radius and separation determine the kinematic conversion,
+while scan layout and distance units determine the student's input contract.
+This coupling is the practical reason for using a vehicle-specific virtual
+model instead of generating arbitrary range vectors with invented labels.
+
+The role of this counterpart is to support interaction that would otherwise
+require repeated driving of the physical vehicle. It can reset starts, expose
+map geometry to the teacher and collect sensor/action pairs over long runs.
+These capabilities support the intended digital-twin workflow. They do not
+show that simulated friction, range noise or motor response have been fitted
+to physical measurements. The present model is a parameterised training
+representation, with physical fidelity and synchronisation still to be assessed.
+
+The legacy physical firmware also uses different steering and timing conventions.
+Consequently, the common simulation interface is not yet a demonstrated
+end-to-end physical interface. The next integration stage must reconcile
+those conventions and validate the virtual model against the actual vehicle.
+
+\section{Training and Deployment Architecture}
+The implementation combines ROS~2 communication~\cite{macenski2022ros2}
+with Gazebo Classic physics, using the simulation framework introduced by
+Koenig and Howard~\cite{koenig2004gazebo}.
+A shared vehicle configuration defines geometry, sensor settings and steering
+labels. Teacher training, demonstration collection and student evaluation use
+these definitions, while saved run configurations provide the historical
+settings for individual experiments. Current source defaults are not used as
+substitutes for the configuration stored with an older model.
+
+The learning sequence is shown in Figure~\ref{fig:pipeline}. During teacher
+operation, map geometry and vehicle state enter the learned neural policy,
+which selects an action. Collection
+also records LiDAR, but LiDAR does not become an input to that privileged
+policy. During student evaluation, the policy receives LiDAR only; geometry
+and state remain available to the evaluator for scoring.
+
+\begin{figure}[htbp]
+\centering
+\fbox{\parbox{0.89\textwidth}{\centering
+\textbf{Virtual training on the host}\\[5pt]
+Vehicle, sensor and task model $\longrightarrow$ simulated interaction\\[5pt]
+Reward feedback $\longrightarrow$ PPO training of an MLP teacher\\[5pt]
+Teacher commands + paired LiDAR $\longrightarrow$ labelled dataset\\[5pt]
+Supervised fitting $\longrightarrow$ random forest / single tree\\[5pt]
+Student closed-loop evaluation + C++ agreement checks\\[8pt]
+$\downarrow$\\[5pt]
+\textbf{Intended onboard inference}\\[5pt]
+Physical LiDAR $\longrightarrow$ exported student $\longrightarrow$ motors\\[3pt]
+Physical calibration and board validation remain pending}}
+\caption[Teacher-to-student information flow]{Implemented information flow. Geometry used by the evaluator does
+not enter the student's feature vector. The lower stage is the intended
+physical integration path, not a completed experiment.}
+\label{fig:pipeline}
+\end{figure}
+
+This separation avoids evaluating a purported LiDAR controller that silently
+uses ground-truth distances. It also enables geometric clearance to be
+computed independently of sensor corruption. A missing scan can affect the
+policy without simultaneously hiding an obstacle from the scoring system.
+
+\section{Differential-Drive Action Interface}
+Let $a\in\{0,\ldots,14\}$ be a steering label, with $a=7$ denoting straight
+motion. The implemented targets are
+\begin{align}
+ s(a)&=\frac{7-a}{7}, & \Delta v(a)&=\rho v_0 s(a),\\
+ v_L(a)&=v_0-\Delta v(a), & v_R(a)&=v_0+\Delta v(a),
+\end{align}
+where $v_0=0.2\,\mathrm{m\,s^{-1}}$ and $\rho=0.6$. With wheel separation
+$b=0.11\,\mathrm{m}$, the ideal differential-drive relation~\cite[Chapter~13]{lynch2017modern} gives
+\begin{equation}
+ v=\frac{v_R+v_L}{2}=v_0,\qquad
+ \omega=\frac{v_R-v_L}{b}.
+\end{equation}
+Wheel angular targets are obtained by division by the configured radius
+$r=0.0325\,\mathrm{m}$. At the strongest steering commands the linear wheel
+targets are $0.08$ and $0.32\,\mathrm{m\,s^{-1}}$. Thus all ordinary steering
+actions continue forward. An ideal maximum-curvature radius computed from
+these targets is about $0.092\,\mathrm{m}$; actual collision-free passage also
+depends on body dimensions, wall shape and the finite control interval.
+
+The stop command is a separate interface value, 200, and is not a learned
+steering class. The model therefore selects curvature at an approximately
+fixed centre speed, rather than jointly optimising forward speed and turning.
+This restriction limits the conclusions to roads that can be traversed with
+forward-only control.
+
+\section{LiDAR Representation and Missing Values}
+Raw scan angles are first converted to integer degrees. For an angle $\theta$
+in degrees, the feature index is
+\begin{equation}
+ i=\left\lfloor\frac{200\lfloor\theta\rfloor}{360}\right\rfloor,
+ \qquad 0\leq\theta<360.
+\end{equation}
+Distances are represented in integer millimetres. Values outside the accepted
+positive range below 10,000~mm are represented as invalid rather than extended
+to arbitrary large measurements. The physical sensor range in the simulator
+and the feature representation limit are distinct settings.
+
+The active indices are $0$--$49$ and $151$--$199$. The remaining 101 indices
+are fixed zero, leaving 99 active angular bins. Zero in an active bin denotes
+a missing or unusable reading. A model trained on these inputs must therefore
+interpret both angle and missingness consistently. Removing all rows containing
+a zero would incorrectly discard valid scans because the inactive sector is
+always zero.
+
+Table~\ref{tab:platform} gives the settings used for the reported collections
+and student evaluations. The 1~cm noise standard deviation is a simulation
+assumption, not a measured calibration error. Earlier teacher configurations
+recorded a different raw ray count, but the teacher did not use LiDAR; the
+student dataset and evaluated sensor configuration use 364 rays per revolution.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Principal simulation settings for the student experiments.}
+\label{tab:platform}
+\begin{tabularx}{\textwidth}{Xl}
+\toprule Parameter & Value \\\midrule
+Target forward speed & $0.2\,\mathrm{m\,s^{-1}}$ \\
+Wheel radius / separation & $0.0325/0.11\,\mathrm{m}$ \\
+Steering labels / straight label & $0$--$14$ / $7$ \\
+Decision interval / physics step & $0.2/0.001\,\mathrm{s}$ \\
+LiDAR scan rate / raw rays & $5.5\,\mathrm{Hz}$ / $364$ \\
+LiDAR physical range & $0.15$--$12\,\mathrm{m}$ \\
+Feature distance upper limit & $10\,\mathrm{m}$, exclusive \\
+Range-noise standard deviation & $0.01\,\mathrm{m}$ \\
+Input columns / active bins & $200/99$ \\
+Conservative body radius for clearance & $0.085\,\mathrm{m}$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Maps and Experimental Roles}
+Four static ring roads are used: \mapname{train_world3},
+\mapname{rounded_rectangle_001}, \mapname{rounded_rectangle_003} and
+\mapname{ellipse_002}. For compact tables, these are denoted T3, R1, R3 and
+E2, respectively. Wall geometry is represented by static obstacles, and
+same-stem map metadata provide spawn poses and workspace bounds.
+
+The selected teacher was trained and qualified on T3. It subsequently supplied
+demonstrations on all four maps. Student fitting uses T3, R1 and R3; E2 is
+withheld from fitting but used for validation and selection. The distinction
+between teacher training, teacher collection, student fitting and student
+selection prevents an ambiguous claim that a map is simply ``unseen''.
+Figure~\ref{fig:collisionmaps} later shows the four geometries with recorded
+collision endpoints.
+
+\section{Timing and Evaluation Boundaries}
+The formal closed-loop evaluator pauses Gazebo between controlled steps and
+uses a nominal 0.2~s simulation decision interval. This supports repeatable
+state/action records, but does not demonstrate wall-clock real-time operation.
+The GUI driver operates asynchronously and is not the source of the formal
+comparison matrices.
+
+Scoring uses a conservative body disc and map-derived obstacle distance.
+Clearance is sampled at decision steps, so its minimum is a sampled geometric
+measure. Contact-based collision detection is a different signal. A reported
+zero clearance can therefore occur without a recorded collision; neither
+quantity should silently replace the other.
+
+The intended hardware implementation must eventually reproduce the input and
+action contract. The legacy firmware uses different steering and timing
+conventions, so no physical equivalence is assumed here. All numerical results
+in the following chapters concern the saved simulation configurations.

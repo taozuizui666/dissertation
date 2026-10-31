@@ -1,0 +1,176 @@
+{
+  "date": "2026-10-31",
+  "primary_reports": [
+    {
+      "model": "RF-D",
+      "report": "Gazebo_simulation/results/random_forest/evaluation_20261028_094226_2350c8/evaluation.json",
+      "report_sha256": "f102ac7d65738cc87fa101649987cdb3e23ce5fcaf9aec60287c6911b8bdd26a",
+      "model_sha256": "174279ddbe9decc96f8e4a4ad1427c2fffb56939561e7837baabf8d6e4166b99",
+      "completion_by_condition": {
+        "normal": 18,
+        "dropout05": 19,
+        "dropout10": 20,
+        "sector": 5
+      }
+    },
+    {
+      "model": "RF-B",
+      "report": "Gazebo_simulation/results/random_forest/evaluation_20261028_091853_3d505d/evaluation.json",
+      "report_sha256": "723cc8756501ec6fb2339f70f3d2f8cebea31555a6e16981271b27eca1cee2ab",
+      "model_sha256": "21939959033b068aea6581a4a0943356bfd27f2ad611b2c2e12d7fb842994c9e",
+      "completion_by_condition": {
+        "normal": 20,
+        "dropout05": 20,
+        "dropout10": 19,
+        "sector": 5
+      }
+    },
+    {
+      "model": "RF-R",
+      "report": "Gazebo_simulation/results/random_forest/evaluation_20261028_101826_20b5ff/evaluation.json",
+      "report_sha256": "d00d7bd809753de8b398c7a9aa71120c43a9af516b42b43d6308cdadc94b4214",
+      "model_sha256": "6974065e6e9bd366d73d58d188e2a3ae54cdf39f7340cb422d568eff00ff91d8",
+      "completion_by_condition": {
+        "normal": 18,
+        "dropout05": 19,
+        "dropout10": 20,
+        "sector": 10
+      }
+    },
+    {
+      "model": "T6",
+      "report": "Gazebo_simulation/results/random_forest/evaluation_20261028_121956_cae76d/evaluation.json",
+      "report_sha256": "8b5a63791c9d499080c86e0d95428cab41e6c99e719112384a90c9bd5c23968e",
+      "model_sha256": "f8baded18b8411fcb7b55fb53130626da73156186f623884b919279679deb60f",
+      "completion_by_condition": {
+        "normal": 20,
+        "dropout05": 20,
+        "dropout10": 20,
+        "sector": 14
+      }
+    }
+  ],
+  "sources": [
+    {
+      "path": "article/experiment_data/C_README.md",
+      "sha256": "63d235033130ea7b030545f21da7e6a67f7dc3f8ba61e7cb6cf9541c37c015e8"
+    },
+    {
+      "path": "article/experiment_data/R1_README.md",
+      "sha256": "2f3aa0ea0adcab65b08db3e3825521a90dbd784907197559ad4e2c8272656dde"
+    },
+    {
+      "path": "article/experiment_data/R6_README.md",
+      "sha256": "5b43a88bec2737af404fc23d8ed32e5a6f04c902f79715184fe93879de59eb98"
+    },
+    {
+      "path": "article/experiment_data/experiment_index.json",
+      "sha256": "4371a1d3b394bc93acf1a805ae641813eeeace996cb51e9e78d187c1f1e69f6b"
+    },
+    {
+      "path": "article/experiment_data/teacher_training_curve.pdf",
+      "sha256": "9625b58bf572c48c576dc65af5785ce2f339584d51a968f4202fa6635ea921e3"
+    },
+    {
+      "path": "article/experiment_data/r6_collision_map.png",
+      "sha256": "372dc54a7fd1166b755549c9878030f70cef80e324536fe15d85ce0b7a9f5e83"
+    },
+    {
+      "path": "article/guidelines/SPMS_Guideline_MSc_Dissertation.pdf",
+      "sha256": "a46a88e9927e41d09dcc2cfe1698bb9933895a5a6e3fc693e832ae68bf9df26c"
+    },
+    {
+      "path": "Gazebo_simulation/rl_models/privileged/policies/validated_privileged_2392588_20261011_074049/run_config.json",
+      "sha256": "236e6abdf87991a3717577d90828122cb801634f7baaca79f0360a756ce99869"
+    },
+    {
+      "path": "Gazebo_simulation/rl_models/privileged/policies/validated_privileged_2392588_20261011_074049/source_snapshot/rl_training/train_rl.py",
+      "sha256": "63605e13e1b789856c129f316008fede8ca4fbb8fda8b2b907b2a138b8503512"
+    },
+    {
+      "path": "Gazebo_simulation/rl_training/privileged/collect_data.py",
+      "sha256": "1a6e60d7a7759af816cd3b62c114014bbe6ee21e2662ad20fc83bfbb274c723e"
+    }
+  ],
+  "teacher_architecture": {
+    "model": "Gazebo_simulation/rl_models/privileged/policies/validated_privileged_2392588_20261011_074049/model.zip",
+    "model_sha256": "7171b17cb1e492ec0434887bbb0128e0246ae0ce0d15875f1854a14d246b3365",
+    "algorithm": "PPO",
+    "policy": "MlpPolicy / ActorCriticPolicy",
+    "actor_layer_widths": [
+      292,
+      128,
+      128,
+      15
+    ],
+    "critic_layer_widths": [
+      292,
+      128,
+      128,
+      1
+    ],
+    "hidden_activation": "Tanh",
+    "collection_prediction": "deterministic",
+    "verification": "Saved policy metadata and tensor shapes, restored policy, archived trainer and current collector inspected on 2026-10-31.",
+    "actor_parameters": 55951,
+    "critic_parameters": 54145,
+    "actor_fp32_parameter_bytes": 223804,
+    "total_fp32_parameter_bytes": 440384
+  },
+  "model_resource_inspection": {
+    "date": "2026-10-31",
+    "scope": "Frozen artifact structure and source sizes; no target-board measurements",
+    "artifacts": [
+      {
+        "model": "RF-D",
+        "path": "software/ML_model/simulation/randomForest.joblib",
+        "sha256": "174279ddbe9decc96f8e4a4ad1427c2fffb56939561e7837baabf8d6e4166b99",
+        "trees": 88,
+        "nodes": 1320,
+        "leaves": 704,
+        "depth": 3,
+        "joblib_bytes": 187946,
+        "header_bytes": 214856,
+        "header_sha256": "ad7ceeff7c659ca6c5851d53d3aa7de96674f1d6fa8ac33d7fd9a6253602c923"
+      },
+      {
+        "model": "RF-B",
+        "path": "software/ML_model/simulation_both/randomForest.joblib",
+        "sha256": "21939959033b068aea6581a4a0943356bfd27f2ad611b2c2e12d7fb842994c9e",
+        "trees": 88,
+        "nodes": 1320,
+        "leaves": 704,
+        "depth": 3,
+        "joblib_bytes": 187943,
+        "header_bytes": 218429,
+        "header_sha256": "c198b7874c910dbd5214a1d7b3dae1ba62a424e11d09712b272418a947caa6e7"
+      },
+      {
+        "model": "RF-R",
+        "path": "software/ML_model/simulation_raw/randomForest.joblib",
+        "sha256": "6974065e6e9bd366d73d58d188e2a3ae54cdf39f7340cb422d568eff00ff91d8",
+        "trees": 88,
+        "nodes": 1320,
+        "leaves": 704,
+        "depth": 3,
+        "joblib_bytes": 187942,
+        "header_bytes": 196147,
+        "header_sha256": "292c74d46029bf86582ff066d2de8c095960865a5a0a12080191f94ea91a9232"
+      },
+      {
+        "model": "T6",
+        "path": "software/ML_model/simulation_tree6/randomForest.joblib",
+        "sha256": "f8baded18b8411fcb7b55fb53130626da73156186f623884b919279679deb60f",
+        "trees": 1,
+        "nodes": 127,
+        "leaves": 64,
+        "depth": 6,
+        "joblib_bytes": 16727,
+        "header_bytes": 21178,
+        "header_sha256": "0131f3bc8ae4e4f02b7907f19f21bf5577b1ab755e4a30b302a2340030f16929"
+      }
+    ],
+    "input_float32_bytes": 800,
+    "probability_float64_bytes": 48
+  }
+}

@@ -1,0 +1,265 @@
+% !TeX root = ../main.tex
+\chapter{Reinforcement-Learning Teacher and Automated Demonstrations}
+\label{ch:teacher}
+\section{Why Reinforcement Learning Is Used}
+The teacher is needed because the student requires action labels and the
+proposed workflow seeks to obtain them without manual driving demonstrations.
+RL supplies a mechanism for learning a policy from simulated interaction:
+steering changes the trajectory, and reward feedback evaluates the subsequent
+motion. Forward travel, clearance and collision outcomes can be computed by
+the virtual environment without an operator specifying an action for every
+scan. The resulting teacher can then generate the supervised dataset.
+
+The distinction between reward design and action labelling is central. A reward
+states what outcomes are desirable; it does not enumerate the steering command
+for every encountered state. RL is useful here because a locally plausible turn
+can affect later collision risk, so the training objective must consider a
+sequence of decisions. This does not remove the need to design suitable rewards
+or to qualify the teacher before collecting its demonstrations.
+
+A manually programmed expert or a classical planner could also generate labels.
+Such a teacher would require an explicit control strategy and appropriate
+vehicle/task assumptions. The present project selects RL to learn that strategy
+from interaction. It has not compared the cost or quality of all possible
+teacher sources, and it does not claim that RL is the only route to automated
+supervision.
+
+\section{Why PPO Is Selected}
+PPO is an on-policy actor--critic algorithm that updates a policy using recently
+collected rollouts. Its clipped surrogate limits the incentive for some large
+probability-ratio changes, providing a practical update mechanism without
+requiring gradients through the simulator~\cite{schulman2017ppo}. The chosen
+implementation provides the policy, value estimation and rollout machinery
+within a consistent training interface~\cite{raffin2021sb3}.
+
+These properties suit this workflow: the simulator can repeatedly reset and
+execute the fifteen-action interface, while the host performs optimisation.
+The selected run uses four parallel environments and 512 rollout steps per
+environment before an update. PPO is an engineering choice supported by the
+available implementation and observed teacher qualification, not a demonstrated
+winner over every RL algorithm. On-policy learning also requires new interaction
+after updates, so its simulation cost remains part of the training cost.
+No algorithm-comparison experiment establishes that PPO minimises that cost.
+
+The alternatives clarify the choice. Deep Q-learning learns action values and
+has been demonstrated with discrete actions~\cite{mnih2013playing}; the
+fifteen-action interface therefore does not uniquely require PPO. TRPO uses a
+trust-region approach to policy optimisation~\cite{schulman2015trpo}, while
+PPO offers a clipped first-order surrogate that is simpler to incorporate into
+the selected rollout workflow~\cite{schulman2017ppo}. The original Soft
+Actor-Critic formulation combines off-policy learning and entropy maximisation
+for continuous-control benchmarks~\cite{haarnoja2018sac}; using that formulation
+would require reconsidering the action interface. Discrete SAC variants are
+not ruled out by this observation. The project prioritises a reproducible
+categorical policy and an established implementation, while accepting PPO's
+interaction cost. These are design reasons, not measured advantages over DQN,
+TRPO or SAC on the present maps.
+
+\section{Which Model the Teacher Uses}
+The teacher is Stable-Baselines3's \texttt{MlpPolicy}, an
+\texttt{ActorCriticPolicy} with separate feed-forward policy and value branches.
+Inspection of the frozen checkpoint confirms the dimensions in
+Table~\ref{tab:teacher_network}. Both branches use two 128-unit hidden layers
+with Tanh activations. The policy head outputs fifteen logits defining a
+categorical action distribution; the value head outputs one scalar estimate
+of discounted return. The critic supports training and does not provide the
+student's action labels.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Neural architecture of the frozen teacher, verified from the saved model.}
+\label{tab:teacher_network}
+\begin{tabularx}{\textwidth}{l l >{\raggedright\arraybackslash}X}
+\toprule Branch & Layer widths & Output role \\\midrule
+Actor & $292\to128\to128\to15$ & Categorical distribution over steering commands. \\
+Critic & $292\to128\to128\to1$ & Scalar value estimate used during learning. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+An MLP is a straightforward function approximator for the fixed-length numeric
+observation used here. The implementation flattens the distance field and adds
+three state features; it does not process camera images or use a recurrent
+history. A convolutional or recurrent policy could exploit different structure,
+but no comparison establishes a benefit for this task. The MLP is therefore a
+concrete baseline, not a claim that spatial structure or memory are unimportant.
+
+Counting weights and biases gives
+$(292+1)128+(128+1)128+(128+1)15=55{,}951$ actor parameters and
+54,145 critic parameters. FP32 parameter storage is 223,804 bytes (218.6~KiB)
+for the actor and 440,384 bytes (430.1~KiB) for both branches, where
+$1~\mathrm{KiB}=1024$ bytes. These derived sizes exclude activations, runtime
+code and training state. Actor-only inference needs neither critic nor optimiser;
+parameter storage alone does not establish board feasibility.
+
+The teacher uses privileged geometry because its immediate purpose is to learn
+useful driving behaviour and provide supervision. This choice separates
+learning the task from reconstructing that geometry from an imperfect scan,
+in the spirit of privileged-to-sensor transfer~\cite{chen2019cheating}. It also
+creates an information gap that imitation may not fully overcome. Directly
+installing the teacher on the vehicle would not solve that gap: its map-derived
+input is unavailable in the proposed LiDAR-only onboard interface, regardless
+of whether the actor's weights could fit in memory.
+
+\section{Teacher Observation and Learning Objective}
+The teacher observes a local map-derived distance field on a $17\times17$
+grid, together with forward speed, yaw rate and previous action. Its input
+therefore has $289+3=292$ components. The grid spans 0.4~m behind to 1.4~m
+in front of the vehicle and extends 0.9~m to each side; distance values are
+clipped at 0.5~m according to the stored observation configuration. It is a
+privileged representation because it is computed from simulator geometry and
+state rather than reconstructed from the student's scan.
+
+Let $o_t^T$ denote this observation and $\pi_\theta(a_t\mid o_t^T)$ the teacher
+policy. Training uses Stable-Baselines3~\cite{raffin2021sb3} with the surrogate
+\begin{equation}
+ L^{\mathrm{clip}}(\theta)=\mathbb{E}_t\!\left[
+ \min\!\left(r_t(\theta)\hat A_t,
+ \operatorname{clip}(r_t(\theta),1-\epsilon,1+\epsilon)\hat A_t\right)\right],
+\end{equation}
+where $r_t$ is the new-to-old action probability ratio and $\hat A_t$ is an
+advantage estimate~\cite{schulman2017ppo}. Generalized advantage estimation
+(GAE) provides a value-based estimator with a bias--variance trade-off~\cite{schulman2015gae}.
+The stored configuration uses
+$\epsilon=0.2$, learning rate $3\times10^{-4}$, discount factor 0.99,
+GAE parameter 0.95, batch size 256 and ten update epochs. Two hidden layers
+of 128 units are specified, with entropy coefficient 0.005 and value-loss
+coefficient 0.5. These settings describe the selected run, not a new
+hyperparameter search conducted for this draft. The saved teacher artifacts
+are identified in Appendix~\ref{sec:evidence_sources}.
+
+\section{Reward and Termination}
+The reward combines bounded forward travel, speed tracking, geometric safety,
+steering smoothness and terminal failure penalties. Table~\ref{tab:reward}
+summarises the coefficients in the saved teacher configuration. For example,
+with geometric clearance $c_t$, the near-obstacle term is
+\begin{equation}
+ r_t^{\mathrm{near}}=-0.5\max(0,1-c_t/0.25)\,\Delta t.
+\end{equation}
+The forward-risk term uses the square of a clipped deficit relative to
+0.45~m. In the privileged mode these safety terms use map geometry, not
+student LiDAR values. Distances in the expressions are in metres.
+
+\begin{table}[htbp]
+\centering\small
+\caption[Teacher reward components]{Recorded teacher reward components. Time-scaled terms use $\Delta t$.}
+\label{tab:reward}
+\begin{tabularx}{\textwidth}{p{3.2cm}X}
+\toprule Component & Implementation summary \\\midrule
+Travel & $+10$ per metre of bounded forward travel; suppressed on failure. \\
+Speed error & $-3|v-v_0|\Delta t$. \\
+Near obstacle & Linear deficit below 0.25~m, coefficient 0.5 per second. \\
+Forward risk & Squared deficit below 0.45~m, coefficient 2 per second. \\
+Steering change & $-0.1|a_t-a_{t-1}|/14$. \\
+Turning & $-0.15((a_t-7)/7)^2\Delta t$. \\
+Failure & $-20$ for the applicable collision or motion-failure category. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Collision, insufficient travel, small repeated loops, persistent low speed
+and leaving the workspace are failure conditions. The stored stuck monitor
+uses a 3~s window and a 0.02~m travel threshold. Loop monitoring uses a 12~s
+window with additional duration, angle and spatial-span conditions. These
+checks distinguish continued forward cruising from remaining near one place.
+Reaching the configured time limit without a failure is treated as episode
+completion, not arrival at a navigation goal.
+
+\section{Training Provenance and Teacher Qualification}
+The collection teacher is the checkpoint at 2,392,588 training steps in the
+second training stage. That stage continued from a 42,588-step parent and
+ended at 2,500,520 steps. Later multi-map and dead-end runs exist in the
+project but are not the source of the reported demonstrations. The presence
+of a multi-map training script therefore does not establish that the selected
+teacher was trained on multiple maps.
+
+Figure~\ref{fig:teachercurve} shows the archived second-stage learning curve.
+Its selected checkpoint is distinguished from the end of the run. The frozen
+teacher's separate qualification summary records eight episodes on T3,
+approximately 4,800 simulation seconds and 959.90~m of travel, with no recorded
+collision or listed motion failure. This establishes behaviour under that
+qualification protocol. Successful collection on other maps is additional
+operational evidence, but is not presented as an independent four-map teacher
+qualification experiment.
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=\textwidth]{teacher_training_curve.pdf}
+\caption[Teacher training curve and selected checkpoint]{Archived second-stage teacher training curve and selected checkpoint.
+The evaluation-reward axis has a narrow range; small fluctuations should not
+be interpreted as large changes in navigation capability.}
+\label{fig:teachercurve}
+\end{figure}
+
+\section{Observation--Action Pairing}
+After qualification, the teacher is frozen. The collector uses deterministic
+prediction, selecting
+\begin{equation}
+ a_t^T=\arg\max_a\pi_\theta(a\mid o_t^T),\qquad
+ \mathcal D=\{(x_t,a_t^T)\}_{t=1}^{N}.
+\end{equation}
+No person supplies the per-sample action labels in this stage. The forest
+later fits $\mathcal D$ by supervised classification; it receives neither
+PPO updates nor simulator rewards. This is behaviour cloning from hard action
+labels, rather than direct RL training of tree parameters.
+
+A demonstration sample is $(x_t,a_t^T)$, where $x_t$ is the valid LiDAR vector
+at the decision boundary and $a_t^T$ is the teacher command subsequently
+executed. The collector checks scan freshness instead of assuming that all
+sensor and physics callbacks are simultaneous. Missing decision scans are
+skipped; previous scans are not duplicated to manufacture a row. Five
+consecutive misses cause collection to abort under the recorded configuration.
+
+Each published batch includes teacher and map fingerprints, configuration,
+seeds, episode outcomes, and inclusive row ranges linking episodes to files.
+Training files contain 200 distance values and one action label. Timing logs
+and runtime metadata are retained separately from the CSV copies used for
+student learning. This division supports both compact training input and
+an audit of the collection process.
+
+\section{Starting Conditions and Dropout Augmentation}
+Ordinary teacher starts use position perturbations up to 0.03~m and yaw
+perturbations up to $10^\circ$. Near-wall starts use additional geometric
+constraints, including 0.04--0.08~m body clearance, $10$--$20^\circ$ yaw offsets
+and 0.15--0.40~m forward clearance. Candidate starts are checked before use.
+These perturbations expose the teacher to corrective situations, but do not
+establish student recovery from the same situations.
+
+For each original scan, offline dropout chooses approximately 5\% of its
+nonzero measurements and sets them to zero without changing the action label.
+The count is rounded as $\lfloor0.05n_{\mathrm{nz}}+0.5\rfloor$. The original
+and augmented rows retain a common map assignment. Their labels are identical,
+so augmentation increases the number of training rows without doubling the
+number of independently visited states.
+
+\section{Dataset Composition and Later Batch}
+Table~\ref{tab:batches} summarises the two batches used in the current analysis.
+The batch metadata are identified in Appendix~\ref{sec:evidence_sources}.
+The October 23 batch supplies student training and validation. The October 28
+batch is used only to evaluate the frozen models on new teacher trajectories
+on the same maps. Neither batch contains student-driven recovery demonstrations.
+
+\begin{table}[htbp]
+\centering\small
+\caption[Demonstration batch composition]{Demonstration batches; each episode is limited to 3,600 simulation seconds.}
+\label{tab:batches}
+\begin{tabular}{lrr}
+\toprule Quantity & 23 October & 28 October \\\midrule
+Maps & 4 & 4 \\
+Episodes per map & 20 & 15 \\
+Completed episodes & 80/80 & 60/60 \\
+Original rows & 1,439,983 & 1,079,979 \\
+Dropout rows & 1,439,983 & 1,079,979 \\
+Skipped decision scans & 17 & 21 \\
+Ordinary / near-wall starts & 60 / 20 & 44 / 16 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The original demonstration batch contains only labels 5, 6, 7, 8, 9 and 12. Label 7 accounts
+for 873,837 original rows, approximately 60.68\%, whereas label 12 occurs only
+22 times. The later batch also contains only these six labels, with label 12
+occurring 12 times. Consequently, the fifteen-command interface should not be
+confused with a dataset that supplies evidence for all fifteen actions.
+Long runs provide many temporally adjacent samples, not an equal number of
+independent driving situations. This limitation motivates per-map and
+per-episode reporting in the subsequent experiments.

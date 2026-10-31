@@ -1,0 +1,36 @@
+% !TeX root = ../main.tex
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+Training a compact navigation controller requires useful sensor--action examples,
+which would otherwise need to be supplied by an operator or another expert.
+This study investigates a digital-twin-oriented alternative: a virtual vehicle
+learns to drive from reward feedback and then generates supervision for a
+LiDAR-only controller intended for a resource-constrained, low-power development
+board. Expensive learning and demonstration generation remain on the host;
+the intended onboard workload is inference by the exported student.
+
+The virtual training environment represents a differential-drive vehicle,
+LiDAR and discrete steering interface in Gazebo. Proximal Policy Optimization
+(PPO) trains a privileged neural teacher from geometric and vehicle-state
+observations. The teacher uses separate multilayer-perceptron policy and value
+branches, each with two 128-unit hidden layers. Its executed actions label
+simultaneously paired LiDAR observations. Random forests are then fitted by
+supervised behaviour cloning, using bounded-depth threshold tests and C++
+export as the basis for later embedded integration. Thus RL learns the teacher;
+it does not directly optimise the forest.
+
+The original demonstration batch contains 1,439,983 scans and equally many
+dropout copies, with three maps used for student fitting and one for validation.
+Three 88-tree, depth-three forests and a single depth-six tree are evaluated
+in 320 closed-loop episodes. The raw-only, combined-data and dropout-only forests
+complete 67, 64 and 62 of 80 episodes, respectively; the single tree completes
+74. All six single-tree failures occur under contiguous sector loss. A later
+1,079,979-scan batch supports same-map offline assessment without retraining,
+and host-side Python/C++ agreement checks pass on the tested inputs.
+
+The results demonstrate automated supervision and useful compact-policy behaviour
+in the tested simulation conditions. They also show that the initially selected
+forest is not necessarily the strongest student configuration. Physical-twin
+calibration, independent-map recovery, measured labour savings and target-board
+memory, latency and energy remain unverified. The completed contribution is
+the virtual training and policy-transfer stage of the proposed embedded workflow.

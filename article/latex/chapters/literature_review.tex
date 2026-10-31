@@ -1,0 +1,215 @@
+% !TeX root = ../main.tex
+\chapter{Literature Review}
+\label{ch:literature}
+\section{Training Strategy and Deployment Objective}
+The methodological background is organised around the project's separation of
+training and deployment. A virtual vehicle supplies interaction, RL learns a
+teacher, imitation creates a sensor-limited student, and a compact model provides
+the candidate for board inference. The objective is to replace manually supplied
+driving examples while retaining useful behaviour in a constrained implementation.
+The subsequent model comparison evaluates this training strategy rather than
+introducing a new tree or policy-gradient algorithm.
+
+Kritzinger et al. distinguish digital models, digital shadows and digital twins
+according to their level of integration~\cite{kritzinger2018digital}. This
+distinction prevents a simulator from being treated as evidence of a fully
+connected physical--digital system. In this dissertation, the virtual vehicle
+implements the training side of an intended digital-twin workflow; measured
+physical calibration and synchronisation are still required.
+
+The digital-twin-oriented scope is operationally defined in
+Chapter~\ref{ch:introduction}: a vehicle-specific virtual counterpart supports
+learning and collection, while calibration and physical coupling remain pending.
+The cited simulation platform supplies the enabling environment~\cite{koenig2004gazebo};
+its existence alone does not establish physical fidelity for this vehicle.
+Likewise, privileged-policy transfer motivates the separation of teacher and
+student information~\cite{chen2019cheating}, but provides no substitute for
+measuring the present student's behaviour.
+
+\section{Local Feedback Control}
+The engineering question in this study concerns a local feedback controller:
+a range observation is converted into a steering decision, which changes the
+next observation. This differs from evaluating a classifier on an independent
+collection of labelled samples. It also differs from global navigation, where
+route choice and destination progress require additional task definitions.
+The literature considered here is selected to explain teacher learning,
+student imitation, tree-based inference and simulation perturbations.
+
+A classical example is the Vector Field Histogram (VFH) of Borenstein and
+Koren~\cite{borenstein1991vfh}. It maintains a Cartesian obstacle histogram
+and derives a polar representation from which a steering direction is selected.
+The present student instead maps a single binned scan directly to an action
+learned from demonstrations. Both approaches use directional range information,
+but the student does not implement VFH's obstacle grid or selection rule.
+VFH is methodological context here; no experimental comparison with VFH has
+been conducted.
+
+Tai, Paolo and Liu demonstrate a different route to obtaining navigation
+behaviour without prior driving demonstrations: a deep RL policy maps ten range
+measurements and a relative target position to continuous steering commands,
+with reported tests in virtual and real environments~\cite{tai2017virtual}.
+This supports investigating simulation interaction as a source of behaviour.
+Their goal-directed neural controller differs from the present forward-cruising,
+discrete-action task. Here the learned teacher supplies examples for a separate
+tree student, and the reported evidence remains simulation-only. Their physical
+transfer results cannot be attributed to the present vehicle.
+
+For the present vehicle, the sensor representation is part of the control
+design. Discretising distance by angle fixes the relationship between input
+columns and physical directions. Suppressing the rear sector reduces available
+information, while using zero for missing returns makes missingness a feature
+of the learned policy. A comparison of learning algorithms is meaningful only
+when these conventions and the action interface remain explicit.
+
+\section{Random Forests and Compact Tree Policies}
+Breiman introduced random forests as ensembles of randomised tree predictors
+and analysed their generalisation behaviour in relation to the strength and
+dependence of individual trees~\cite{breiman2001random}. The relevant design
+idea is that multiple trees can provide different partitions of the input
+space. An ensemble nevertheless requires more inference work than a single
+tree, and its performance depends on how those partitions are constructed.
+
+In this project, depth and tree count are explicit model choices. A shallow
+forest permits several small decision structures to contribute to a prediction;
+a deeper single tree permits a longer sequence of conditional decisions along
+one path. These are different ways of allocating capacity. Neither allocation
+can be declared superior for the vehicle without checking the states reached
+during closed-loop operation.
+
+The implementation uses scikit-learn 1.7.2, from the machine-learning library
+described by Pedregosa et al.~\cite{pedregosa2011sklearn}. Its random-forest classifier
+aggregates class probabilities from the trees, with bootstrap sampling and
+random feature selection available during fitting~\cite{sklearnForest}.
+This detail matters when exporting inference: replacing probability averaging
+with hard majority voting would define a different controller. The study
+therefore verifies agreement after export rather than treating any generated
+C++ tree code as automatically equivalent.
+
+Embedded tree learning also has more specialised alternatives. Kumar, Goyal
+and Varma's Bonsai jointly learns a sparse projection and a shallow tree with
+expressive nodes, targeting devices with as little as 2~KB of
+RAM~\cite{kumar2017bonsai}. Its design shows why resource constraints should
+affect model construction, rather than being checked only after fitting.
+Bonsai is not an ordinary random forest, and its published memory results do
+not describe the exported models in this project. The present forest provides
+a simpler existing fitting/export path; the single-tree comparison tests
+whether that ensemble complexity is justified by the observed behaviour.
+
+Nor are trees the only feasible microcontroller models. Lai, Suda and Chandra
+develop CMSIS-NN kernels to improve neural inference efficiency on Arm Cortex-M
+CPUs~\cite{lai2018cmsis}. Thus a compact neural student is a credible alternative,
+especially on a Cortex-M7 with floating-point support. Selecting a forest here
+rests on its threshold representation, bounded traversal and verified C++ export,
+not on an assertion that neural networks cannot execute on the target board.
+An equal-budget neural comparison remains future work.
+
+\section{Learning a Privileged Teacher}
+PPO uses a policy-gradient objective with a clipped probability ratio to
+moderate updates relative to the data-collecting policy~\cite{schulman2017ppo}.
+Here it supplies the teacher policy rather than the final tree model. A neural
+policy can use the simulated distance field and vehicle state while generating
+examples for a more restricted student.
+
+The separation of a privileged policy from a sensor-limited policy is related
+to the two-stage approach in \emph{Learning by Cheating}. Chen et al. first
+learn a policy with privileged information and then transfer behaviour to an
+agent using ordinary observations in a driving simulator~\cite{chen2019cheating}.
+The present project differs in its small differential-drive platform, LiDAR
+bins, discrete steering labels and tree-based student. The cited work motivates
+the information separation; it does not validate the present implementation.
+
+A privileged teacher should not be interpreted as an available physical
+controller. Its geometry is supplied by the simulator, and the student does
+not acquire that geometry merely by imitating actions. Evaluating teacher and
+student as if they had identical information would conceal a central design
+constraint.
+
+Rusu et al. show that an RL policy can be transferred to a smaller neural
+network through policy distillation~\cite{rusu2015distillation}. Bastani, Pu and
+Solar-Lezama's VIPER instead extracts a decision-tree policy from a neural
+oracle using its Q-function, enabling verification in their benchmark
+settings~\cite{bastani2018viper}. Together these works motivate separating the
+model that learns the task from the model chosen for deployment. The present
+pipeline uses hard action labels and ordinary supervised fitting; it does not
+implement VIPER's Q-guided extraction or establish its formal guarantees.
+The match to the research objective is the teacher--student separation, while
+the collection procedure and validation claims remain specific to this project.
+
+\section{Behaviour Cloning and Distribution Shift}
+Ross, Gordon and Bagnell show why sequential prediction differs from ordinary
+independent supervised prediction: actions influence future observations.
+Their DAgger approach collects expert-labelled examples on states encountered
+by the learner~\cite{ross2011reduction}. The distinction is relevant when
+interpreting a student that performs well on teacher scans but fails after its
+own steering changes the trajectory.
+
+The present pipeline performs behaviour cloning on teacher-driven episodes.
+Perturbed and near-wall teacher starts expand the demonstration conditions,
+but there is no iterative learner-execution and expert-relabeling loop.
+Consequently, the implementation is not described as DAgger. Likewise, labels
+are discrete teacher commands, not teacher probability distributions; no
+soft-label distillation loss is used.
+
+This methodological boundary leads to a practical evaluation requirement.
+Prediction disagreement is measured offline, but collisions and recovery
+must be measured while the student actually drives. High agreement on common
+straight-driving examples cannot establish adequate behaviour in a rare
+turning state or after a loss of sensor coverage.
+
+\section{Simulation Perturbations and Transfer}
+Tobin et al. investigate domain randomisation by varying rendered simulation
+conditions to support transfer of vision-based learning to physical
+robotics~\cite{tobin2017domain}. That work establishes a motivation for varying
+training conditions, but its image-based transfer result is not evidence that
+any particular LiDAR corruption will improve the controller studied here.
+
+The present experiments distinguish scattered point loss from contiguous
+sector loss. These perturbations remove information in different spatial
+patterns. A training procedure that masks a small number of separated
+measurements need not provide examples of an extended blind region. The
+experimental question is therefore whether the chosen augmentation matches
+useful deployment variation, not simply whether augmented data are present.
+
+Simulation also provides exact state and an idealised velocity interface.
+Physical transfer would introduce sensor calibration, command-response and
+timing questions. Those measurements are outside this draft, so simulation
+robustness is discussed within the implemented perturbation families.
+
+\section{Positioning of the Study}
+Table~\ref{tab:literature} connects the selected methodological sources to the
+choices made in this project. This is a focused initial review, not a claim
+that these sources exhaust LiDAR navigation or embedded machine learning.
+The contribution is the experimentally traceable combination of established
+methods under a common observation, action and evaluation contract.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Methodological context and its role in this study.}
+\label{tab:literature}
+\begin{tabularx}{\textwidth}{p{3.1cm}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X}
+\toprule
+Source & Relevant idea & Boundary in this study \\
+\midrule
+Breiman~\cite{breiman2001random} & Randomised tree ensembles & Forest superiority is tested, not assumed. \\
+Schulman et al.~\cite{schulman2017ppo} & Clipped policy optimisation & PPO trains the privileged teacher. \\
+Chen et al.~\cite{chen2019cheating} & Privileged-to-sensor policy transfer & Student and task differ from the cited driving system. \\
+Ross et al.~\cite{ross2011reduction} & Learner-induced state distribution & No iterative DAgger collection is implemented. \\
+Tobin et al.~\cite{tobin2017domain} & Training-condition variation & LiDAR masking is assessed separately from physical transfer. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The reviewed work leads to a coherent selection: simulation supplies repeated
+interaction; PPO provides the neural teacher; behaviour cloning transfers
+actions to the LiDAR interface; and bounded-depth trees expose a manageable
+inference structure. Each selection addresses a different constraint. The
+literature motivates this combination but does not establish that it is the
+best-performing or lowest-power combination for the vehicle.
+
+The empirical gap addressed by the experiments is narrow and concrete:
+whether automatically generated teacher demonstrations produce useful compact
+students, and whether the initially selected forest retains its appeal when
+offline agreement and closed-loop behaviour are assessed separately. A broader survey of
+microcontroller navigation systems and directly comparable physical platforms
+remains appropriate for the final dissertation, when the hardware scope and
+measurements are settled.

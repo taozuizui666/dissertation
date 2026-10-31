@@ -1,0 +1,277 @@
+% !TeX root = ../main.tex
+\chapter{Compact Students and Embedded Inference Design}
+\label{ch:student}
+\section{Why a Random-Forest Student Is Selected}
+The student converts the teacher-generated examples into a policy whose inputs
+and implementation suit the intended onboard task. Its input is one numeric
+LiDAR vector and its output is one of the observed steering labels. A random
+forest can express nonlinear combinations of range thresholds without using
+the teacher's map geometry or vehicle-state features~\cite{breiman2001random}.
+It is the principal student family selected for this project.
+
+There are three practical reasons for this choice. First, threshold-based
+partitions directly operate on the binned distance representation. Second,
+maximum depth and tree count bound the number of decisions traversed during
+prediction, exposing a capacity--computation trade-off. Third, fitted tests and
+leaf outputs can be exported into ordinary C++ inference. Only prediction is
+intended for the board; tree construction and RL optimisation stay on the host.
+The deployment path therefore avoids carrying the Python training environment
+onto the vehicle.
+
+The ensemble combines multiple tree predictions, providing a motivation for
+using a forest instead of trusting one partition of the demonstrations~\cite{breiman2001random}.
+However, more trees also require additional stored structure and aggregation.
+Neither ensembling nor dropout augmentation guarantees robustness to missing
+angular information. The closed-loop experiments test those assumptions rather
+than treating them as consequences of the model name.
+
+A compact or quantised neural student is also a possible design, and a deeper
+single tree may be cheaper than a forest. The present study does not contain
+a board-level comparison of all these alternatives. It includes a single-tree
+baseline to test whether a simpler decision structure retains useful behaviour.
+Selecting a forest is thus a motivated starting point for the resource-limited
+objective, not a requirement that the final evidence must favour forests.
+
+\section{Teensy 4.0 Hardware Budget}
+The intended target is the Teensy 4.0. Table~\ref{tab:teensy_resources} gives
+the manufacturer's nominal resources~\cite{pjrcTeensy40}. Flash is the
+non-volatile program store relevant to the model; calling it simply ``ROM''
+would obscure the distinction between rewritable firmware storage and boot ROM.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Nominal Teensy 4.0 resources from PJRC documentation.}
+\label{tab:teensy_resources}
+\begin{tabularx}{\textwidth}{p{2.5cm}>{\raggedright\arraybackslash}X}
+\toprule Resource & Specification \\
+\midrule
+CPU & Arm Cortex-M7, 600~MHz; hardware single- and double-precision floating point. \\
+RAM & 1,024~KiB total: 512~KiB RAM1 (tightly coupled) and 512~KiB RAM2 (DMA-oriented). \\
+Flash & 2~MiB physical; upper 64~KiB reserved, leaving 1,984~KiB for the program region. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The RAM total is not a single unrestricted model buffer. Under the documented
+default placement, functions are copied from Flash to ITCM in RAM1; stack and
+ordinary variables also consume RAM1. RAM2 serves larger buffers and the heap.
+Consequently, generated inference code can consume both Flash and RAM1, depending
+on compiler and linker placement~\cite{pjrcTeensy40}. A linker map is needed to
+determine the actual allocation.
+
+This budget explains the training/deployment split. The board need only retain
+the selected inference implementation and its working data, rather than the
+Gazebo environment, PPO training state or demonstration dataset. CPU frequency
+alone does not establish a decision latency, and fitting within nominal memory
+does not establish low power. Those questions require the integrated firmware
+and measurements under its sensor and motor-control workload.
+
+\section{Resource Reasoning and Deployment Criteria}
+For $T$ binary trees of maximum depth $D$, an inference path evaluates at most
+$TD$ internal-node thresholds, excluding input processing and leaf aggregation.
+A full binary tree at that depth has at most $2^{D+1}-1$ nodes. These structural
+bounds make the configured trade-off explicit: an 88-tree depth-three forest
+uses at most 264 threshold comparisons and 1,320 total nodes, whereas a single
+depth-six tree uses at most six comparisons and 127 nodes. Actual trees can
+contain fewer nodes. These are derived bounds, not measurements of execution
+time or memory on the board.
+
+The exported forest also accumulates leaf probabilities for the six fitted
+classes before selecting an action. That work, stored thresholds, leaf values,
+compiled instructions and sensor buffers all contribute to deployment cost.
+Consequently, a shallow forest is not automatically smaller or lower-power than
+every neural or single-tree alternative. Header size and host timings are
+useful development indicators, but cannot establish the final resource budget.
+
+Inspection of the frozen fitted artifacts gives the exact structures in
+Table~\ref{tab:artifact_resources}. All three forests contain 1,320 nodes and
+704 leaves; T6 contains 127 nodes and 64 leaves. Thus the full-tree bounds are
+attained by these particular artifacts. The headers express these structures
+as branches and constants rather than serialising the Python estimator onto
+the board. Their textual size is affected by numeric formatting and generated
+syntax, whereas compiled storage depends on instruction generation, constant
+placement and optimisation.
+
+\begin{table}[htbp]
+\centering\small
+\caption[Frozen model structures and file sizes]{Frozen model structures and file sizes, checked against
+the model hashes used in the closed-loop reports. File sizes are bytes, not
+compiled Flash or runtime RAM.}
+\label{tab:artifact_resources}
+\begin{tabular}{lrrrrr}
+\toprule Model & Trees & Nodes & Leaves & Joblib bytes & C++ source bytes \\
+\midrule
+RF-D & 88 & 1,320 & 704 & 187,946 & 214,856 \\
+RF-B & 88 & 1,320 & 704 & 187,943 & 218,429 \\
+RF-R & 88 & 1,320 & 704 & 187,942 & 196,147 \\
+T6 & 1 & 127 & 64 & 16,727 & 21,178 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The exported interface takes a pointer to 200 single-precision inputs and
+uses six double-precision probability accumulators. With four-byte
+\texttt{float} and eight-byte \texttt{double}, these arrays correspond to
+800 and 48 bytes respectively. Their combined 848 bytes is a source-level
+accounting of two arrays, not a measured peak RAM requirement. Raw LiDAR
+buffers, feature conversion, stack frames, interrupts, runtime libraries and
+code copied into RAM remain outside that count. The existing export preserves
+double-precision accumulation; reducing that precision would be a model-export
+change requiring a new agreement check.
+
+The structural cost comparison is also narrower than a timing comparison.
+The actor's dense layers contain 55,680 weights, each participating in a
+multiply--accumulate in a direct dense forward pass, plus biases and nonlinear
+activations. The forests traverse at most 264 thresholds and aggregate leaf
+probabilities. These operation types have different costs and memory-access
+patterns, so their counts cannot be divided to claim an execution-speed ratio.
+They explain why a compact student is worth testing, while leaving the board
+benchmark as the necessary final check.
+
+The intended acceptance criteria are that compiled code and constants fit in
+available Flash, peak runtime storage fits in available RAM, and sensing,
+preprocessing, inference and command publication meet the selected control
+period. Energy per decision and average board power must be measured under the
+actual workload to substantiate the low-power objective. The simulation decision
+interval is 0.2~s; a physical implementation preserving that interface would
+need to meet the whole interval, not merely an isolated classifier benchmark.
+These criteria guide later integration and are not presented as completed tests.
+
+\section{Data Validation and Map Separation}
+The student workflow validates the distance and label fields before fitting.
+Non-finite values, out-of-range distances, unsupported labels and all-zero
+scans are rejected according to the configured checks. Zero values in active
+bins are otherwise permitted, since they represent a condition explicitly
+included in the training data. When original and augmented files are used
+together, row counts and labels are checked for alignment.
+
+Keeping related observations together follows the rationale of grouped
+evaluation for dependent samples~\cite{sklearnCV}. Here a fixed map-based
+holdout is used, rather than a k-fold cross-validation procedure.
+Map grouping determines the fitting/validation split. T3, R1 and R3 provide
+1,079,984 original rows, with the same number of dropout copies. E2 provides
+359,999 original validation rows and equally many copies. Thus the combined
+variant uses 2,159,968 fitting rows and 719,998 validation rows. The saved
+models are not subsequently refitted using E2. This preserves the reported
+fitting exclusion, although repeated use of E2 for model choices makes it a
+validation set rather than a final test set.
+
+All main models retain the 200-column representation. Feature selection is
+available in the pipeline but is not used in this comparison. Keeping fixed
+zero columns maintains the input contract; it does not add useful angular
+measurements. Feature selection results should therefore not be claimed as
+a contribution of the reported experiments.
+
+\section{Model Configurations}
+The students use scikit-learn's classifier implementation~\cite{pedregosa2011sklearn,sklearnForest}.
+The main forests use 88 trees, maximum depth three, minimum leaf size one,
+no class weighting and seed 42. Three data variants are compared: original
+only (RF-R), dropout only (RF-D), and original plus dropout (RF-B). The single
+tree (T6) uses the combined data and a maximum depth of six. It is implemented
+through the same classifier/export interface with one estimator, bootstrap
+disabled and all features eligible at a split.
+
+\begin{table}[htbp]
+\centering\small
+\caption[Student model configurations]{Main student configurations. RF settings use the classifier defaults
+for bootstrap and feature sampling.}
+\label{tab:models}
+\begin{tabular}{lrrrr}
+\toprule & RF-D & RF-B & RF-R & T6 \\\midrule
+Trees & 88 & 88 & 88 & 1 \\
+Maximum depth & 3 & 3 & 3 & 6 \\
+Training variant & Dropout & Both & Raw & Both \\
+Bootstrap & Yes & Yes & Yes & No \\
+Split features & $\sqrt{200}$ & $\sqrt{200}$ & $\sqrt{200}$ & All \\
+Input columns & 200 & 200 & 200 & 200 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The single-tree depth was compared at 3, 6, 8 and 10 using the validation
+results. Depth six was retained; the corresponding combined-input accuracies
+were approximately 0.6043, 0.6653, 0.6619 and 0.6044. This selection is part of
+the development process. It does not establish that depth six would be optimal
+on a new map or under a new sensor distribution.
+
+Table~\ref{tab:models} exposes an important interpretation limit. The single
+tree and forests differ in depth, number of estimators, bootstrap and split
+feature sampling. Their results compare these complete configurations, not an
+isolated causal effect of ensembling. Similarly, the combined data variant
+contains twice as many rows as either individual variant, so it does not
+separate augmentation content from all sample-count effects.
+
+\section{Prediction and Offline Metrics}
+For tree $j$, let $p_j(k\mid x)$ be the class distribution at the leaf reached
+by scan $x$. The deployed prediction is
+\begin{equation}
+ \bar p(k\mid x)=\frac{1}{T}\sum_{j=1}^{T}p_j(k\mid x),\qquad
+ k^*=\arg\max_k \bar p(k\mid x),\qquad \hat a(x)=c_{k^*}.
+\end{equation}
+Probability averaging follows the classifier's documented prediction
+rule~\cite{sklearnForest}; $c_k$ maps an internal class index to the original steering command.
+This mapping is necessary because the observed labels are not a contiguous
+sequence beginning at zero. The C++ exporter retains leaf probabilities and
+class ordering from the fitted estimator.
+
+Exact action accuracy measures agreement with the teacher. Steering mean
+absolute error (MAE) and one-step tolerance accuracy are
+\begin{equation}
+ \mathrm{MAE}=\frac{1}{N}\sum_i|\hat a_i-a_i|,\qquad
+ A_{\pm1}=\frac{1}{N}\sum_i\mathbf{1}\{|\hat a_i-a_i|\leq1\}.
+\end{equation}
+The label distance is meaningful here because the wheel-speed mapping varies
+linearly with steering label. Nevertheless, these are imitation metrics,
+not direct measures of collision risk.
+
+Class imbalance motivates macro F1 and per-class support. Macro F1 is the
+unweighted mean of per-class F1 scores; the selected labels and handling of
+undefined scores affect the result~\cite{sklearnF1}. Two explicit
+conventions are retained: F1 averaged over labels occurring in the evaluated
+targets, and F1 averaged over the fixed set $\{5,6,7,8,9,12\}$ with undefined
+class scores set to zero. These values can differ even for the same prediction
+vector. In particular, the later E2 batch contains no label 12. Tables identify
+the convention rather than treating all reported macro F1 values as comparable.
+
+A majority-class accuracy of approximately 0.6241 on the original E2
+validation distribution provides a simple offline reference. It is not used
+as an autonomous driving baseline: continuously selecting the majority
+straight label does not evaluate the same navigation capability as a trained
+feedback policy.
+
+\section{Host-Side C++ Export Verification}
+The exporter writes nested threshold tests and accumulates leaf class
+probabilities before selecting a command. Checks include sampled observations,
+random probes and cases around split thresholds. The three primary forests
+each pass 3,149 verification inputs, while T6 passes 1,490. These counts refer
+to tested inputs and should not be interpreted as a formal proof over every
+possible input vector. Model artifacts and reports are identified in
+Appendix~\ref{sec:evidence_models}.
+
+Publication of a model follows successful validation so that an unsuccessful
+export does not silently replace an earlier usable artifact. Reports retain
+model configuration, software versions and header fingerprints. This provides
+a link between fitted predictions and the model executed in subsequent
+experiments.
+
+The depth-six tree produces a substantially smaller source header than the
+88-tree forests in the archived artifacts, and its recorded host Python
+inference is faster. These are useful development observations, but neither
+source-file bytes nor Python timings are target-board resource measurements.
+No claim about compiled Flash, working RAM or complete embedded control-period
+compliance is made from them.
+
+\section{Frozen Candidates and Cross-Batch Use}
+The cross-batch study evaluates the four existing models on both collections
+without retraining. It retains map-level, episode-level and per-class results.
+The 64 map-level cells arise from two batches, four models, two input variants
+and four maps. The 1,120 episode-level metric rows arise from re-evaluating the
+80 and 60 teacher episodes under each model/input combination; they are not
+1,120 newly driven student episodes.
+
+T6 and RF-B are retained as the two frozen candidates for the proposed
+independent-map experiment. RF-R and RF-D remain important ablation models.
+Freezing this candidate set does not declare a universal winner, and the
+proposed experiment has not yet supplied evidence. Keeping the later batch
+out of fitting allows its results to describe the original models rather
+than a moving sequence of retrained controllers.

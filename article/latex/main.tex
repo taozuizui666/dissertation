@@ -21,12 +21,24 @@
   \PackageWarningNoLine{dissertation}{Times New Roman unavailable; using TeX Gyre Termes for this preview}
 }
 \usepackage{setspace}
+% Paragraph style selected after checking SPMS theses in DR-NTU; see README.
+% This is a house style, not a prescribed NTU indentation measurement.
+\usepackage{indentfirst}
+\setlength{\parindent}{1.27cm}
+\setlength{\parskip}{0pt}
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\graphicspath{{figures/}{../experiment_data/}}
+\newcommand{\mapname}[1]{\nolinkurl{#1}}
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{pdftitle={\DissertationTitle},pdfauthor={\AuthorName}}
 \onehalfspacing
-\setlength{\emergencystretch}{1em}
+\setlength{\emergencystretch}{2em}
 \clubpenalty=10000
 \widowpenalty=10000
 \setcounter{secnumdepth}{1}
@@ -35,22 +47,17 @@
 \renewcommand{\bibname}{References}
 \urlstyle{same}
 
-% Planned chapters have no page numbers until their text is added.
-\newcommand{\plannedchapter}[2]{%
-  \addtocontents{toc}{\protect\contentsline{chapter}{\protect\numberline{#1}#2}{\textendash}{}}}
-\newcommand{\plannedsection}[2]{%
-  \addtocontents{toc}{\protect\contentsline{section}{\protect\numberline{#1}#2}{\textendash}{}}}
-
 \begin{document}
 \hypersetup{pageanchor=false}
 
-% This draft contains the title page, contents, Introduction and cited references.
-% Add the required declarations and Abstract when preparing the full dissertation.
+% Working draft. Official signed declarations will be added for submission.
 \begin{titlepage}
   \centering
   \vspace*{1.5cm}
   {\Large\bfseries \DissertationTitle\par}
-  \vspace{2cm}
+  \vspace{0.6cm}
+  {\normalsize\itshape Digital-Twin-Oriented Training from an RL Teacher to Compact Navigation Policies\par}
+  \vspace{1.4cm}
   {\large \AuthorName\par}
   \vfill
   {\normalsize SCHOOL OF PHYSICAL AND MATHEMATICAL SCIENCES\par}
@@ -61,18 +68,33 @@
   {\normalsize \ProgrammeName\par}
   \vspace{1.2cm}
   {\large \SubmissionYear\par}
+  \vspace{0.5cm}
+  {\small Working draft: simulation study, 31 October 2026\par}
 \end{titlepage}
 
 \pagenumbering{roman}
 \hypersetup{pageanchor=true}
 \tableofcontents
-\vspace{0.8em}
-{\small A dash indicates a planned section whose text has not yet been added.\par}
+\clearpage
+\input{chapters/abstract}
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
 \clearpage
 \pagenumbering{arabic}
 
 \input{chapters/introduction}
-\input{chapters/outline}
+\input{chapters/literature_review}
+\input{chapters/system}
+\input{chapters/teacher_data}
+\input{chapters/student_models}
+\input{chapters/results}
+\input{chapters/conclusions}
 
 \clearpage
 \phantomsection
@@ -80,4 +102,7 @@
 \bibliographystyle{unsrtnat}
 \bibliography{references}
 
+\clearpage
+\appendix
+\input{chapters/evidence}
 \end{document}

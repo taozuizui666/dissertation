@@ -1,0 +1,83 @@
+% !TeX root = ../main.tex
+\chapter{Experimental Evidence and Reproducibility}
+\label{app:evidence}
+\begingroup\raggedright
+\section{Source Organisation}
+\label{sec:evidence_sources}
+Paths are relative to the repository root. The manuscript uses artifacts
+available on 31 October 2026, indexed in
+\path{article/experiment_data/experiment_index.json}. The R0, R1 and R6 project
+reports cover primary runs, cross-batch predictions and failure interpretation.
+
+Teacher provenance is stored under
+\path{Gazebo_simulation/rl_models/privileged/policies/validated_privileged_2392588_20261011_074049/}.
+The saved configuration and validation summary define the selected teacher's
+training and qualification scope. Inspection of the saved policy metadata,
+weight dimensions and restored policy verifies the separate actor and critic
+MLPs reported in Table~\ref{tab:teacher_network}. The archived training source
+identifies PPO with \texttt{MlpPolicy}; the collector uses deterministic teacher
+actions. These records distinguish the neural RL teacher from the supervised
+forest student. Collection metadata are in
+\path{Gazebo_simulation/results/datasets/}, with batch identifiers
+\path{collection_20261023_092900_850f9f} and
+\path{collection_20261028_141457_3f19f1}. Their training CSV mirrors are under
+\path{dataset/simulation/}. The later batch remains outside student fitting.
+
+\section{Model and Report Identification}
+\label{sec:evidence_models}
+The model directories under \path{software/ML_model/} are
+\path{simulation} (RF-D), \path{simulation_both} (RF-B),
+\path{simulation_raw} (RF-R) and \path{simulation_tree6} (T6).
+Each contains the Python artifact, training report and generated header.
+The following identifiers are abbreviated joblib SHA-256 prefixes; full
+hashes are recorded in the associated reports and the evidence manifest
+stored with this draft.
+
+The manifest also records the header hashes and structural counts underlying
+Table~\ref{tab:artifact_resources}. Teacher parameter counts are derived from
+Table~\ref{tab:teacher_network}; neither analysis measures compiled board resources.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Primary model and report mapping.}
+\label{tab:sources}
+\begin{tabular}{lll}
+\toprule Model & Model SHA-256 prefix & Primary report ID \\\midrule
+RF-D & \texttt{174279ddbe9d} & \texttt{20261028\_094226\_2350c8} \\
+RF-B & \texttt{21939959033b} & \texttt{20261028\_091853\_3d505d} \\
+RF-R & \texttt{6974065e6e9b} & \texttt{20261028\_101826\_20b5ff} \\
+T6 & \texttt{f8baded18b84} & \texttt{20261028\_121956\_cae76d} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The report IDs in Table~\ref{tab:sources} omit the common
+\path{evaluation_} prefix. The primary reports are under
+\path{Gazebo_simulation/results/random_forest/}. T6's second full run is
+\path{evaluation_20261028_125719_d68421}; its separate sector repeat is
+\path{evaluation_20261028_124425_3618fe}. RF-R's sector repeat is
+\path{evaluation_20261028_104332_15434d}. The seed-43 and seed-44 RF-B subsets
+are \path{evaluation_20261028_141057_d342d9} and
+\path{evaluation_20261028_142118_c226a4}.
+
+The historical normal report dated 25 October is excluded from the strict
+primary comparison because its code-version provenance is insufficient to
+establish exact protocol equivalence. Smoke tests verify operation but are
+not included in the 320-episode primary matrix.
+
+\section{Analysis Artifacts and Draft Status}
+\label{sec:evidence_analysis}
+The offline validation tables use the archived cross-evaluation results in
+\path{article/experiment_data/C_README.md} and the corresponding model reports.
+The later-batch metrics use the R1 report and index. Per-class support,
+confusion matrices and per-episode values are retained in the analysis
+directory. This draft does not regenerate the million-row offline evaluation.
+The primary completion figure is regenerated directly from the four raw
+closed-loop JSON reports.
+
+Independent-map recovery (R2), physical trials and target-board measurements
+remain future work. The originality, supervisor and authorship statements
+are not included in this draft; the applicable institutional declarations
+must be completed before submission.
+
+\endgroup
